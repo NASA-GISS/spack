@@ -44,7 +44,7 @@ def setup_parser(subparser):
     find_parser = sp.add_parser('find', help='Find module files for packages.')
     find_parser.add_argument('module_type',
                              help="Type of module to find file for. [" +
-        'module_type', help="Type of module to find file for. [" + '|'.join(module_types) + "]")
+                            '|'.join(module_types) + "]")
     find_parser.add_argument(
         '-r', '--dependencies', action='store_true', dest='recurse_dependencies',
         help='Recursively traverse dependencies for modules to load.')
