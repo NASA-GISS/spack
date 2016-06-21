@@ -454,7 +454,7 @@ class InstallDirectoryAlreadyExistsError(DirectoryLayoutError):
     """Raised when create_install_directory is called unnecessarily."""
     def __init__(self, path):
         super(InstallDirectoryAlreadyExistsError, self).__init__(
-            "Install path %s already exists!")
+            "Install path %s already exists!" % path)
 
 
 class InvalidExtensionSpecError(DirectoryLayoutError):
