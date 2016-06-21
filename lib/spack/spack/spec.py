@@ -1,4 +1,4 @@
-##############################################################################
+#
 # Copyright (c) 2013-2016, Lawrence Livermore National Security, LLC.
 # Produced at the Lawrence Livermore National Laboratory.
 #
@@ -18,10 +18,10 @@
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the terms and
 # conditions of the GNU Lesser General Public License for more details.
 #
-# You should have received a copy of the GNU Lesser General Public License
-# along with this program; if not, write to the Free Software Foundation,
-# Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
-##############################################################################
+# You should have received a copy of the GNU Lesser General Public
+# License along with this program; if not, write to the Free Software
+# Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+#
 """
 Spack allows very fine-grained control over how packages are installed and
 over how they are built and configured.  To make this easy, it has its own
@@ -96,10 +96,8 @@ specs to avoid ambiguity.  Both are provided because ~ can cause shell
 expansion when it is the first character in an id typed on the command line.
 """
 import sys
-import itertools
 import hashlib
 import base64
-import imp
 from StringIO import StringIO
 from operator import attrgetter
 import yaml
@@ -108,22 +106,16 @@ from yaml.error import MarkedYAMLError
 import llnl.util.tty as tty
 from llnl.util.lang import *
 from llnl.util.tty.color import *
-from llnl.util.filesystem import join_path
 
 import spack
-import spack.architecture
 import spack.parse
 import spack.error
 import spack.compilers as compilers
 
-# TODO: move display_specs to some other location.
-from spack.cmd.find import display_specs
 from spack.version import *
 from spack.util.string import *
 from spack.util.prefix import Prefix
-from spack.util.naming import mod_to_class
 from spack.virtual import ProviderIndex
-from spack.build_environment import get_path_from_module, load_module
 
 # Valid pattern for an identifier in Spack
 identifier_re = r'\w[\w-]*'
@@ -173,6 +165,7 @@ def colorize_spec(spec):
     """Returns a spec colorized according to the colors specified in
        color_formats."""
     class insert_color:
+
         def __init__(self):
             self.last = None
 
@@ -190,9 +183,11 @@ def colorize_spec(spec):
 
 @key_ordering
 class CompilerSpec(object):
+
     """The CompilerSpec field represents the compiler or range of compiler
        versions that a package should be built with.  CompilerSpecs have a
        name and a version list. """
+
     def __init__(self, *args):
         nargs = len(args)
         if nargs == 1:
@@ -298,6 +293,7 @@ class VariantSpec(object):
        on the particular package being built, and each named variant can
        be enabled or disabled.
     """
+
     def __init__(self, name, value):
         self.name = name
         self.value = value
@@ -422,8 +418,7 @@ class FlagMap(HashableMap):
         return clone
 
     def _cmp_key(self):
-        return ''.join(str(key) + ' '.join(str(v) for v in value)
-                       for key, value in sorted(self.items()))
+        return tuple((k, tuple(v)) for k, v in sorted(self.iteritems()))
 
     def __str__(self):
         sorted_keys = filter(
@@ -492,8 +487,7 @@ class Spec(object):
         self._concrete = kwargs.get('concrete', False)
 
         # Allow a spec to be constructed with an external path.
-        self.external  = kwargs.get('external', None)
-        self.external_module = kwargs.get('external_module', None)
+        self.external = kwargs.get('external', None)
 
         # This allows users to construct a spec DAG with literals.
         # Note that given two specs a and b, Spec(a) copies a, but
@@ -525,33 +519,8 @@ class Spec(object):
         Known flags currently include "arch"
         """
         valid_flags = FlagMap.valid_compiler_flags()
-        if name == 'arch' or name == 'architecture':
-            parts = value.split('-')
-            if len(parts) == 3:
-                platform, op_sys, target = parts
-            else:
-                platform, op_sys, target = None, None, value
-
-            assert(self.architecture.platform is None)
-            assert(self.architecture.platform_os is None)
-            assert(self.architecture.target is None)
-            assert(self.architecture.os_string is None)
-            assert(self.architecture.target_string is None)
-            self._set_platform(platform)
-            self._set_os(op_sys)
-            self._set_target(target)
-        elif name == 'platform':
-            self._set_platform(value)
-        elif name == 'os' or name == 'operating_system':
-            if self.architecture.platform:
-                self._set_os(value)
-            else:
-                self.architecture.os_string = value
-        elif name == 'target':
-            if self.architecture.platform:
-                self._set_target(value)
-            else:
-                self.architecture.target_string = value
+        if name == 'arch':
+            self._set_architecture(value)
         elif name in valid_flags:
             assert(self.compiler_flags is not None)
             self.compiler_flags[name] = value.split()
@@ -565,49 +534,12 @@ class Spec(object):
                 "Spec for '%s' cannot have two compilers." % self.name)
         self.compiler = compiler
 
-    def _set_platform(self, value):
-        """Called by the parser to set the architecture platform"""
-        if isinstance(value, basestring):
-            mod_path = spack.platform_path
-            mod_string = 'spack.platformss'
-            names = list_modules(mod_path)
-            if value in names:
-                # Create a platform object from the name
-                mod_name = mod_string + value
-                path = join_path(mod_path, value) + '.py'
-                mod = imp.load_source(mod_name, path)
-                class_name = mod_to_class(value)
-                if not hasattr(mod, class_name):
-                    tty.die('No class %s defined in %s' % (class_name, mod_name))
-                cls = getattr(mod, class_name)
-                if not inspect.isclass(cls):
-                    tty.die('%s.%s is not a class' % (mod_name, class_name))
-                platform = cls()
-            else:
-                tty.die("No platform class %s defined." % value)
-        else:
-            # The value is a platform
-            platform = value
-
-        self.architecture.platform = platform
-
-        # Set os and target if we previously got strings for them
-        if self.architecture.os_string:
-            self._set_os(self.architecture.os_string)
-            self.architecture.os_string = None
-        if self.architecture.target_string:
-            self._set_target(self.architecture.target_string)
-            self.architecture.target_string = None
-
-    def _set_os(self, value):
-        """Called by the parser to set the architecture operating system"""
-        if self.architecture.platform:
-            self.architecture.platform_os = self.architecture.platform.operating_system(value)
-
-    def _set_target(self, value):
-        """Called by the parser to set the architecture target"""
-        if self.architecture.platform:
-            self.architecture.target = self.architecture.platform.target(value)
+    def _set_architecture(self, architecture):
+        """Called by the parser to set the architecture."""
+        if self.architecture:
+            raise DuplicateArchitectureError(
+                "Spec for '%s' cannot have two architectures." % self.name)
+        self.architecture = architecture
 
     def _add_dependency(self, spec):
         """Called by the parser to add another spec as a dependency."""
@@ -652,7 +584,7 @@ class Spec(object):
         """Internal package call gets only the class object for a package.
            Use this to just get package metadata.
         """
-        return spack.repo.get_pkg_class(self.name)
+        return spack.repo.get_pkg_class(self.fullname)
 
     @property
     def virtual(self):
@@ -679,15 +611,15 @@ class Spec(object):
         if self._concrete:
             return True
 
-        self._concrete = bool(not self.virtual
-                              and self.namespace is not None
-                              and self.versions.concrete
-                              and self.variants.concrete
-                              and self.architecture
-                              and self.architecture.concrete
-                              and self.compiler and self.compiler.concrete
-                              and self.compiler_flags.concrete
-                              and self.dependencies.concrete)
+        self._concrete = bool(not self.virtual and
+                              self.namespace is not None and
+                              self.versions.concrete and
+                              self.variants.concrete and
+                              self.architecture and
+                              self.compiler and
+                              self.compiler.concrete and
+                              self.compiler_flags.concrete and
+                              self.dependencies.concrete)
         return self._concrete
 
     def traverse(self, visited=None, d=0, **kwargs):
@@ -725,7 +657,7 @@ class Spec(object):
                in the traversal.
 
            root     [=True]
-               If False, this won't yield the root node, just its descendents.
+               If false, this won't yield the root node, just its descendents.
 
            direction [=children|parents]
                If 'children', does a traversal of this spec's children.  If
@@ -816,33 +748,29 @@ class Spec(object):
             return b32_hash
 
     def to_node_dict(self):
+        d = {}
+
         params = dict((name, v.value) for name, v in self.variants.items())
         params.update(dict((name, value)
                       for name, value in self.compiler_flags.items()))
-        d = {
-            'parameters' : params,
-            'arch' : self.architecture,
-            'dependencies' : dict((d, self.dependencies[d].dag_hash())
-                                  for d in sorted(self.dependencies))
-        }
+        if params:
+            d['parameters'] = params
 
-        # Older concrete specs do not have a namespace.  Omit for
-        # consistent hashing.
-        if not self.concrete or self.namespace:
+        if self.architecture is not None:
+            d['arch'] = self.architecture
+
+        if self.dependencies:
+            d['dependencies'] = dict((d, self.dependencies[d].dag_hash())
+                                     for d in sorted(self.dependencies))
+
+        if self.namespace:
             d['namespace'] = self.namespace
-
-        if self.architecture:
-            # TODO: Fix the target.to_dict to account for the tuple
-            # Want it to be a dict of dicts
-            d['arch'] = self.architecture.to_dict()
-        else:
-            d['arch'] = None
 
         if self.compiler:
             d.update(self.compiler.to_dict())
-        else:
-            d['compiler'] = None
-        d.update(self.versions.to_dict())
+
+        if self.versions:
+            d.update(self.versions.to_dict())
 
         return {self.name: d}
 
@@ -862,17 +790,16 @@ class Spec(object):
 
         spec = Spec(name)
         spec.namespace = node.get('namespace', None)
-        spec.versions = VersionList.from_dict(node)
+        spec.architecture = node.get('arch', None)
+        spec._hash = node.get('hash', None)
 
-        if 'hash' in node:
-            spec._hash = node['hash']
+        if 'version' in node or 'versions' in node:
+            spec.versions = VersionList.from_dict(node)
 
-        spec.architecture = spack.architecture.arch_from_dict(node['arch'])
-
-        if node['compiler'] is None:
-            spec.compiler = None
-        else:
+        if 'compiler' in node:
             spec.compiler = CompilerSpec.from_dict(node)
+        else:
+            spec.compiler = None
 
         if 'parameters' in node:
             for name, value in node['parameters'].items():
@@ -880,14 +807,12 @@ class Spec(object):
                     spec.compiler_flags[name] = value
                 else:
                     spec.variants[name] = VariantSpec(name, value)
+
         elif 'variants' in node:
             for name, value in node['variants'].items():
                 spec.variants[name] = VariantSpec(name, value)
             for name in FlagMap.valid_compiler_flags():
                 spec.compiler_flags[name] = []
-        else:
-            raise SpackRecordError(
-                "Did not find a valid format for variants in YAML file")
 
         return spec
 
@@ -919,8 +844,9 @@ class Spec(object):
 
         for node in yfile['spec']:
             name = next(iter(node))
-            for dep_name in node[name]['dependencies']:
-                deps[name].dependencies[dep_name] = deps[dep_name]
+            if 'dependencies' in node[name]:
+                for dep_name in node[name]['dependencies']:
+                    deps[name].dependencies[dep_name] = deps[dep_name]
         return spec
 
     def _concretize_helper(self, presets=None, visited=None):
@@ -941,10 +867,12 @@ class Spec(object):
 
         # Concretize deps first -- this is a bottom-up process.
         for name in sorted(self.dependencies.keys()):
-            changed |= self.dependencies[name]._concretize_helper(presets, visited)
+            changed |= self.dependencies[
+                name]._concretize_helper(presets, visited)
 
         if self.name in presets:
             changed |= self.constrain(presets[self.name])
+
         else:
             # Concretize virtual dependencies last.  Because they're added
             # to presets below, their constraints will all be merged, but we'll
@@ -1009,12 +937,11 @@ class Spec(object):
         """
         # Make an index of stuff this spec already provides
         self_index = ProviderIndex(self.traverse(), restrict=True)
+
         changed = False
         done = False
-
         while not done:
             done = True
-
             for spec in list(self.traverse()):
                 replacement = None
                 if spec.virtual:
@@ -1053,25 +980,24 @@ class Spec(object):
                             continue
 
                 # If replacement is external then trim the dependencies
-                if replacement.external or replacement.external_module:
+                if replacement.external:
                     if (spec.dependencies):
                         changed = True
                         spec.dependencies = DependencyMap()
                     replacement.dependencies = DependencyMap()
-                    replacement.architecture = self.architecture
 
                 # TODO: could this and the stuff in _dup be cleaned up?
                 def feq(cfield, sfield):
                     return (not cfield) or (cfield == sfield)
 
-                if replacement is spec or (feq(replacement.name, spec.name) and
-                    feq(replacement.versions, spec.versions) and
-                    feq(replacement.compiler, spec.compiler) and
-                    feq(replacement.architecture, spec.architecture) and
-                    feq(replacement.dependencies, spec.dependencies) and
-                    feq(replacement.variants, spec.variants) and
-                    feq(replacement.external, spec.external) and
-                    feq(replacement.external_module, spec.external_module)):
+                if replacement is spec or (
+                        feq(replacement.name, spec.name) and
+                        feq(replacement.versions, spec.versions) and
+                        feq(replacement.compiler, spec.compiler) and
+                        feq(replacement.architecture, spec.architecture) and
+                        feq(replacement.dependencies, spec.dependencies) and
+                        feq(replacement.variants, spec.variants) and
+                        feq(replacement.external, spec.external)):
                     continue
                 # Refine this spec to the candidate. This uses
                 # replace_with AND dup so that it can work in
@@ -1127,15 +1053,6 @@ class Spec(object):
             # compatibility across repositories as possible.
             if s.namespace is None:
                 s.namespace = spack.repo.repo_for_pkg(s.name).namespace
-
-
-        for s in self.traverse(root=False):
-            if s.external_module:
-                compiler = spack.compilers.compiler_for_spec(s.compiler, s.architecture)
-                for mod in compiler.modules:
-                    load_module(mod)
-
-                s.external = get_path_from_module(s.external_module)
 
         # Mark everything in the spec as concrete, as well.
         self._mark_concrete()
@@ -1337,7 +1254,7 @@ class Spec(object):
 
         # if we descend into a virtual spec, there's nothing more
         # to normalize.  Concretize will finish resolving it later.
-        if self.virtual or self.external or self.external_module:
+        if self.virtual or self.external:
             return False
 
         # Combine constraints from package deps with constraints from
@@ -1384,6 +1301,7 @@ class Spec(object):
 
         # Ensure first that all packages & compilers in the DAG exist.
         self.validate_names()
+
         # Get all the dependencies into one DependencyMap
         spec_deps = self.flat_dependencies(copy=False)
 
@@ -1421,7 +1339,7 @@ class Spec(object):
            UnsupportedCompilerError.
         """
         for spec in self.traverse():
-            # Don't get a package for a virtual name.
+            # raise an UnknownPackageError if the spec's package isn't real.
             if (not spec.virtual) and spec.name:
                 spack.repo.get(spec.fullname)
 
@@ -1461,21 +1379,10 @@ class Spec(object):
                 raise UnsatisfiableVariantSpecError(self.variants[v],
                                                     other.variants[v])
 
-        # TODO: Check out the logic here
         if self.architecture is not None and other.architecture is not None:
-            if self.architecture.platform is not None and other.architecture.platform is not None:
-                if self.architecture.platform != other.architecture.platform:
-                    raise UnsatisfiableArchitectureSpecError(self.architecture,
-                                                             other.architecture)
-            if self.architecture.platform_os is not None and other.architecture.platform_os is not None:
-                if self.architecture.platform_os != other.architecture.platform_os:
-                    raise UnsatisfiableArchitectureSpecError(self.architecture,
-                                                             other.architecture)
-            if self.architecture.target is not None and other.architecture.target is not None:
-                if self.architecture.target != other.architecture.target:
-                    raise UnsatisfiableArchitectureSpecError(self.architecture,
-                                                             other.architecture)
-
+            if self.architecture != other.architecture:
+                raise UnsatisfiableArchitectureSpecError(self.architecture,
+                                                         other.architecture)
 
         changed = False
         if self.compiler is not None and other.compiler is not None:
@@ -1489,17 +1396,9 @@ class Spec(object):
 
         changed |= self.compiler_flags.constrain(other.compiler_flags)
 
-        old = str(self.architecture)
-        if self.architecture is None or other.architecture is None:
-            self.architecture = self.architecture or other.architecture
-        else:
-            if self.architecture.platform is None or other.architecture.platform is None:
-                self.architecture.platform = self.architecture.platform or other.architecture.platform
-            if self.architecture.platform_os is None or other.architecture.platform_os is None:
-                self.architecture.platform_os = self.architecture.platform_os or other.architecture.platform_os
-            if self.architecture.target is None or other.architecture.target is None:
-                self.architecture.target = self.architecture.target or other.architecture.target
-        changed |= (str(self.architecture) != old)
+        old = self.architecture
+        self.architecture = self.architecture or other.architecture
+        changed |= (self.architecture != old)
 
         if deps:
             changed |= self._constrain_dependencies(other)
@@ -1626,14 +1525,9 @@ class Spec(object):
         # Architecture satisfaction is currently just string equality.
         # If not strict, None means unconstrained.
         if self.architecture and other.architecture:
-            if ((self.architecture.platform and other.architecture.platform and self.architecture.platform != other.architecture.platform) or
-                (self.architecture.platform_os and other.architecture.platform_os and self.architecture.platform_os != other.architecture.platform_os) or
-                (self.architecture.target and other.architecture.target and self.architecture.target != other.architecture.target)):
+            if self.architecture != other.architecture:
                 return False
-        elif strict and ((other.architecture and not self.architecture) or
-                         (other.architecture.platform and not self.architecture.platform) or
-                         (other.architecture.platform_os and not self.architecture.platform_os) or
-                         (other.architecture.target and not self.architecture.target)):
+        elif strict and (other.architecture and not self.architecture):
             return False
 
         if not self.compiler_flags.satisfies(
@@ -1708,17 +1602,20 @@ class Spec(object):
 
            Options:
            dependencies[=True]
-               Whether deps should be copied too.  Set to False to copy a
+               Whether deps should be copied too.  Set to false to copy a
                spec but not its dependencies.
         """
         # We don't count dependencies as changes here
         changed = True
         if hasattr(self, 'name'):
-            changed = (self.name != other.name and self.versions != other.versions and \
-                       self.architecture != other.architecture and self.compiler != other.compiler and \
-                       self.variants != other.variants and self._normal != other._normal and \
-                       self.concrete != other.concrete and self.external != other.external and \
-                       self.external_module != other.external_module and self.compiler_flags != other.compiler_flags)
+            changed = (self.name != other.name and
+                       self.versions != other.versions and
+                       self.architecture != other.architecture and
+                       self.compiler != other.compiler and
+                       self.variants != other.variants and
+                       self._normal != other._normal and
+                       self.concrete != other.concrete and
+                       self.external != other.external)
 
         # Local node attributes get copied first.
         self.name = other.name
@@ -1732,7 +1629,6 @@ class Spec(object):
         self.variants = other.variants.copy()
         self.variants.spec = self
         self.external = other.external
-        self.external_module = other.external_module
         self.namespace = other.namespace
         self._hash = other._hash
 
@@ -1753,7 +1649,6 @@ class Spec(object):
         self._normal = other._normal
         self._concrete = other._concrete
         self.external = other.external
-        self.external_module = other.external_module
         return changed
 
     def copy(self, **kwargs):
@@ -1857,7 +1752,6 @@ class Spec(object):
                 self.architecture,
                 self.compiler,
                 self.compiler_flags)
-
 
     def eq_node(self, other):
         """Equality with another spec, not including dependencies."""
@@ -1969,7 +1863,7 @@ class Spec(object):
                     if self.variants:
                         write(fmt % str(self.variants), c)
                 elif c == '=':
-                    if self.architecture and str(self.architecture):
+                    if self.architecture:
                         write(fmt % (' arch' + c + str(self.architecture)), c)
                 elif c == '#':
                     out.write('-' + fmt % (self.dag_hash(7)))
@@ -2027,8 +1921,8 @@ class Spec(object):
                     if self.variants:
                         write(fmt % str(self.variants), '+')
                 elif named_str == 'ARCHITECTURE':
-                    if self.architecture and str(self.architecture):
-                        write(fmt % str(self.architecture), ' arch=')
+                    if self.architecture:
+                        write(fmt % str(self.architecture), '=')
                 elif named_str == 'SHA1':
                     if self.dependencies:
                         out.write(fmt % str(self.dag_hash(7)))
@@ -2052,41 +1946,6 @@ class Spec(object):
 
     def dep_string(self):
         return ''.join("^" + dep.format() for dep in self.sorted_deps())
-
-
-    def __cmp__(self, other):
-        #Package name sort order is not configurable, always goes alphabetical
-        if self.name != other.name:
-            return cmp(self.name, other.name)
-
-        #Package version is second in compare order
-        pkgname = self.name
-        if self.versions != other.versions:
-            return spack.pkgsort.version_compare(pkgname,
-                         self.versions, other.versions)
-
-        #Compiler is third
-        if self.compiler != other.compiler:
-            return spack.pkgsort.compiler_compare(pkgname,
-                         self.compiler, other.compiler)
-
-        #Variants
-        if self.variants != other.variants:
-            return spack.pkgsort.variant_compare(pkgname,
-                         self.variants, other.variants)
-
-        #Target
-        if self.architecture != other.architecture:
-            return spack.pkgsort.architecture_compare(pkgname,
-                         self.architecture, other.architecture)
-
-        #Dependency is not configurable
-        if self.dependencies != other.dependencies:
-            return -1 if self.dependencies < other.dependencies else 1
-
-        #Equal specs
-        return 0
-
 
     def __str__(self):
         return self.format() + self.dep_string()
@@ -2168,6 +2027,7 @@ class SpecParser(spack.parse.Parser):
 
     def do_parse(self):
         specs = []
+
         try:
             while self.next:
                 # TODO: clean this parsing up a bit
@@ -2211,12 +2071,6 @@ class SpecParser(spack.parse.Parser):
         except spack.parse.ParseError, e:
             raise SpecParseError(e)
 
-
-        # If the spec has an os or a target and no platform, give it the default platform
-        for spec in specs:
-            for s in spec.traverse():
-                if s.architecture.os_string or s.architecture.target_string:
-                    s._set_platform(spack.architecture.sys_type())
         return specs
 
     def parse_compiler(self, text):
@@ -2258,10 +2112,9 @@ class SpecParser(spack.parse.Parser):
         spec.name = spec_name
         spec.versions = VersionList()
         spec.variants = VariantMap(spec)
-        spec.architecture = spack.architecture.Arch()
+        spec.architecture = None
         spec.compiler = None
         spec.external = None
-        spec.external_module = None
         spec.compiler_flags = FlagMap(spec)
         spec.dependents = DependencyMap()
         spec.dependencies = DependencyMap()
@@ -2336,6 +2189,12 @@ class SpecParser(spack.parse.Parser):
             self.expect(ID)
             self.check_identifier()
             return self.token.value
+
+    def architecture(self):
+        # TODO: Make this work properly as a subcase of variant (includes
+        # adding names to grammar)
+        self.expect(ID)
+        return self.token.value
 
     def version(self):
         start = None
@@ -2640,12 +2499,6 @@ class SpackYAMLError(spack.error.SpackError):
 
     def __init__(self, msg, yaml_error):
         super(SpackYAMLError, self).__init__(msg, str(yaml_error))
-
-
-class SpackRecordError(spack.error.SpackError):
-
-    def __init__(self, msg):
-        super(SpackRecordError, self).__init__(msg)
 
 
 class AmbiguousHashError(SpecError):
