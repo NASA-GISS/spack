@@ -9,6 +9,7 @@ class Nccmp(Package):
     version('1.8.2.0', '81e6286d4413825aec4327e61a28a580')
 
     depends_on('netcdf')
+    depends_on('openmpi')
 
     def install(self, spec, prefix):
         # Configure says: F90 and F90FLAGS are replaced by FC and

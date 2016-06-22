@@ -35,7 +35,7 @@ class Modele(CMakePackage):
     depends_on('m4')
 
     # Link dependencies
-    depends_on('mpi')
+    depends_on('openmpi')
     depends_on('netcdf-fortran')
     depends_on('fexception', when='+fexception')
     depends_on('everytrace', when='+everytrace')

@@ -15,7 +15,7 @@ class ParallelNetcdf(Package):
     variant('fpic', default=True, description='Produce position-independent code (for use with shared libraries)')
 
     depends_on("m4")
-    depends_on("mpi")
+    depends_on("openmpi")
 
     # See: https://trac.mcs.anl.gov/projects/parallel-netcdf/browser/trunk/INSTALL
     def install(self, spec, prefix):
