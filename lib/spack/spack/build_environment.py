@@ -56,6 +56,8 @@ import sys
 import shutil
 import multiprocessing
 import platform
+import subprocess
+import re
 
 import llnl.util.tty as tty
 from llnl.util.filesystem import *
@@ -224,6 +226,16 @@ def set_compiler_environment_variables(pkg, env):
     return env
 
 
+prefix_blacklist = set(['/usr', '/'])
+def cleanse_system_prefixes(prefixes):
+    """Remove blacklisted items from an prefix"""
+
+    prefixes2 = list()
+    for prefix in prefixes:
+        if prefix not in prefix_blacklist:
+            prefixes2.append(prefix)
+    return prefixes2
+
 def set_build_environment_variables(pkg, env, dirty=False):
     """
     This ensures a clean install environment when we build packages.
@@ -256,7 +268,8 @@ def set_build_environment_variables(pkg, env, dirty=False):
     # Prefixes of all of the package's dependencies go in SPACK_DEPENDENCIES
     dep_prefixes = [d.prefix
                     for d in pkg.spec.traverse(root=False, deptype='build')]
-    env.set_path(SPACK_DEPENDENCIES, dep_prefixes)
+
+    env.set_path(SPACK_DEPENDENCIES, cleanse_system_prefixes(dep_prefixes))
     # Add dependencies to CMAKE_PREFIX_PATH
     env.set_path('CMAKE_PREFIX_PATH', dep_prefixes)
 
@@ -382,6 +395,31 @@ def set_module_variables_for_package(pkg, module):
     # Platform-specific library suffix.
     m.dso_suffix = dso_suffix
 
+# For some reason, this is not returning /usr/lib64
+#
+#ldpathRE = re.compile(r'([^\s].*?):.*')
+#def get_ldpaths():
+#    """Gets a list of paths searched by default by the loader."""
+#    paths = list()
+#    proc = subprocess.Popen(['ldconfig', '-N', '-v'], stdout=subprocess.PIPE)
+#    for line in proc.stdout:
+#        match = ldpathRE.match(line)
+#        if match is None:
+#            continue
+#        paths.append(match.group(1))
+#    return paths
+
+# This feels like a hack.  It might not quite work on non-RedHat systems.
+# Apparently, non-RH also add /usr/local/lib*
+rpath_blacklist = set(['/usr/lib', '/usr/lib64', '/lib', '/lib64'])
+def cleanse_rpaths(rpaths):
+    """Remove blacklisted items from an rpath"""
+
+    rpaths2 = list()
+    for rpath in rpaths:
+        if rpath not in rpath_blacklist:
+            rpaths2.append(rpath)
+    return rpaths2
 
 def get_rpaths(pkg):
     """Get a list of all the rpaths for a package."""
@@ -395,7 +433,9 @@ def get_rpaths(pkg):
     # module show output.
     if pkg.compiler.modules and len(pkg.compiler.modules) > 1:
         rpaths.append(get_path_from_module(pkg.compiler.modules[1]))
-    return rpaths
+
+    # Remove system rpaths (which are already searched anyway)
+    return cleanse_rpaths(rpaths)
 
 def get_std_cmake_args(cmake_pkg):
     # standard CMake arguments
