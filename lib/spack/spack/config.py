@@ -337,7 +337,8 @@ def _mark_overrides(data):
         return data
 
 
-def _merge_yaml(dest, source):
+spaces = '                                                   '
+def _merge_yaml(dest, source, debug=0):
     """Merges source into dest; entries in source take precedence over dest.
 
     This routine may modify dest and should be assigned to dest, in
@@ -361,21 +362,35 @@ def _merge_yaml(dest, source):
     elif source is None:
         return None
 
+    if debug>0:
+        print(spaces[0:debug*4], 'they-are', they_are(list), they_are(dict))
+
     # Source list is prepended (for precedence)
     if they_are(list):
-        dest[:] = source + [x for x in dest if x not in source]
-        return dest
+        ret = source + [x for x in dest if x not in source]
+        return ret
 
     # Source dict is merged into dest.
     elif they_are(dict):
+        ret = copy.copy(dest)
         for sk, sv in source.iteritems():
+            if debug>0:
+                print(spaces[0:debug*4],'--> ',sk,sv)
             if override(sk) or sk not in dest:
+                if debug>0:
+                    print(spaces[0:debug*4],'copy')
+
                 # if sk ended with ::, or if it's new, completely override
-                dest[sk] = copy.copy(sv)
+                ret[sk] = copy.copy(sv)
             else:
+                if debug>0:
+                    print(spaces[0:debug*4],'merge:',sk)
+                    print(spaces[0:debug*4+4], dest[sk])
+                    print(spaces[0:debug*4+4], source[sk])
+
                 # otherwise, merge the YAML
-                dest[sk] = _merge_yaml(dest[sk], source[sk])
-        return dest
+                ret[sk] = _merge_yaml(dest[sk], source[sk],debug+1 if debug>0 else 0)
+        return ret
 
     # In any other case, overwrite with a copy of the source value.
     else:
@@ -414,6 +429,9 @@ def get_config(section, scope=None):
     else:
         scopes = [validate_scope(scope)]
 
+    if section == 'packages':
+        print('merged_section0', merged_section)
+
     for scope in scopes:
         # read potentially cached data from the scope.
         data = scope.get_section(section)
@@ -426,7 +444,16 @@ def get_config(section, scope=None):
             tty.warn("Skipping bad configuration file: '%s'" % scope.path)
             continue
 
-        merged_section = _merge_yaml(merged_section, data)
+        merged_section = _merge_yaml(merged_section, data,
+            1 if (section=='packages' and scope.name == 'user') else 0)
+
+        if section == 'packages':
+            print('----------------------------------------------------')
+            try:
+                print('merged_section', scope.name, merged_section['packages']['all'])
+            except KeyError:
+                print('merged_section', scope.name, '<not yet all>')
+
 
     # no config files -- empty config.
     if section not in merged_section:
