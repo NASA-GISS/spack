@@ -76,12 +76,15 @@ schema = {
                             'type': 'object',
                             'default': {},
                         },
-                        'variants': {
-                            'oneOf': [
-                                {'type': 'string'},
+                        'variants':
+#{
+#                            'oneOf': [
+#                                {'type': 'string'},
                                 {'type': 'array',
-                                 'items': {'type': 'string'}}],
-                        },
+                                  'default' : [],
+                                 'items': {'type': 'string'}}
+#],
+#                        },
                     },
                 },
             },

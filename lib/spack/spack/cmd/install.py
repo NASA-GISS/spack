@@ -47,7 +47,7 @@ from spack.package import PackageBase
 description = "Build and install packages"
 
 
-def setup_parser(subparser):
+def setup_common_parser(subparser):
     subparser.add_argument(
         '--only',
         default='package,dependencies',
@@ -106,6 +106,12 @@ the dependencies."""
         default=None,
         help="Filename for the log file. If not passed a default will be used."
     )
+
+def setup_parser(subparser):
+    setup_common_parser(subparser)
+    subparser.add_argument(
+        '-s', '--setup', dest='setups', action='append', default=[],
+        help="Generate <projectname>-setup.py for the given projects, instead of building and installing them for real")
 
 
 # Needed for test cases
@@ -325,7 +331,8 @@ def validate_args(args):
         'install_status': args.install_status,
         'fake': args.fake,
         'dirty': args.dirty,
-        'report' : args.report
+        'report' : args.report,
+        'setup' : set(args.setup)
     }
 
 
@@ -350,9 +357,81 @@ def setup_logging(spec, args):
     if args.log_format is not None:
         test_suite.dump(log_filename)
 
+def write_spconfig(package):
+    # Set-up the environment
+    spack.build_environment.setup_package(package)
+
+    _cmd = [str(which('cmake'))] + package.std_cmake_args + package.cmake_args()
+    # No verbose makefile for interactive builds
+    cmd = [x for x in _cmd if not x.startswith('-DCMAKE_VERBOSE_MAKEFILE')]
+
+    env = dict()
+
+    paths = os.environ['PATH'].split(':')
+    paths = [item for item in paths if 'spack/env' not in item]
+    env['PATH'] = ':'.join(paths)
+    env['SPACK_TRANSITIVE_INCLUDE_PATH'] = spack_transitive_include_path()
+    env['CMAKE_PREFIX_PATH'] = os.environ['CMAKE_PREFIX_PATH']
+    env['CC'] = os.environ['SPACK_CC']
+    env['CXX'] = os.environ['SPACK_CXX']
+    env['FC'] = os.environ['SPACK_FC']
+
+    setup_fname = 'spconfig.py'
+    with open(setup_fname, 'w') as fout:
+        fout.write(
+            r"""#!%s
+#
+# %s
+
+import sys
+import os
+import subprocess
+
+def cmdlist(str):
+    return list(x.strip().replace("'",'') for x in str.split('\n') if x)
+env = dict(os.environ)
+""" % (sys.executable, ' '.join(sys.argv)))
+
+        env_vars = sorted(list(env.keys()))
+        for name in env_vars:
+            val = env[name]
+            if string.find(name, 'PATH') < 0:
+                fout.write('env[%s] = %s\n' % (repr(name), repr(val)))
+            else:
+                if name == 'SPACK_TRANSITIVE_INCLUDE_PATH':
+                    sep = ';'
+                else:
+                    sep = ':'
+
+                fout.write(
+                    'env[%s] = "%s".join(cmdlist("""\n' % (repr(name), sep))
+                for part in string.split(val, sep):
+                    fout.write('    %s\n' % part)
+                fout.write('"""))\n')
+
+        fout.write('\ncmd = cmdlist("""\n')
+        fout.write('%s\n' % cmd[0])
+        for arg in cmd[1:]:
+            fout.write('    %s\n' % arg)
+        fout.write('""") + sys.argv[1:]\n')
+        fout.write('\nproc = subprocess.Popen(cmd, env=env)\nproc.wait()\n')
+        set_executable(setup_fname)
+
+def mid_install(spec, setup=set(), **kwargs):
+    package = spack.repo.get(spec)
+    if package.name not in setup:
+        # Regular install
+        package.do_install(**kwargs)
+    else:
+        # Do `spack setup` on this package
+
+
+
+
 def top_install(
     spec, install_package=True,
     install_dependencies=True,
+    setup=set(),
     report=False, **kwargs):
 
     if report:

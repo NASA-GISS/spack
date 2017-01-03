@@ -1115,6 +1115,7 @@ class PackageBase(object):
                    fake=False,
                    explicit=False,
                    dirty=None,
+                   setup=set(),
                    **kwargs):
         """Called by commands to install a package and its dependencies.
 
@@ -1147,6 +1148,18 @@ class PackageBase(object):
             tty.msg("%s is externally installed in %s" %
                     (self.name, self.spec.external))
             return
+
+        this_fake = fake
+        if self.name in setup:
+            this_fake = True
+            explicit=True
+            sefl.stage = DIYStage(os.getcwd())    # Force build in cwd
+            # --- Generate spconfig.py
+            tty.msg(
+                'Generating spconfig.py [{0}]'.format(package.spec.cshort_spec)
+            )
+            write_spconfig(package)
+
 
         # Ensure package is not already installed
         layout = spack.store.layout
@@ -1210,7 +1223,7 @@ class PackageBase(object):
             sys.stdin = input_stream
 
             start_time = time.time()
-            if not fake:
+            if not this_fake:
                 if not skip_patch:
                     self.do_patch()
                 else:
@@ -1226,7 +1239,7 @@ class PackageBase(object):
                 # Run the pre-install hook in the child process after
                 # the directory is created.
                 spack.hooks.pre_install(self)
-                if fake:
+                if this_fake:
                     self.do_fake_install()
                 else:
                     # Do the real install in the source directory.
