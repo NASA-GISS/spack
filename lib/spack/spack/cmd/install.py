@@ -381,7 +381,7 @@ def top_install(
         else:
             # Nothing to install!
             tty.die("Nothing to install, due to the --only flag")
-    else:    // install_package = True, install_dependencies=?
+    else:    # install_package = True, install_dependencies=?
         package = spack.repo.get(spec)
         package.do_install(
             install_dependencies=install_dependencies,
