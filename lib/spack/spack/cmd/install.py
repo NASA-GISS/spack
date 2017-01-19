@@ -36,7 +36,9 @@ import xml.etree.ElementTree as ET
 
 import llnl.util.filesystem as fs
 import llnl.util.tty as tty
+from llnl.util.tty.color import *
 import spack
+import spack.spec
 import spack.cmd
 import spack.cmd.common.arguments as arguments
 from spack.build_environment import InstallError
@@ -78,6 +80,9 @@ the dependencies."""
     subparser.add_argument(
         '--install-status', '-I', action='store_true', dest='install_status',
         help="Show spec before installing.")
+    subparser.add_argument(
+        '--report', action='store_true', dest='report',
+        help="Report on installation when finished, for consumption by spackenv")
 
     cd_group = subparser.add_mutually_exclusive_group()
     arguments.add_common_arguments(cd_group, ['clean', 'dirty'])
@@ -378,6 +383,8 @@ def top_install(
                     install_dependencies=True,
                     explicit=False,
                     **kwargs)
+                if report:
+                    print 'SPACKENV INSTALLED %s/%s' % (s.name, s.dag_hash())
         else:
             # Nothing to install!
             tty.die("Nothing to install, due to the --only flag")
@@ -388,6 +395,8 @@ def top_install(
             explicit=True,
             spconfig_fname_fn=spconfig_fname_fn,
             **kwargs)
+        if report:
+            print 'SPACKENV INSTALLED %s/%s' % (spec.name, spec.dag_hash())
 
 def show_spec(spec, args):
     """Print the concretized spec for the user before installing."""
@@ -404,7 +413,8 @@ def install(parser, args):
     kwargs = validate_args(args)
 
     # Spec from cli
-    specs = spack.cmd.parse_specs(args.package, concretize=True, allow_multi=True)
+    specs = spack.cmd.parse_specs(
+        args.package, concretize=True, allow_multi=True)
     for spec in specs:
         show_spec(spec, args)
 
