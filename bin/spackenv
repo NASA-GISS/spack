@@ -131,20 +131,13 @@ _action = {
 }
 
 def validate_args(args):
-    kwargs = {
-        'src_dir' : args.src,
-        'env_dir' : args.env
-    }
+    kwargs = {}
     return kwargs
 
 def main():
     parser = argparse.ArgumentParser(
         formatter_class=argparse.RawTextHelpFormatter,
         description="Manage entire environments built by Spack")
-    parser.add_argument('--env',
-        help="Directory that holds the environments")
-    parser.add_argument('--src',
-        help="Directory that holds the source (.env) files")
 
     parser.add_argument(dest='command', choices=['install', 'loads'])
     parser.add_argument(dest='envs', nargs='+')
@@ -157,7 +150,9 @@ def main():
     args = parser.parse_args()
 
     try:
-        _action[args.command](args.envs, **validate_args(args))
+        dir,env = os.path.split(args.envs[0])
+        env_root,_ = os.path.splitext(env)
+        _action[args.command]([env_root], src_dir=dir, env_dir=dir, **validate_args(args))
     except SpackError as e:
         print(e)
 
