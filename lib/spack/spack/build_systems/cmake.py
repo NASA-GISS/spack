@@ -27,6 +27,7 @@ import inspect
 import platform
 import sys
 import string
+import os
 
 import llnl.util.tty as tty
 import spack.build_environment
