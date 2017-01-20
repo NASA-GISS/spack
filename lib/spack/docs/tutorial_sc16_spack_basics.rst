@@ -26,7 +26,7 @@ Spack works out of the box. Simply clone spack and get going.
 
 .. code-block:: console
 
-  $ git clone https://github.com/LLNL/spack.git
+  $ git clone https://github.com/citibeth/spack.git -b gsfc
   Initialized empty Git repository in ~/spack/.git/
   remote: Counting objects: 47125, done.
   remote: Compressing objects: 100% (68/68), done.
@@ -35,13 +35,19 @@ Spack works out of the box. Simply clone spack and get going.
   Resolving deltas: 100% (23044/23044), done.
   $ cd spack
 
-Then add Spack to your path.
+In general, you're good to go!  But for this tutorial, two more steps are required:
+
+1. Add Spack to your bashrc:
+
+  .. code-block:: bash
+
+    source /home/rpfische/spack-tutorial/bashrc
+
+1. Copy discover Spack configuration:
 
 .. code-block:: console
 
-  $ export PATH=~/spack/bin:$PATH
-
-You're good to go!
+  $ cd ~; tar xvfz /home/rpfische/spack-tutorial/dotspack.tar.gz
 
 -----------------
 What is in Spack?
@@ -587,6 +593,35 @@ libdwarf, but it's still within the realm of software that an experienced
 HPC user could reasonably expect to install given a bit of time. Now
 let's look at a more complicated package.
 
+
+.. code-block:: console
+
+  $ spack spec trilinos
+
+  trilinos@12.10.1%gcc@5.3.0+boost~debug+hdf5+hypre+metis+mumps~python+shared+suite-sparse~superlu+superlu-dist~xsdkflags arch=linux-suse_linux11-x86_64 
+      ^boost@1.63.0%gcc@5.3.0+atomic+chrono+date_time~debug+filesystem~graph~icu+iostreams+locale+log+math~mpi+multithreaded+program_options~python+random+regex+serialization+shared+signals~singlethreaded+system~taggedlayout+test+thread+timer+wave arch=linux-suse_linux11-x86_64 
+          ^bzip2@1.0.6%gcc@5.3.0 arch=linux-suse_linux11-x86_64 
+          ^zlib@1.2.10%gcc@5.3.0+pic arch=linux-suse_linux11-x86_64 
+      ^cmake@3.7.2%gcc@5.3.0~doc+ncurses+openssl+ownlibs~qt arch=linux-suse_linux11-x86_64 
+          ^ncurses@6.0%gcc@5.3.0 arch=linux-suse_linux11-x86_64 
+          ^openssl@system%gcc@5.3.0 arch=linux-suse_linux11-x86_64 
+      ^glm@0.9.7.1%gcc@5.3.0 arch=linux-suse_linux11-x86_64 
+      ^hdf5@1.10.0-patch1%gcc@5.3.0+cxx~debug+fortran+mpi+pic+shared~szip~threadsafe arch=linux-suse_linux11-x86_64 
+          ^openmpi@1.10.1%gcc@5.3.0~java~mxm~pmi~psm~psm2~slurm~sqlite3~thread_multiple~tm+verbs+vt arch=linux-suse_linux11-x86_64 
+      ^hypre@2.11.1%gcc@5.3.0~int64~internal-superlu+shared arch=linux-suse_linux11-x86_64 
+          ^openblas@0.2.19%gcc@5.3.0~openmp+pic+shared arch=linux-suse_linux11-x86_64 
+      ^matio@1.5.9%gcc@5.3.0+hdf5+zlib arch=linux-suse_linux11-x86_64 
+      ^metis@5.1.0%gcc@5.3.0~debug~gdb~int64~real64+shared arch=linux-suse_linux11-x86_64 
+      ^mumps@5.0.2%gcc@5.3.0+complex+double+float~int64~metis+mpi~parmetis~ptscotch~scotch+shared arch=linux-suse_linux11-x86_64 
+          ^netlib-scalapack@2.0.2%gcc@5.3.0~fpic+shared arch=linux-suse_linux11-x86_64 
+      ^netcdf@4.4.1%gcc@5.3.0~cdmremote~dap~hdf4 maxdims=1024  maxvars=8192 +mpi~parallel-netcdf+shared arch=linux-suse_linux11-x86_64 
+          ^m4@1.4.17%gcc@5.3.0+sigsegv arch=linux-suse_linux11-x86_64 
+              ^libsigsegv@2.10%gcc@5.3.0 arch=linux-suse_linux11-x86_64 
+      ^parmetis@4.0.3%gcc@5.3.0~debug~gdb+shared arch=linux-suse_linux11-x86_64 
+      ^suite-sparse@4.5.3%gcc@5.3.0+fpic+tbb arch=linux-suse_linux11-x86_64 
+          ^tbb@2017.3%gcc@5.3.0 arch=linux-suse_linux11-x86_64 
+      ^superlu-dist@5.1.1%gcc@5.3.0~int64 arch=linux-suse_linux11-x86_64 
+
 .. code-block:: console
 
   $ spack install --fake trilinos
@@ -1104,7 +1139,7 @@ The ``spack find`` command can accept what we call "anonymous specs."
 These are expressions in spec syntax that do not contain a package
 name. For example, `spack find %intel` will return every package built
 with the intel compiler, and ``spack find cppflags="-O3"`` will
-return every package which was built with ``cppflags="-O3"``.
+return every package built with ``cppflags="-O3"``.
 
 .. code-block:: console
 
@@ -1253,3 +1288,106 @@ If we had done a real install, the output would have been as follows:
   $ spack compiler add ~/spack/opt/spack/linux-redhat6-x86_64/gcc-4.4.7/gcc-6.1.0-j5576zbsot2ydljlthjzhsirsesnogvh/bin
   ==> Added 1 new compiler to ~/.spack/linux/compilers.yaml
       gcc@6.1.0
+
+-----------------------------
+Default Versions and Variants
+-----------------------------
+
+In this section, we see how ``packages.yaml`` can simplify complex
+builds.  Suppose you use a Python3-based Numpy system.  Unfortunately,
+``spack install py-numpy`` will install Python 2.7:
+
+.. code-block:: console
+
+  $ spack spec py-numpy
+  jhqhymx  py-numpy@1.11.2%gcc@5.3.0+blas+lapack arch=linux-suse_linux11-x86_64 
+  xucxilz      ^openblas@0.2.19%gcc@5.3.0~openmp+pic+shared arch=linux-suse_linux11-x86_64 
+  3b263ye      ^py-nose@1.3.7%gcc@5.3.0 arch=linux-suse_linux11-x86_64 
+  v5rgldc          ^py-setuptools@25.2.0%gcc@5.3.0 arch=linux-suse_linux11-x86_64 
+  o4w457a              ^python@2.7.13%gcc@5.3.0~tk~ucs4 arch=linux-suse_linux11-x86_64 
+  zdvqgc4                  ^bzip2@1.0.6%gcc@5.3.0 arch=linux-suse_linux11-x86_64 
+  nwbgum4                  ^ncurses@6.0%gcc@5.3.0 arch=linux-suse_linux11-x86_64 
+  r5zdi4a                  ^openssl@system%gcc@5.3.0 arch=linux-suse_linux11-x86_64 
+  u6oazt7                  ^readline@6.3%gcc@5.3.0 arch=linux-suse_linux11-x86_64 
+  g35djrs                  ^sqlite@3.8.5%gcc@5.3.0 arch=linux-suse_linux11-x86_64 
+  cco5e45                  ^zlib@1.2.10%gcc@5.3.0+pic arch=linux-suse_linux11-x86_64 
+
+If you want it with Python3, you need to use this instead:
+
+.. code-block:: console
+
+  $ spack spec py-numpy ^python@3:
+
+  Concretized
+  --------------------------------
+  asp2mpa  py-numpy@1.11.2%gcc@5.3.0+blas+lapack arch=linux-suse_linux11-x86_64 
+  xucxilz      ^openblas@0.2.19%gcc@5.3.0~openmp+pic+shared arch=linux-suse_linux11-x86_64 
+  w6vsyhy      ^py-nose@1.3.7%gcc@5.3.0 arch=linux-suse_linux11-x86_64 
+  ibxphk3          ^py-setuptools@25.2.0%gcc@5.3.0 arch=linux-suse_linux11-x86_64 
+  m52frck              ^python@3.6.0%gcc@5.3.0~tk~ucs4 arch=linux-suse_linux11-x86_64 
+  zdvqgc4                  ^bzip2@1.0.6%gcc@5.3.0 arch=linux-suse_linux11-x86_64 
+  nwbgum4                  ^ncurses@6.0%gcc@5.3.0 arch=linux-suse_linux11-x86_64 
+  r5zdi4a                  ^openssl@system%gcc@5.3.0 arch=linux-suse_linux11-x86_64 
+  u6oazt7                  ^readline@6.3%gcc@5.3.0 arch=linux-suse_linux11-x86_64 
+  g35djrs                  ^sqlite@3.8.5%gcc@5.3.0 arch=linux-suse_linux11-x86_64 
+  cco5e45                  ^zlib@1.2.10%gcc@5.3.0+pic arch=linux-suse_linux11-x86_64 
+
+
+Command lines could quickly get long.  But there is an easier way!
+Put the following in your ``~/.spack/packages.yaml`` file:
+
+.. code-block:: console
+
+  packages:
+      # -------- Python System
+      python:
+          version: [3.5.2]
+      py-cython:
+          version: [0.23.5]
+      py-proj:
+          version: [1.9.5.1.1]    # Normal released version 1.9.5.1 is buggy
+      py-matplotlib:
+          variants: [+gui,+ipython]
+      py-numpy:
+          variants: [~blas,~lapack]
+      py-pyside:
+          version: [1.2.4]
+
+Now you get all your preferred versions and variants:
+
+.. code-block:: console
+
+  $ spack spec py-numpy
+
+  py-numpy@1.11.2%gcc@5.3.0~blas~lapack arch=linux-suse_linux11-x86_64 
+      ^py-nose@1.3.7%gcc@5.3.0 arch=linux-suse_linux11-x86_64 
+          ^py-setuptools@25.2.0%gcc@5.3.0 arch=linux-suse_linux11-x86_64 
+              ^python@3.5.2%gcc@5.3.0~tk~ucs4 arch=linux-suse_linux11-x86_64 
+                  ^bzip2@1.0.6%gcc@5.3.0 arch=linux-suse_linux11-x86_64 
+                  ^ncurses@6.0%gcc@5.3.0 arch=linux-suse_linux11-x86_64 
+                  ^openssl@system%gcc@5.3.0 arch=linux-suse_linux11-x86_64 
+                  ^readline@6.3%gcc@5.3.0 arch=linux-suse_linux11-x86_64 
+                  ^sqlite@3.8.5%gcc@5.3.0 arch=linux-suse_linux11-x86_64 
+                  ^zlib@1.2.10%gcc@5.3.0+pic arch=linux-suse_linux11-x86_64 
+
+
+-------------------
+Command Line Scopes
+-------------------
+
+In the above example, ``packages.yaml`` was used to specify package
+details appropriate for a Python3 environment.  But supposing you are
+working on two projects... one that requires Python3 and one requiring
+Python2.  In this case, the per-user file ``~/.spack/packages.yaml``
+cannot be right for both projects simultaneously.
+
+The solution is to create additional ``packages.yaml`` files that are
+specified, as needed, on the command line.  Try moving the above
+details from ``~/.spack/packages.yaml`` to a new file called
+``~/myproject/packages.yaml``.  Now to see the effects of this file,
+the directory ``~/myproject`` must be specified on the command line,
+*before* the Spack command:
+
+.. code-block:: console
+
+  $ spack -c ~/myproject spec py-numpy

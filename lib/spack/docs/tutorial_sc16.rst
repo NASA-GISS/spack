@@ -45,4 +45,6 @@ Full contents:
 .. toctree::
    tutorial_sc16_spack_basics
    tutorial_sc16_packaging
+   tutorial_sc16_developing_software
    tutorial_sc16_modules
+   tutorial_sc16_spackenv
