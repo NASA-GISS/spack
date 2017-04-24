@@ -3,8 +3,8 @@ Spack Environemnts Overview
 
 Spack Environemnts and related structures can be thought of as an expanded version of the current Spack Database.  Data structures consist of:
 
-* Spack Environment:
-  - envid: An environment ID (unique for each environment on a system)
+* Spec Set:
+  - specsetid: A spec set ID (unique for each spec set on a system)
   - A set of Install records
   - A Spack Database
   - Configs: a list of (location of) Spack configurations that should
@@ -18,7 +18,7 @@ Spack Environemnts and related structures can be thought of as an expanded versi
   - hash: Hash of the DAG root in concspec
   - repo: The set of Spack packages needed to build this concspec.
   - priority: An integer; think of it as the order in which this
-    Install Record was added to the Spack Environment.
+    Install Record was added to the Spec Set.
   - setups: Set of packages in this install record where
     ``spconfig.py`` should be generated, instead of installing.
   - setups/: A directory used to contain the ``spconfig.py`` files
@@ -33,15 +33,15 @@ Spack Environemnts and related structures can be thought of as an expanded versi
   - concspec # Spec from spec.yaml
   - path # path where this spec was installed
   - installed # whether this spec is actually installed anymore
-  - ref_counts # number of packages that still need this one, separated by envid.  (Eg: {envid: refcount})
-  - ref_count  # Sum of ref_counts across all envids
+  - ref_counts # number of packages that still need this one, separated by specsetid.  (Eg: {specsetid: refcount})
+  - ref_count  # Sum of ref_counts across all specsetids
 
 * Install Tree: A set of installed packages.
 
 Spack Server
 ------------
 
-Spack Environments are intended to work in a multi-user environment.
+Spec Sets are intended to work in a multi-user environment.
 To that end, Spack functionality is separated into a "Spack Server"
 and "Spack Client" (or just "Spack).  For now, the Spack Server will
 simply be an API within Spack; later, it could be separated out into a
@@ -53,7 +53,7 @@ in concretization of specs or computation of hash values.  Spack
 Clients call on the Spack Server with a fully concretized Spec, along
 with all the Spack Packages needed to install that spec.
 
-The Spack Server keeps a Spack Environment of everything it is asked
+The Spack Server keeps a Spec Set of everything it is asked
 to install.  (Maybe only a Spack Database is needed.  If it keeps a
 Spack Environemnt, some things will be missing; for example,
 ``userspec`` will always be ``None``).
@@ -72,27 +72,27 @@ able to share a Spack Server).
 
 A Spack Client is associated with a single Spack Server.
 
-A Spack Client maintains a single "root" Spack Environment, which
+A Spack Client maintains a single "root" Spec Set, which
 keeps everything the client has been asked to install.  Users can also
-(optionally) specify a "current" environment for any Spack Command.
+(optionally) specify a "current" spec set for any Spack Command.
 In this case, the Spack Client will add anything it installs to the
-current environment as well as the root environment.
+current spec set as well as the root spec set.
 
 
-Spack Environments On-Disk Format
+Spec Sets On-Disk Format
 =================================
 
-Suitable on-disk formats are to be devised for Spack Environments, Install Records and Spack Databases:
+Suitable on-disk formats are to be devised for Spec Sets, Install Records and Spack Databases:
 
-Spack Environment
+Spec Set
 -----------------
 
-A Spack Environment is stored in a directory of a known name and location.  Users should be able to create a Spack Environment in any location they see fit; although Spack could also choose to keep an ``environments/`` folder somewhere in its tree for safekeeping.
+A Spec Set is stored in a directory of a known name and location.  Users should be able to create a Spec Set in any location they see fit; although Spack could also choose to keep an ``specsets/`` folder somewhere in its tree for safekeeping.
 
-A Spack Environment directory will consist of the following:
+A Spec Set directory will consist of the following:
 
-  * ``info.json``: Contains misc. information about the environment.
-    Currently just the envid
+  * ``info.json``: Contains misc. information about the spec set.
+    Currently just the specsetid
 
   * ``spack-db/``: The Spack database (analogous to current
     ``$spack/opt/spack/.spack-db/index.json``).
@@ -108,7 +108,7 @@ Install Record
 An install record is written in a directory named after its hash.  The
 userspec, concspec and hashes are written in a single JSON file.
 There is also a `repo/` directory, which is the Install Repo for the
-environment.
+spec set.
 
 Install Repo
 ------------
@@ -137,20 +137,54 @@ directory.  The contents of ``.spack/`` might need to change somewhat
 in the future.
 
 
+Spec Set Actions
+================
 
+This document suggests concrete API calls that may be used to create
+and manipulate spec sets.  Different workflows need to be supported.
+For example:
 
-Spack Environment APIs
+ * A user issues a series of ``spack install`` commands.  Each command
+   adds the spec to the the spec set, concretizes it, and then
+   installs it immediately.
+
+ * A user issues a series of ``spack add`` commands.  Each command
+   adds the spec to the spec to the set and concretizes it, but does
+   not install.
+
+ * A user edits a spec set file directly.  User specs are added, but
+   nothing is concretized or installed.
+
+Basic actions on a spec set need to be ``add``, ``remove``,
+``validate`` (re-concretize), ``install``.  Once a spec set is created and installed, the following operations would also be supported:
+
+ * Concretize/install with respect to packages *already* installed in
+   the spec set.
+
+ * Create a Spack View.  Priority rules are needed if different specs
+   in the set use conflicting versions of the same package.  This is
+   not always necessarily a problem; for example, if A->C and B->C and
+   both use RPATH and C is not used directly by the user, then C does
+   not need to be included in the view at all.
+
+ * Generate modules corresponding to the packages installed by the spec set.
+
+ * Generate a single module that will load the packages in the spec set.
+
+ * Generate RPMs, or some other form of binary package.
+
+Spec Set APIs
 ======================
 
-The following APIs are used to manipulate Spack Environment data structures:
+The following APIs are used to manipulate Spec Set data structures:
 
-Spack Environment API
+Spec Set API
 ---------------------
 
-* ``create(path)``: Initialize a new empty Spack Environment
+* ``create(path)``: Initialize a new empty Spec Set
 
 * ``add(hash, concspec, hashes, repo, userspec=None, setup=False)``: Adds a new
-  install record to the Spack Environment.
+  install record to the Spec Set.
 
   - ``userspec`` is optional (see Spack Server below).
 
@@ -162,7 +196,7 @@ Spack Environment API
 
   - Calls ``spack_database.add()`` as appropriate.
 
-* ``remove(hash)``: Removes an install record from the Spack Environment.
+* ``remove(hash)``: Removes an install record from the Spec Set.
 
 * ``install(hash)``: Installs a previously-added install record.
 
@@ -175,7 +209,7 @@ Spack Environment API
   - Must think about atomicity issues; what happens to these data
     structures if the install fails in the middle?
 
-* ``install()``: Installs all Install Recs in this environment.
+* ``install()``: Installs all Install Recs in this spec set.
 
   - Calls ``spack_environment.install()`` repeatedly.
 
@@ -190,7 +224,7 @@ Spack Environment API
 
   - Calls ``spack_server.uninstall()``.
 
-* ``uninstall()``: Uninstalls all Install Recs from this environment.
+* ``uninstall()``: Uninstalls all Install Recs from this spec set.
 
 * ``validate(update=False)``: calls ``validate()`` on each install record.
 
@@ -198,13 +232,13 @@ Spack Environment API
   ``priority`` values on Install Records.  Maybe this will be done by
   manually editing a JSON file, at least at first.
 
-* ``create_view(location)``: Creates a Spack View from the environment.
+* ``create_view(location)``: Creates a Spack View from the spec set.
 
   - ``package.py`` functionality should be extended so packages can
     dictate how they should be merged into views.
 
 * ``write_modules(..., location, ...)``: Generate the module files for
-  an environment.
+  an spec set.
 
   - Options could include the module type (TCL/Lmod), the location to
     generate the modules, etc.
@@ -212,13 +246,13 @@ Spack Environment API
   - Existing modules would get overwritten...
 
   - Packages should be able to specify which sub-packages'
-    environments they need at runtime.  See #3134.
+    spec sets they need at runtime.  See #3134.
 
 * ``write_single_module()``: Generate a SINGLE module file that loads
-  the appropraite environment.
+  the appropraite spec set.
 
   - Packages should be able to specify which sub-packages'
-    environments they need at runtime.  See #3134.
+    spec sets they need at runtime.  See #3134.
 
   - Maybe ``write_modules()`` should be deprecated.  Generating
     modules with hashes has many problems, and maybe it's not what
@@ -244,8 +278,8 @@ Install Repo API
 Spack Database
 --------------
 
-* ``add(hash, concspec, path, envid)``: Adds a record to the Spack database.
-  - ``envid`` is used to set / update ``ref_counts`` and ``ref_count``.
+* ``add(hash, concspec, path, specsetid)``: Adds a record to the Spack database.
+  - ``specsetid`` is used to set / update ``ref_counts`` and ``ref_count``.
   - If the record already exists, then ``path`` should not be changed;
     or if it is, the *hash* of ``path`` should not be changed.
 
@@ -256,59 +290,59 @@ Spack Database
 Spack Server
 ------------
 
-* ``install(hash, concspec, hashes, repo, envid)``: Installs the
+* ``install(hash, concspec, hashes, repo, specsetid)``: Installs the
   package(s), and adds it to the Spack database.
   - Called by Spack Client
-  - `envid` must be the Envirnoment ID of the *root* environment for
+  - `specsetid` must be the Envirnoment ID of the *root* spec set for
     the Spack Client that called this.
 
-* ``uninstall(hash, envid)``: Reduces refcount on the package(s), and
+* ``uninstall(hash, specsetid)``: Reduces refcount on the package(s), and
   possibly uninstalls it.
 
-* ``sync_refcounts(hash_counts, envid)``: Syncs refcounts with all the
-  known refcounts on a client's root environment
+* ``sync_refcounts(hash_counts, specsetid)``: Syncs refcounts with all the
+  known refcounts on a client's root spec set
   - ``hash_counts``: List of ``(hash, refcount)`` tuples.
   - Potentially uninstalls package if ``refcount`` goes to zero.
   - Reports an error if package is not found in the database.
-  - Sets ``refcount`` (for this ``envid``) to zero for any hahes *not*
+  - Sets ``refcount`` (for this ``specsetid``) to zero for any hahes *not*
     listed in ``hash_counts``.
 
 Spack Client
 ------------
 
-* ``newenv(name, location)``: Creates a new environment and adds to
-  Spack Client's list of managed environments.
+* ``newenv(name, location)``: Creates a new spec set and adds to
+  Spack Client's list of managed spec sets.
 
-  - Spack Client needs to know which environments it is managing, so
-    it can keep refcounts up to date with the root environment (and
+  - Spack Client needs to know which spec sets it is managing, so
+    it can keep refcounts up to date with the root spec set (and
     the Spack Server).
 
-* ``addenv(name, location)``: Adds an existing environment to Spack
-  Client's list of managed environments.
+* ``addenv(name, location)``: Adds an existing spec set to Spack
+  Client's list of managed spec sets.
 
-  - Clears the Spack Database for that environment.  Subsequent calls
-    to ``spackenv.install()`` will be very fast if the Spack Server
+  - Clears the Spack Database for that spec set.  Subsequent calls
+    to ``specset.install()`` will be very fast if the Spack Server
     happened to have already installed this stuff.
 
-* ``getenv(name)``: Returns a managed Spack Environment of that name.
+* ``getenv(name)``: Returns a managed Spec Set of that name.
 
-  - Caller can then call ``spackenv.install()``,
-    ``spackenv.uninstall()``, ``spackenv.create_view()``, etc.
+  - Caller can then call ``specset.install()``,
+    ``specset.uninstall()``, ``specset.create_view()``, etc.
 
-* ``set_current_env(name)``: Use the named environment as the current
-  environment for subsequent calls to Spack Client API.
+* ``set_current_env(name)``: Use the named spec set as the current
+  spec set for subsequent calls to Spack Client API.
 
-  - This can be overridden if the user sets the ``SPACKENV``
-    environment variables.
+  - This can be overridden if the user sets the ``SPECSET``
+    spec set variables.
 
   - Both can be overridden if the user puts ``--env=...` on the
     command line BEFORE The Spack command.  (eg: ``spack --env=myenv
     install netcdf``).
 
 * ``add(userspec, env, install=False, setups=...)``: Concretizes ``userspec``, then
-  calls ``spackenv.add()``.
+  calls ``specset.add()``.
 
-  - If ``install=True``, also calls ``spackenv.install()``.
+  - If ``install=True``, also calls ``specset.install()``.
 
   - Concretization with respect to `env`.
 
@@ -327,19 +361,19 @@ This user interface is with respect to a single Spack Client.
   ``client.add(...)``.
 
 * ``spack uninstall <spec>|<hash>``: Call through to
-  ``spackenv.uninstall()`` for the appropriate environment.
+  ``specset.uninstall()`` for the appropriate spec set.
 
   - ``<spec>`` must be turned into a hash that matches an Install Rec.
     This will be done on a "best effort" basis.  Things to try
     include:
 
-    - Look through the environment to see if anything "matches."
+    - Look through the spec set to see if anything "matches."
 
     - Try re-concretizing, see if anything matches.
 
 
-* ``spack install <environment>``: Call through to ``spackenv.install()``.
+* ``spack install <spec set>``: Call through to ``specset.install()``.
 
-* ``spack uninstall <environment>``: Call through to ``spackenv.uninstall()``.
+* ``spack uninstall <spec set>``: Call through to ``specset.uninstall()``.
 
 
