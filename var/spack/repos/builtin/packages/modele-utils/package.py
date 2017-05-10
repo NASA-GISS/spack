@@ -31,16 +31,16 @@ class ModeleUtils(CMakePackage):
     homepage = "http://www.giss.nasa.gov/tools/modelE"
 
     # This must be built a user with access to simplex.
-    version('cmake',
+    version('develop',
             git='simplex.giss.nasa.gov:/giss/gitrepo/modelE.git',
-            branch='cmake',
+            branch='landice',
             preferred=True)
 
-    variant('ic', default=True,
+    variant('ic', default=False,
             description='Build init_cond directory')
     variant('diags', default=True,
             description='Build mk_diags directory.')
-    variant('aux', default=True,
+    variant('aux', default=False,
             description='Build aux directory')
 
     # Build dependencies
@@ -54,21 +54,20 @@ class ModeleUtils(CMakePackage):
 
     # Run dependencies
 
-    def configure_args(self):
+    def cmake_args(self):
         spec = self.spec
         return [
             '-DCMAKE_BUILD_TYPE=%s' %
             ('Debug' if '+debug' in spec else 'Release'),
-            '-DCOMPILE_WITH_TRAPS=NO',
-            '-DCOMPILE_MODEL=NO',
-            '-DCOMPILE_IC=%s' % ('YES' if '+ic' in spec else 'NO'),
-            '-DCOMPILE_DIAGS=%s' % ('YES' if '+diags' in spec else 'NO'),
-            '-DCOMPILE_AUX=%s' % ('YES' if '+aux' in spec else 'NO'),
+            '-DBUILD_MODEL=NO',
+            '-DBUILD_IC=%s' % ('YES' if '+ic' in spec else 'NO'),
+            '-DBUILD_DIAGS=%s' % ('YES' if '+diags' in spec else 'NO'),
+            '-DBUILD_AUX=%s' % ('YES' if '+aux' in spec else 'NO'),
             '-DMPI=NO',
             '-DUSE_PNETCDF=NO',
             '-DUSE_FEXCEPTION=NO',
             '-DUSE_EVERYTRACE=NO',
-            '-DUSE_GLINT2=NO']
+            '-DUSE_ICEBIN=NO']
 
     def setup_environment(self, spack_env, env):
         """Add <prefix>/bin to the module"""
