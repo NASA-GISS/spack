@@ -66,6 +66,8 @@ class Pism(CMakePackage):
             'Build PISM documentation (requires LaTeX and Doxygen)')
     variant('examples', default=False, description=
             'Install examples directory')
+    variant('everytrace', default=False, description=
+            'Report errors through Everytrace (requires Everytrace)')
 
     # CMake build options not transferred to Spack variants
     # (except from CMakeLists.txt)
@@ -97,6 +99,7 @@ class Pism(CMakePackage):
 #    depends_on('petsc@3.4.5~superlu-dist', when='@glint2')
     depends_on('udunits2')
     depends_on('proj')
+    depends_on('everytrace', when='+everytrace')
 
     extends('python', when='+python')
     depends_on('python@2.7', when='+python')
@@ -127,7 +130,9 @@ class Pism(CMakePackage):
             '-DPism_BUILD_PDFS=%s' %
             ('YES' if '+doc' in spec else 'NO'),
             '-DPism_INSTALL_EXAMPLES=%s' %
-            ('YES' if '+examples' in spec else 'NO')]
+            ('YES' if '+examples' in spec else 'NO'),
+            '-DPism_USE_EVERYTRACE=%s' %
+            ('YES' if '+everytrace' in spec else 'NO')]
 
     def install_install(self):
         make = self.make_make()
@@ -139,7 +144,7 @@ class Pism(CMakePackage):
         extend python."""
         env.prepend_path('PATH', join_path(self.prefix, 'bin'))
         env.set('PISM_PREFIX', self.prefix)
-        env.set('PISM_BIN', join_path(self.prefix, 'bin'))
+        env.set('PISM_BIN', join_path(self.prefix, 'bin', ''))
 
 
 # From email correspondence with Constantine Khroulev:

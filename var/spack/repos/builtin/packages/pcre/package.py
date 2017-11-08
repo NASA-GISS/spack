@@ -32,8 +32,10 @@ class Pcre(Package):
     homepage = "http://www.pcre.org"""
     url      = "https://ftp.pcre.org/pub/pcre/pcre-8.36.tar.bz2"
 
-    version('8.39', 'e3fca7650a0556a2647821679d81f585')
-    version('8.38', '00aabbfe56d5a48b270f999b508c5ad2')
+    version('8.41', 'c160d22723b1670447341b08c58981c1')
+    # Removed from the download site
+    # version('8.39', 'e3fca7650a0556a2647821679d81f585')
+    # version('8.38', '00aabbfe56d5a48b270f999b508c5ad2')
 
     patch("intel.patch", when='@8.38')
 

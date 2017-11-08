@@ -1117,8 +1117,8 @@ class PackageBase(object):
         finally:
             self.prefix_lock.release_write()
 
-    def write_spconfig(self):
-        tty.die('`spack install --setup` is not supported for packages of type {0}'.format(self.build_system_class))
+    def write_spconfig(self, spconfig_fname):
+        tty.die('{0}: `spack install --setup` is not supported for packages of type {1}'.format(self.name, self.build_system_class))
 
     def do_install(self,
                    keep_prefix=False,

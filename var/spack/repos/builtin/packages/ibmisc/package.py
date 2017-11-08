@@ -37,8 +37,6 @@ class Ibmisc(CMakePackage):
         git='https://github.com/citibeth/ibmisc.git',
         branch='develop')
 
-    variant('everytrace', default=False,
-            description='Report errors through Everytrace')
     variant('proj', default=True,
             description='Compile utilities for PROJ.4 library')
     variant('blitz', default=True,
@@ -60,7 +58,7 @@ class Ibmisc(CMakePackage):
     depends_on('python@3:')    # Needed for the build...
 
     depends_on('eigen')
-    depends_on('everytrace', when='+everytrace')
+    depends_on('everytrace')
     depends_on('proj', when='+proj')
     depends_on('blitz', when='+blitz')
     depends_on('netcdf-cxx4', when='+netcdf')
@@ -78,7 +76,6 @@ class Ibmisc(CMakePackage):
         spec = self.spec
         args = [
             '-DBUILD_PYTHON=%s' % ('YES' if '+python' in spec else 'NO'),
-            '-DUSE_EVERYTRACE=%s' % ('YES' if '+everytrace' in spec else 'NO'),
             '-DUSE_PROJ4=%s' % ('YES' if '+proj' in spec else 'NO'),
             '-DUSE_BLITZ=%s' % ('YES' if '+blitz' in spec else 'NO'),
             '-DUSE_NETCDF=%s' % ('YES' if '+netcdf' in spec else 'NO'),

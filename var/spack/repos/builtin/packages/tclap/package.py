@@ -1,5 +1,5 @@
 ##############################################################################
-# Copyright (c) 2016, Lawrence Livermore National Security, LLC.
+# Copyright (c) 2013-2016, Lawrence Livermore National Security, LLC.
 # Produced at the Lawrence Livermore National Laboratory.
 #
 # This file is part of Spack.
@@ -25,29 +25,18 @@
 from spack import *
 
 
-class Everytrace(CMakePackage):
-    """Get stack trace EVERY time a program exits."""
+class Tclap(Package):
+    """TCLAP is a small, flexible library that provides a simple interface
+    for defining and accessing command line arguments. It was intially
+    inspired by the user friendly CLAP libary."""
 
-    homepage = "https://github.com/citibeth/everytrace"
-    url = "https://github.com/citibeth/everytrace/tarball/0.2.0"
+    homepage = "http://http://tclap.sourceforge.net/"
+    url      = "https://downloads.sourceforge.net/project/tclap/tclap-1.2.1.tar.gz"
 
-    version('0.2.0', '2af0e5b6255064d5191accebaa70d222')
-    version('develop',
-            git='https://github.com/citibeth/everytrace.git', branch='develop')
+    version('1.2.1', 'eb0521d029bf3b1cc0dcaa7e42abf82a')
 
-    variant('mpi', default=True, description='Enables MPI parallelism')
-    variant('fortran', default=True,
-            description='Enable use with Fortran programs')
-    variant('cxx', default=True, description='Enable C++ Exception-based features')
+    def install(self, spec, prefix):
+        configure("--prefix=%s" % prefix)
 
-    depends_on('mpi', when='+mpi')
-
-    def cmake_args(self):
-        spec = self.spec
-        return [
-            '-DUSE_MPI=%s' % ('YES' if '+mpi' in spec else 'NO'),
-            '-DUSE_FORTRAN=%s' % ('YES' if '+fortran' in spec else 'NO'),
-            '-DUSE_CXX=%s' % ('YES' if '+cxx' in spec else 'NO')]
-
-    def setup_environment(self, spack_env, env):
-        env.prepend_path('PATH', join_path(self.prefix, 'bin'))
+        make()
+        make("install")

@@ -25,7 +25,7 @@
 from spack import *
 
 
-class Pfunit(Package):
+class Pfunit(CMakePackage):
     """Regridding/Coupling library for GCM + Ice Sheet Model"""
 
     homepage = "http://pfunit.sourceforge.net/index.html"
@@ -33,8 +33,8 @@ class Pfunit(Package):
 
     # Shared library support added.
     # Alt URL: git clone http://git.code.sf.net/p/pfunit/code pfunit-code
-    version('3.2.7.1', git='git://git.code.sf.net/p/pfunit/code',
-            branch='ae0a3c6afd67e8709d062dcdb646ace676aae4ba')
+    version('3.2.7.1', git='git://git.code.sf.net/u/citibeth2/pfunit',
+            commit='f9f6feaf60ecde7fe3e77757a267812c28c90686')
 
     # Standard release version
     version('3.2.7', '7e994e031c679ed0b446be8b853d5e69')
@@ -56,20 +56,14 @@ class Pfunit(Package):
     # variant('openmp', default=False,
     #         description='Test OpenMP-based programs')
 
-    def install(self, spec, prefix):
-
-        with working_dir('spack-build', create=True):
-            options = std_cmake_args + [
-                '-DBUILD_SHARED=%s' % ('YES' if '+shared' in spec else 'NO'),
-                '-DMPI=%s' % ('YES' if '+mpi' in spec else 'NO'),
-                # '-OPENMP=%s' % ('YES' if '+openmp' in spec else 'NO'),
-                '-DINSTALL_PATH=%s' % prefix,
-                '-DBUILD_DOCS=%s' % ('YES' if '+docs' in spec else 'NO')]
-
-            cmake(self.stage.source_path, *options)
-            # make('tests')   # Upstream tests do not work
-            make()
-            make('install', 'INSTALL_DIR=%s' % prefix)
+    def cmake_args(self):
+        spec = self.spec
+        return [
+            '-DBUILD_SHARED=%s' % ('YES' if '+shared' in spec else 'NO'),
+            '-DMPI=%s' % ('YES' if '+mpi' in spec else 'NO'),
+            # '-OPENMP=%s' % ('YES' if '+openmp' in spec else 'NO'),
+            '-DINSTALL_PATH=%s' % prefix,
+            '-DBUILD_DOCS=%s' % ('YES' if '+docs' in spec else 'NO')]
 
     def setup_dependent_package(self, module, dspec):
         self.spec.pfunit_prefix = self.prefix
