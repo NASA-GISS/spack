@@ -34,8 +34,9 @@ section = "build"
 level = "short"
 
 
-def setup_parser(subparser):
-    arguments.add_common_arguments(subparser, ['long', 'very_long', 'install_status'])
+def add_common_arguments(subparser):
+    arguments.add_common_arguments(
+        subparser, ['long', 'very_long', 'install_status'])
     subparser.add_argument(
         '-y', '--yaml', action='store_true', default=False,
         help='print concrete spec as YAML')
@@ -53,6 +54,9 @@ def setup_parser(subparser):
     subparser.add_argument(
         'specs', nargs=argparse.REMAINDER, help="specs of packages")
 
+
+def setup_parser(subparser):
+    add_common_arguments(subparser)
 
 def spec(parser, args):
     name_fmt = '$.' if args.namespaces else '$_'
