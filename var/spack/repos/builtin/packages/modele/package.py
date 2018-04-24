@@ -31,6 +31,7 @@ class Modele(CMakePackage):
     Institute of Space Studes"""
 
     homepage = "http://www.giss.nasa.gov/tools/modelE"
+    url = "http://none"
 
     maintainers = ['citibeth']
 

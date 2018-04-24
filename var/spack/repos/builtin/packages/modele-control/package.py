@@ -29,7 +29,7 @@ class ModeleControl(PythonPackage):
     """Prepare ModelE inputs and launch ModelE"""
 
     homepage = "https://github.com/citibeth/modele-control"
-    url      = "https://codeland.github.com/citibeth/modele-control/tar.tz/v0.1.0.tar.gz"
+    url      = "https://github.com/citibeth/modele-control/tarball/v0.1.0"
 
     maintainers = ['citibeth']
 
