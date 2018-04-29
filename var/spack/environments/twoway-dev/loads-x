@@ -1,0 +1,7 @@
+# http://stackoverflow.com/questions/59895/can-a-bash-script-tell-which-directory-it-is-stored-in
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+EHOME=/home2/rpfische
+
+source $DIR/loads
+export PATH=$EHOME/git/modele-control/bin:$EHOME/git/pygiss/main:$PATH
+export PYTHONPATH=$EHOME/git/modele-control/lib:$EHOME/git/pygiss:$PYTHONPATH
