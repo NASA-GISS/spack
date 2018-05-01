@@ -39,10 +39,10 @@ class Pism(CMakePackage):
     version('0.7.x', git='https://github.com/pism/pism.git',
         branch='stable0.7')
 
-    version('glint2', git='https://github.com/pism/pism.git',
-        branch='efischer/glint2')
+    version('icebin', git='https://github.com/pism/pism.git',
+        branch='efischer/dev')
 
-    version('dev', git='https://github.com/pism/pism.git',
+    version('develop', git='https://github.com/pism/pism.git',
         branch='dev')
 
     variant('extra', default=False,
@@ -113,6 +113,10 @@ class Pism(CMakePackage):
         spec = self.spec
 
         return [
+            '-DCMAKE_C_COMPILER=%s' % spec['mpi'].mpicc,
+            '-DCMAKE_CXX_COMPILER=%s' % spec['mpi'].mpicxx,
+            # Fortran not needed for PISM...
+            # '-DCMAKE_Fortran_COMPILER=%s' % spec['mpi'].mpifc,
             '-DPism_BUILD_EXTRA_EXECS=%s' %
             ('YES' if '+extra' in spec else 'NO'),
             '-DBUILD_SHARED_LIBS=%s' %
