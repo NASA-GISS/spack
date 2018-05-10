@@ -23,8 +23,6 @@
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 ##############################################################################
 from spack import *
-import llnl.util.filesystem
-
 import os
 
 
@@ -37,8 +35,9 @@ class PyUdunits(PythonPackage):
 
     maintainers = ['citibeth']
 
+    depends_on('py-setuptools', type='build')
     depends_on('py-six', type=('build', 'run'))
-    depends_on('py-netcdf', type=('build', 'run'))
+    depends_on('py-netcdf4', type=('build', 'run'))
     depends_on('udunits2')
 
     # See: https://github.com/SciTools/cf_units/blob/master/cf_units/etc/site.cfg.template
@@ -49,11 +48,11 @@ udunits2_path = %s
 udunits2_xml_path = %s
 """
 
-    def install(self, spec, prefix):
-        setup_py('install', '--prefix=%s' % prefix)
+    @run_after('install')
+    def configure_template(self):
+        spec = self.spec
 
-        cfg_templates = llnl.util.filesystem.find(
-            spec.prefix, ['site.cfg.template'])
+        cfg_templates = find(spec.prefix, ['site.cfg.template'])
         if len(cfg_templates) != 1:
             tty.die(
                 'Found %d instances of site.cfg.template, wanted 1' %
@@ -62,11 +61,9 @@ udunits2_xml_path = %s
 
         cfg = os.path.join(os.path.split(cfg_template)[0], 'site.cfg')
 
-        udunits2_path = os.path.join(
-            spec['udunits2'].prefix.lib, 'libudunits2.%s' % dso_suffix)
         udunits2_xml_path = os.path.join(
             spec['udunits2'].prefix, 'share', 'udunits', 'udunits2.xml')
 
         with open(cfg, 'w') as fout:
-            fout.write(
-                self.site_cfg_template % (udunits2_path, udunits2_xml_path))
+            fout.write(self.site_cfg_template %
+                       (spec['udunits2'].libs, udunits2_xml_path))
