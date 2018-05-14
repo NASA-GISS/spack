@@ -1,0 +1,83 @@
+# Use system version of certain packages on CentOS 7
+#
+# Try:
+#     yum list installed | grep <package>
+#     repoquery -l <package> | grep <expected filename>
+
+packages:
+    # Problems in the past installing Python2
+    # See: https://github.com/LLNL/spack/issues/1100
+    # yum: python
+    #python:
+    #    paths:
+    #        python@2.7.5: /usr
+    #    version: [2.7.5]
+
+
+    # Recommended for security reasons
+    # Do not install OpenSSL as non-root user.
+    # yum: openssl-devl
+    openssl:
+        paths:
+            openssl@1.0.1e: /usr
+        version: [1.0.1e]
+        buildable: False
+
+    # Recommended, unless your system doesn't provide Qt4
+    # yum: qt
+    qt:
+        paths:
+            qt@4.8.5: /usr
+        version: [4.8.5]
+        buildable: False
+
+    # Recommended, unless your system doesn't provide X11 libs
+    # yum: libXaw-devel
+    libxaw:
+        paths:
+            libxaw@1.0.12: /usr
+        version: [1.0.12]
+        buildable: False
+
+# freetype complains if you try to use external libpng
+#    # Matplotlib uses the system libpng anyway
+#    # yum: libpng-devel
+#    libpng:
+#        paths:
+#            libpng@1.5.13: /usr
+#        version: [1.5.13]
+#        buildable: False
+
+#    # yum: libssh2-devel
+#    libssh2:
+#        paths:
+#            libssh2@1.4.3: /usr
+#        version: [1.4.3]
+#        buildable: False
+#
+#    # yum: curl libcurl-devel
+#    curl:
+#        paths:
+#            curl@7.29.0: /
+#        version: [7.29.0]
+#        buildable: False
+
+
+#    libxcb:
+#        paths:
+#            libxcb@0.4.0: /false/path
+#        version: [0.4.0]
+#        buildable: False
+
+#    # ========= Efforts to build less
+#    m4:
+#        paths:
+#            m4@1.4.17: /    # We lie...
+#        version: [1.4.17]
+#        buildable: False
+#
+#    doxygen:
+#        paths:
+#            doxygen@1.8.10: /    # We lie...
+#        version: [1.8.10]
+#        buildable: False

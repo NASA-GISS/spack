@@ -1,0 +1,25 @@
+# Force versions of key packages to `develop`
+#
+
+packages:
+    icebin:
+        version: [develop]
+
+    ibmisc:
+        version: [develop]
+
+#    pism:
+#        version: [icebin]
+
+    modele:
+        version: [landice]
+        variants: [+debug,+mods]
+
+    py-giss:
+        version: [develop]
+
+    modele-control:
+        version: [develop]
+
+    everytrace:
+        version: [develop]

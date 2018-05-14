@@ -1,0 +1,68 @@
+# Versions of packages needed for general ModelE / IceBin development.
+# This profile is good for:
+#    1. Running PISM standalone
+#    2. Running IceBin scripts standalone from Python
+#    3. Running ModelE without two-way coupling
+
+packages:
+    # --------- Base Libraries
+    parallel-netcdf:
+        variants: [~cxx]
+    eigen:
+        # See http://eigen.tuxfamily.org/bz/show_bug.cgi?id=1370
+        version: [3.2.10]
+        variants: [~suitesparse]
+    netcdf:
+        version: [4.4.0]
+        variants: [+mpi]
+    # Required for NetCDF 4.4.0
+    # See https://github.com/spack/spack/issues/3056
+    hdf5:
+        version: [1.8.18]
+    # Required for PETSc; you might have to hack openmpi/package.py to make this stick
+#    openmpi:
+#        version: [1.10.7]
+
+    # --------- Our Stuff
+    modele-utils:
+        version: [cmake]
+    ibmisc:
+        variants: [+everytrace]
+    icebin:
+        variants: [+gridgen,+python,+everytrace]
+    pism:
+        version: [icebin]
+        # Enables IceBin support code in PISM; no additional dependencies
+        variants: [+icebin,+everytrace]
+    petsc:
+        variants: [+mumps]
+    modele:
+        variants: [+pnetcdf,+everytrace]
+
+    # -------- Python System
+    python:
+        version: [3.5.2]
+    py-cython:
+        version: [0.23.5]
+    py-proj:
+        version: [1.9.5.1.1]    # Normal released version 1.9.5.1 is buggy
+    py-matplotlib:
+        variants: [+gui,+ipython]
+    py-numpy:
+        variants: [+blas,+lapack]
+    py-pyside:
+        version: [1.2.4]
+
+    # --------- Compiler & Virtual Dependencies
+    all:
+        variants: [+python3]
+        compiler: [gcc@4.9.3]
+        providers:
+            mpi: [openmpi]
+            blas: [openblas]
+            lapack: [openblas]
+
+    # --------- Fix concretization bugs / problems
+    flex:
+        version: [2.6.1]
+

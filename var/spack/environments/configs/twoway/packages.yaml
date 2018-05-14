@@ -1,0 +1,12 @@
+# Updates to <gissversions> to support two-way coupling
+packages:
+
+    pism:
+        # icebin needs these variants
+        variants: [~python,+examples]
+
+    icebin:
+        variants: [+coupler,+modele,+pism]
+
+    modele:
+        variants: [+everytrace,+pnetcdf,+icebin,+mpi,+model]
