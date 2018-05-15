@@ -421,7 +421,8 @@ def read(environment_name):
 # =============== Modifies Environment
 
 def environment_create(args):
-    if os.path.exists(get_env_root(args.environment)):
+    if os.path.exists(os.path.join(
+        get_env_root(args.environment), '.env', 'environment.json')):
         raise tty.die("Environment already exists: " + args.environment)
 
     _environment_create(args.environment)
