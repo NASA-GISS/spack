@@ -51,7 +51,7 @@ class XcbProto(AutotoolsPackage):
         # Our Spack-installed Python3 breaks the build;
         # Remove it from the environment and hope the System
         # Python2 works for us.
-        if 'python3' in self.spec:
+        if '+python3' in self.spec:
             spack_env.unset('PYTHONPATH')
             spack_env.unset('PYTHONHOME')
             spack_env.unset('PYTHONSTARTUP')
