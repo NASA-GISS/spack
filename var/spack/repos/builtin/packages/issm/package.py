@@ -62,7 +62,7 @@ class Issm(AutotoolsPackage):
     depends_on('py-nose', when='+python', type=('build', 'run'))
     depends_on('py-numpy', when='+python', type=('build', 'run'))
     depends_on('py-scipy', when='+python', type=('build', 'run'))
-    # depends_on('py-netcdf', when='+python', type=('build', 'run'))
+    # depends_on('py-netcdf4', when='+python', type=('build', 'run'))
 
     extends('matlab', when='+matlab')
     depends_on('matlab', when='+matlab')

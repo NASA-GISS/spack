@@ -48,7 +48,7 @@ class PyGiss(PythonPackage):
 
     depends_on('python@3:', type=('build', 'run'))
     depends_on('py-numpy+blas+lapack', type=('build', 'run'))
-    depends_on('py-netcdf', type=('build', 'run'))
+    depends_on('py-netcdf4', type=('build', 'run'))
     depends_on('py-matplotlib', type=('build', 'run'))
     depends_on('py-basemap', type=('build', 'run'))
     depends_on('py-proj', type=('build', 'run'))
