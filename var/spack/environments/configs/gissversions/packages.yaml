@@ -41,13 +41,14 @@ packages:
 
     # -------- Python System
     python:
+        variants: [~pythoncmd]
         version: [3.5.2]
     py-cython:
         version: [0.23.5]
     py-proj:
         version: [1.9.5.1.1]    # Normal released version 1.9.5.1 is buggy
     py-matplotlib:
-        variants: [+gui,+ipython]
+        variants: [+gui,+ipython,+python3]
     py-numpy:
         variants: [+blas,+lapack]
     py-pyside:

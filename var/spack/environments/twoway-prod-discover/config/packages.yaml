@@ -1,0 +1,25 @@
+packages:
+    icebin:
+        variants: [copy=prod]
+
+    ibmisc:
+        variants: [copy=prod]
+
+    pism:
+        variants: [copy=prod]
+
+    modele:
+        variants: [copy=prod]
+
+    modele-utils:
+        variants: [copy=prod]
+
+    py-giss:
+        variants: [copy=prod]
+
+    modele-control:
+        variants: [copy=prod]
+
+    everytrace:
+        variants: [copy=prod]
+

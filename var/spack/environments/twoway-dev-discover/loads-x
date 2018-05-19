@@ -1,0 +1,7 @@
+# http://stackoverflow.com/questions/59895/can-a-bash-script-tell-which-directory-it-is-stored-in
+ENV="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+module purge
+source $ENV/loads
+export PATH=$ENV/git/modele-control/bin:$ENV/git/pygiss/main:$PATH
+export PYTHONPATH=$ENV/git/modele-control/lib:$ENV/git/pygiss:$PYTHONPATH
