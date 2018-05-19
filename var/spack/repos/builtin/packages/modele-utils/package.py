@@ -43,6 +43,8 @@ class ModeleUtils(CMakePackage):
             description='Build mk_diags directory.')
     variant('aux', default=False,
             description='Build aux directory')
+    variant('copy', values=str, default='standard',
+        description='Allow multiple copies of the "same" spec to be installed')
 
     # Build dependencies
     depends_on('m4', type='build')

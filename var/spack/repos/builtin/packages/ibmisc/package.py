@@ -57,6 +57,8 @@ class Ibmisc(CMakePackage):
             description='Compile utilities for use with Python/Cython')
     variant('doc', default=False,
             description='Build the documentation')
+    variant('copy', values=str, default='standard',
+        description='Allow multiple copies of the "same" spec to be installed')
 
     extends('python', when='+python')
     depends_on('python@3:', when='+python')

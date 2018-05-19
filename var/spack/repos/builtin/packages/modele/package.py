@@ -57,6 +57,8 @@ class Modele(CMakePackage):
             description='Build parallel version with MPI')
     variant('fexception', default=False, description=''
             'Use the FException library, for getting good stack traces.')
+    variant('copy', values=str, default='standard',
+        description='Allow multiple copies of the "same" spec to be installed')
 
     # --- Variants controlling what we build
     variant('model', default=True,

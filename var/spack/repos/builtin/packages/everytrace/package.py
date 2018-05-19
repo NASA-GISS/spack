@@ -41,6 +41,8 @@ class Everytrace(CMakePackage):
     variant('fortran', default=True,
             description='Enable use with Fortran programs')
     variant('cxx', default=True, description='Enable C++ Exception-based features')
+    variant('copy', values=str, default='standard',
+        description='Allow multiple copies of the "same" spec to be installed')
 
     depends_on('mpi', when='+mpi')
 

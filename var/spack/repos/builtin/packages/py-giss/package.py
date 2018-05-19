@@ -38,6 +38,9 @@ class PyGiss(PythonPackage):
     version('develop', git='https://github.com/citibeth/pygiss.git', branch='develop')
     version('glint2', git='https://github.com/citibeth/pygiss.git', branch='glint2')
 
+    variant('copy', values=str, default='standard',
+        description='Allow multiple copies of the "same" spec to be installed')
+
     maintainers = ['citibeth']
 
     # Requires python@3:

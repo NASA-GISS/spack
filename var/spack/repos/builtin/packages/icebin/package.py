@@ -54,6 +54,8 @@ class Icebin(CMakePackage):
     variant('googletest', default=True,
             description='Build unit tests')
     variant('doc', default=False, description='Build documentation')
+    variant('copy', values=str, default='standard',
+        description='Allow multiple copies of the "same" spec to be installed')
 
     extends('python', when='+python')
 

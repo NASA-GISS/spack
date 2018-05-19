@@ -63,6 +63,8 @@ class Pism(CMakePackage):
             description='Enables parallel HDF5 I/O.')
     # variant('tao', default=False,
     #         description='Use TAO in inverse solvers.')
+    variant('copy', values=str, default='standard',
+        description='Allow multiple copies of the "same" spec to be installed')
 
     description = 'Build PISM documentation (requires LaTeX and Doxygen)'
     variant('doc', default=False, description=description)

@@ -35,6 +35,9 @@ class ModeleControl(PythonPackage):
 
     version('develop', git='https://github.com/citibeth/modele-control.git', branch='develop')
 
+    variant('copy', values=str, default='standard',
+        description='Allow multiple copies of the "same" spec to be installed')
+
     extends('python')
     depends_on('python@3:')
     depends_on('py-six', type=('build', 'run'))
