@@ -1,0 +1,30 @@
+# Set up Spack and Modules
+export EHOME=/home/rpfische
+export SPACK_ROOT=$EHOME/spack6
+source $SPACK_ROOT/share/spack/setup-env.sh
+
+# http://stackoverflow.com/questions/59895/can-a-bash-script-tell-which-directory-it-is-stored-in
+ENV="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+# Load the main environment
+module purge
+
+# Load Basics for Spack, Compiler and MPI
+module load other/comp/gcc-5.3-sp3
+module load other/mpi/openmpi/1.10.1-gcc-5.3-sp3
+module load binutils-2.29.1-gcc-5.3.0-dimunje
+module load curl-7.59.0-gcc-5.3.0-qjbgogv
+module load git-2.17.0-gcc-5.3.0-air7gv6
+
+# Load Spack-generated modules
+source $ENV/loads
+
+# Use open source code for a few of the modules
+export PATH=$ENV/git/modele-control/bin:$ENV/git/pygiss/main:$PATH
+export PYTHONPATH=$ENV/git/modele-control/lib:$ENV/git/pygiss:$PYTHONPATH
+
+# Use system Python2 for Spack
+alias spack='PYTHONPATH= spack'
+
+
+
