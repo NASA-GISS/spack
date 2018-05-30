@@ -37,9 +37,9 @@ class Modele(CMakePackage):
 
     # ModelE has no valid versions.
     # This must be built with "spack spconfig" in a local repo
-    version('landice',
+    version('e3landice',
             git='simplex.giss.nasa.gov:/giss/gitrepo/modelE.git',
-            branch='landice')
+            branch='e3/landice')
 
     version('master',
             git='simplex.giss.nasa.gov:/giss/gitrepo/modelE.git',
