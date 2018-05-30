@@ -33,7 +33,7 @@ class ModeleUtils(CMakePackage):
     # This must be built by a user with access to simplex.
     version('develop',
             git='simplex.giss.nasa.gov:/giss/gitrepo/modelE.git',
-            branch='e3/landice')
+            branch='efischer/archive/180521-landice')
 
     maintainers = ['citibeth']
 
