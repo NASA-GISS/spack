@@ -12,7 +12,7 @@ packages:
 #        version: [icebin]
 
     modele:
-        version: [landice]
+        version: [e3landice]
         variants: [+debug,+mods]
 
     py-giss:
