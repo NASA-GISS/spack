@@ -1,15 +1,12 @@
 # Download source used for Spack Setup or similar
 
-all : git/modelE git/ibmisc git/icebin git/pism git/pygiss git/modele-control
+all : git/ibmisc git/icebin git/pism git/pygiss git/modele-control
 
 
 git :
 	mkdir git
 
 # Spack Setup
-
-git/modelE : git
-	cd git; git clone simplex.giss.nasa.gov:/giss/gitrepo/modelE.git -b e3/landice
 
 git/ibmisc : git
 	cd git; git clone git@github.com:citibeth/ibmisc.git -b develop
