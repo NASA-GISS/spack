@@ -1,10 +1,13 @@
 # Set up Spack and Modules
 export EHOME=/home/rpfische
 export SPACK_ROOT=$EHOME/spack6
-source $SPACK_ROOT/share/spack/setup-env.sh
+#source $SPACK_ROOT/share/spack/setup-env.sh
+export MODULEPATH=$MODULEPATH:~/spack6/share/spack/modules/linux-suse_linux11-x86_64
+export PATH=$PATH:/home/rpfische/spack6/bin
 
 # http://stackoverflow.com/questions/59895/can-a-bash-script-tell-which-directory-it-is-stored-in
 ENV="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+export SPACK_ENV=${ENV##*/}    # Name of currently loaded Spack environment
 
 # Load the main environment
 module purge
