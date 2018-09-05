@@ -67,3 +67,8 @@ packages:
     flex:
         version: [2.6.1]
 
+
+    # https://github.com/spack/spack/issues/6965
+    glib:
+        version: [2.53.1]
+

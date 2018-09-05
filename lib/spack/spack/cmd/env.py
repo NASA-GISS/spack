@@ -514,6 +514,8 @@ def _environment_create(name, init_config=None):
             with open(yaml_path, 'w') as F:
                 F.write(yaml_section)
 
+def environment_repair(args):
+    repair(args.environment)
 
 def environment_add(args):
     check_consistent_env(get_env_root(args.environment))
@@ -763,6 +765,8 @@ def setup_parser(subparser):
         help='File with user specs to add and configuration yaml to use'
     )
 
+    repair_parser = sp.add_parser('repair', help='Repair an environment corrupted writing in criticle section')
+
     add_parser = sp.add_parser('add', help='Add a spec to an environment')
     add_parser.add_argument(
         '-s', '--setup', dest='setup', action='append', default=[],
@@ -865,6 +869,7 @@ def env(parser, args, **kwargs):
     action = {
         'create': environment_create,
         'add': environment_add,
+        'repair': environment_repair,
         'spec': environment_spec,
         'concretize': environment_concretize,
         'list': environment_list,
