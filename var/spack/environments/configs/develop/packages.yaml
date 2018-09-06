@@ -23,3 +23,6 @@ packages:
 
     everytrace:
         version: [develop]
+
+    entgvsd:
+        version: [develop]

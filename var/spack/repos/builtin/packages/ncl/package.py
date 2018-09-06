@@ -55,7 +55,6 @@ class Ncl(Package):
     variant('triangle', default=True, description='Enable Triangle support.')
     variant('udunits2', default=True, description='Enable UDUNITS-2 support.')
     variant('openmp', default=True, description='Enable OpenMP support.')
-    variant('esmf', default=False, description='Enable ESMF support.')
 
     # Non-optional dependencies according to the manual:
     depends_on('jpeg')
@@ -88,7 +87,7 @@ class Ncl(Package):
     depends_on('szip')
 
     # ESMF is only required at runtime (for ESMF_regridding.ncl)
-    depends_on('esmf', type='run', when='+esmf')
+    depends_on('esmf', type='run')
 
     # In Spack, we also do not have an option to compile netcdf without DAP
     # support, so we will tell the ncl configuration script that we have it.

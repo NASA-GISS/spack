@@ -2,6 +2,11 @@
 ENV="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 module purge
+
+# Load the compiler; so we can have a simple script that compiles stuff
+module load gcc-4.9.3-gcc-4.8.5-jfebnuuusdch34j7pvdnvlxffe2rmoe4
+# Load the modules we built
 source $ENV/loads
+
 #export PATH=$ENV/git/modele-control/bin:$ENV/git/pygiss/main:$PATH
 #export PYTHONPATH=$ENV/git/modele-control/lib:$ENV/git/pygiss:$PYTHONPATH
