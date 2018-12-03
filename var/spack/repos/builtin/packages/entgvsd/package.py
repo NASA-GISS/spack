@@ -38,4 +38,5 @@ class Entgvsd(CMakePackage):
             branch='master')
 
     depends_on('ncl')
+    depends_on('netcdf')
     depends_on('netcdf-fortran')
