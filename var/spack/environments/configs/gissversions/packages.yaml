@@ -37,7 +37,7 @@ packages:
     petsc:
         variants: [+mumps]
     modele:
-        variants: [+pnetcdf,+everytrace]
+        variants: [+pnetcdf,+everytrace,+testsx]
 
     # -------- Python System
     python:

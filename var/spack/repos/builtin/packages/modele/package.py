@@ -100,7 +100,7 @@ class Modele(CMakePackage):
             '-DUSE_FEXCEPTION=%s' % ('YES' if '+fexception' in spec else 'NO'),
 
             '-DBUILD_MODEL=%s' % ('YES' if '+model' in spec else 'NO'),
-            '-DBUILD_TESTS=%s' % ('YES' if '+tests' in spec else 'NO'),
+#            '-DBUILD_TESTS=%s' % ('YES' if '+tests' in spec else 'NO'),
             '-DBUILD_AUX=%s' % ('YES' if '+aux' in spec else 'NO'),
             '-DBUILD_DIAGS=%s' % ('YES' if '+diags' in spec else 'NO'),
             '-DBUILD_IC=%s' % ('YES' if '+ic' in spec else 'NO'),
