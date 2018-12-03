@@ -9,4 +9,5 @@ module load gcc-4.9.3-gcc-4.8.5-jfebnuuusdch34j7pvdnvlxffe2rmoe4
 source $ENV/loads
 
 #export PATH=$ENV/git/modele-control/bin:$ENV/git/pygiss/main:$PATH
-#export PYTHONPATH=$ENV/git/modele-control/lib:$ENV/git/pygiss:$PYTHONPATH
+#export PYTHONPATH=$ENV/git/pygiss:$PYTHONPATH
+export PYTHONPATH=/home2/rpfische/git/pygiss:$PYTHONPATH
