@@ -38,8 +38,11 @@ class PyGiss(PythonPackage):
     version('develop', git='https://github.com/citibeth/pygiss.git', branch='develop')
     version('glint2', git='https://github.com/citibeth/pygiss.git', branch='glint2')
 
-    variant('copy', values=str, default='standard',
+    variant(
+        'copy', values=str, default='standard',
         description='Allow multiple copies of the "same" spec to be installed')
+    variant('plot', default=True, description=\
+            'Include plotting-related dependencies')
 
     maintainers = ['citibeth']
 
@@ -49,9 +52,9 @@ class PyGiss(PythonPackage):
     depends_on('python@3:', type=('build', 'run'))
     depends_on('py-numpy+blas+lapack', type=('build', 'run'))
     depends_on('py-netcdf4', type=('build', 'run'))
-    depends_on('py-matplotlib', type=('build', 'run'))
-    depends_on('py-basemap', type=('build', 'run'))
-    depends_on('py-proj', type=('build', 'run'))
     depends_on('py-scipy', type=('build', 'run'))
     depends_on('py-six', type=('build', 'run'))
-    depends_on('py-udunits', type=('build', 'run'))
+    depends_on('py-basemap', type=('build', 'run'), when='+plot')
+    depends_on('py-pyproj', type=('build', 'run'), when='+plot')
+    depends_on('py-matplotlib', type=('build', 'run'), when='+plot')
+#    depends_on('py-udunits', type=('build', 'run'))

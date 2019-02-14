@@ -1,0 +1,20 @@
+packages:
+    ncurses:
+        version: [6.0]
+    modele:
+        variants: [~tests,~everytrace]
+
+    modele-control:
+        version: [develop]
+    py-giss:
+        variants: [~plot]
+    python:
+        variants: [~pythoncmd]
+        version: [3.5.2]
+    all:
+        variants: [+python3]
+#        compiler: [gcc@4.9.3]
+#        providers:
+#            mpi: [openmpi]
+#            blas: [openblas]
+#            lapack: [openblas]
