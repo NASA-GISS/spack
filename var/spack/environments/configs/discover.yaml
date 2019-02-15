@@ -1,20 +1,25 @@
 packages:
-    ncurses:
-        version: [6.0]
     modele:
         variants: [~tests,~everytrace]
 
     modele-control:
         version: [develop]
     py-giss:
+        version: [develop]
         variants: [~plot]
     python:
         variants: [~pythoncmd]
         version: [3.5.2]
+    intel-mpi:
+        paths:
+            intel-mpi@2018.4.274: /usr/local/intel/2018/compilers_and_libraries_2018.5.274/linux/mpi
+        version: [2018.4.274]
+        buildable: False
     all:
         variants: [+python3]
-#        compiler: [gcc@4.9.3]
-#        providers:
-#            mpi: [openmpi]
+        compiler: [intel@14.0.3]
+        providers:
+            mpi: [intel-mpi]
 #            blas: [openblas]
 #            lapack: [openblas]
+

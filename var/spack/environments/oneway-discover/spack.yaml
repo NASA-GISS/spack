@@ -4,16 +4,16 @@
 # configuration settings.
 spack:
   include:
-    - ../configs/discover.yaml      # Highest precedence
+  - ../configs/discover.yaml        # Highest precedence
 #    - ../configs/gissversions.yaml
-    - ../configs/centos7.yaml          # Lowest precedence
+#  - ../configs/centos7.yaml            # Lowest precedence
 
   # add package specs to the `specs` list
-  specs: [modele]
+  specs: [{setup: [modele], spec: modele}, {setup: [], spec: modele-control}]
   mirrors: {}
   modules:
     enable: []
   repos: []
   packages: {}
-
+  config: {}
 #  config: {}

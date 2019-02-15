@@ -57,11 +57,11 @@ packages:
     # --------- Compiler & Virtual Dependencies
     all:
         variants: [+python3]
-        compiler: [gcc@4.9.3]
-        providers:
-            mpi: [openmpi]
-            blas: [openblas]
-            lapack: [openblas]
+#        compiler: [gcc@4.9.3]
+#        providers:
+#            mpi: [openmpi]
+#            blas: [openblas]
+#            lapack: [openblas]
 
     # --------- Fix concretization bugs / problems
     flex:
