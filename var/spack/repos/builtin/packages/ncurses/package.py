@@ -64,6 +64,11 @@ class Ncurses(AutotoolsPackage):
 
         configure = Executable('../configure')
 
+        # Work around bug that runs ldconfig in wrong directory
+        # http://lists.linuxfromscratch.org/pipermail/lfs-book/2010-July/025772.html
+        configure.add_default_env(
+            'LDCONFIG', '/sbin/ldconfig -n ' + self.prefix.lib)
+
         with working_dir('build_ncurses', create=True):
             configure(prefix, *(opts + nwide_opts))
 
@@ -95,3 +100,5 @@ class Ncurses(AutotoolsPackage):
     def libs(self):
         return find_libraries(
             ['libncurses', 'libncursesw'], root=self.prefix, recursive=True)
+
+
