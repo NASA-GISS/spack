@@ -17,7 +17,7 @@ packages:
         buildable: False
     all:
         variants: [+python3]
-        compiler: [intel@14.0.3]
+        compiler: [intel@18.0.4]
         providers:
             mpi: [intel-mpi]
 #            blas: [openblas]
