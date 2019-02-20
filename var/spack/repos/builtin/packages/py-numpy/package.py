@@ -181,8 +181,8 @@ class PyNumpy(PythonPackage):
             # But Parallel build in Python 3.5+ is broken.  See:
             # https://github.com/spack/spack/issues/7927
             # https://github.com/scipy/scipy/issues/7112
-            if spec['python'].version < Version('3.5'):
-                args = ['-j', str(make_jobs)]
+            args.extend(['-j', str(
+                make_jobs if spec['python'].version < Version('3.5') else 1)])
 
         return args
 
