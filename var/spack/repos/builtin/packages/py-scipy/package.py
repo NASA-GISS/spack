@@ -57,8 +57,8 @@ class PyScipy(PythonPackage):
         # Known problems with Python 3.5+
         # https://github.com/spack/spack/issues/7927
         # https://github.com/scipy/scipy/issues/7112
-        if not spec.satisfies('^python@3.5:'):
-            args.extend(['-j', str(make_jobs)])
+        args.extend(['-j', str(
+            make_jobs if spec['python'].version < Version('3.5') else 1)])
 
         return args
 
