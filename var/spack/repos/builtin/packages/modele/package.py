@@ -78,8 +78,10 @@ class Modele(CMakePackage):
 
     # ----------------------------------------
     # Build dependencies
-    depends_on('m4', type='build')
     depends_on('cmake@3.2:', type='build')
+    # Used in the CMake script...
+    depends_on('m4', type='build')
+    depends_on('python@3:', type='build')
 
     # Link dependencies
     depends_on('everytrace+fortran+mpi', when='+everytrace')
