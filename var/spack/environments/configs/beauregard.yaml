@@ -1,0 +1,14 @@
+packages:
+    modele:
+        variants: [~tests,~everytrace]
+
+    modele-control:
+        version: [develop]
+    py-giss:
+        version: [develop]
+        variants: [~plot]
+    python:
+        variants: [~pythoncmd]
+        version: [3.5.2]
+    all:
+        variants: [+python3]
