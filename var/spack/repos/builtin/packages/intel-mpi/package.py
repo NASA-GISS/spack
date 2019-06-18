@@ -36,6 +36,7 @@ class IntelMpi(IntelPackage):
     # built from parallel_studio_xe_2016.3.068
     version('5.1.3.223',  '4316e78533a932081b1a86368e890800',
             url='http://registrationcenter-download.intel.com/akdlm/irc_nas/tec/9278/l_mpi_p_5.1.3.223.tgz')
+    version('4.1.3.048', '')
 
     provides('mpi')
 
