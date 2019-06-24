@@ -9,7 +9,7 @@ spack:
 #    - ../configs/centos7.yaml          # Lowest precedence
 
   # add package specs to the `specs` list
-  specs: [nco ncview modele-utils]
+  specs: [nco, ncview, modele-utils]
   mirrors: {}
   modules:
     enable: []
