@@ -58,7 +58,8 @@ packages:
     all:
         variants: [+python3]
 #        compiler: [gcc@4.9.3]
-#        providers:
+        providers:
+            java: [openjdk]
 #            mpi: [openmpi]
 #            blas: [openblas]
 #            lapack: [openblas]
