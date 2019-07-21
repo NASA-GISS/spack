@@ -16,7 +16,7 @@ class RFields(RPackage):
     homepage = "https://github.com/NCAR/Fields"
     url      = "https://cran.r-project.org/src/contrib/fields_9.8-3.tar.gz"
 
-    version('9.8-1', sha256='1b0c2a33c59e96a1dac94ad1ca8a000ac31165efb6848445a376f19aea2264fd')
+    version('9.8-3', sha256='010676e009d48ff605d9881bcedb903b95bc4a271da47eb629d5cbcf1a323de1')
 
     depends_on('r-spam', type=('build', 'run'))
     depends_on('r-maps', type=('build', 'run'))

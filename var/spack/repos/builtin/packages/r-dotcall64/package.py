@@ -17,4 +17,4 @@ class RDotcall64(RPackage):
     homepage = "https://git.math.uzh.ch/reinhard.furrer/dotCall64"
     url      = "https://cran.r-project.org/src/contrib/dotCall64_1.0-0.tar.gz"
 
-    version('0.9-5.2', sha256='738809d87ff13d1fa06ebe903645989b72fca24e3117016b943bda92b89f80cb')
+    version('1.0-0', sha256='69318dc6b8aecc54d4f789c8105e672198363b395f1a764ebaeb54c0473d17ad')

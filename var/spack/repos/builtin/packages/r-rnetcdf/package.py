@@ -16,11 +16,11 @@ class RRnetcdf(RPackage):
     formats, and NetCDF4-classic format is supported for reading and
     modification of existing files."""
 
-    # FIXME: Add a proper url for your package's homepage here.
     homepage = "http://rnetcdf.r-forge.r-project.org"
     url      = "https://cran.r-project.org/src/contrib/RNetCDF_1.9-1.tar.gz"
 
-    version('1.8-2', sha256='adf8a3028f1d67f38a725ffb509a4ee36f14e5859c6ffadcb4e71cb9c22fc45e')
+    version('1.9-1', sha256='7d5a1e47ba3f41050e92ac27fe12c9ffd8dea67e132c43ff071dcdb0fad4ae45')
 
-    # FIXME: Add dependencies if required.
     depends_on('netcdf')
+    depends_on('udunits2')
+

@@ -22,3 +22,11 @@ class RMaptools(RPackage):
     depends_on('r-sp', type=('build', 'run'))
     depends_on('r-foreign', type=('build', 'run'))
     depends_on('r-lattice', type=('build', 'run'))
+
+    # Avoid the runtime warning / error:
+    # Checking rgeos availability: FALSE
+    #    Note: when rgeos is not available, polygon geometry
+    #    computations in maptools depend on gpclib,
+    #    which has a restricted licence. It is disabled by default;
+    #    to enable gpclib, type gpclibPermit()
+    depends_on('r-rgeos', type=('build', 'run'))

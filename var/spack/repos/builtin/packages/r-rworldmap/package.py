@@ -13,7 +13,7 @@ class RRworldmap(RPackage):
     homepage = "https://github.com/AndySouth/rworldmap/"
     url      = "https://cran.r-project.org/src/contrib/rworldmap_1.3-6.tar.gz"
 
-    version('1.3-1', sha256='1cbd511b14aaecd4fa4d829459d539d629ec3d48ad7755b64608af34ae322f73')
+    version('1.3-6', sha256='53eec8637a39754b87cbcf625bf644b26ddd5a82996b107abba5828c930530e0')
 
     depends_on('r-maptools', type=('build', 'run'))
     depends_on('r-fields', type=('build', 'run'))

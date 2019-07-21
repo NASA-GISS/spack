@@ -54,6 +54,10 @@ packages:
     py-pyside:
         version: [1.2.4]
 
+    # ---------- R System
+    r:
+        version: [3.4.4]
+
     # --------- Compiler & Virtual Dependencies
     all:
         variants: [+python3]
