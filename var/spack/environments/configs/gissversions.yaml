@@ -35,6 +35,7 @@ packages:
         # Enables IceBin support code in PISM; no additional dependencies
         variants: [+icebin,+everytrace]
     petsc:
+        version: [3.4.4]
         variants: [+mumps]
     modele:
         variants: [+pnetcdf,+everytrace,+tests]

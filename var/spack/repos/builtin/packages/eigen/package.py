@@ -35,7 +35,7 @@ class Eigen(CMakePackage):
             values=('Debug', 'Release', 'RelWithDebInfo'))
 
     # TODO : dependency on googlehash, superlu, adolc missing
-    depends_on('metis@5:', when='+metis')
+    depends_on('metis@5:', when='+metis')   # Don't really need +real64 but here to get around a concretizer bug.
     depends_on('scotch', when='+scotch')
     depends_on('fftw', when='+fftw')
     depends_on('suite-sparse', when='+suitesparse')

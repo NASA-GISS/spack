@@ -97,17 +97,17 @@ class Conduit(Package):
     #
     # Use HDF5 1.8, for wider output compatibly
     # variants reflect we are not using hdf5's mpi or fortran features.
-    depends_on("hdf5@1.8.19:1.8.999~cxx~mpi~fortran", when="+hdf5+shared")
-    depends_on("hdf5@1.8.19:1.8.999~shared~cxx~mpi~fortran", when="+hdf5~shared")
+    depends_on("hdf5@1.8.19:1.8.999", when="+hdf5+shared")
+    depends_on("hdf5@1.8.19:1.8.999~shared", when="+hdf5~shared")
 
     # we are not using silo's fortran features
-    depends_on("silo~fortran", when="+silo+shared")
-    depends_on("silo~shared~fortran", when="+silo~shared")
+    depends_on("silo", when="+silo+shared")
+    depends_on("silo~shared", when="+silo~shared")
 
-    depends_on("adios+mpi~hdf5+shared",       when="+adios+mpi+shared")
-    depends_on("adios+mpi~hdf5~shared~blosc", when="+adios+mpi~shared")
-    depends_on("adios~mpi~hdf5+shared",       when="+adios~mpi+shared")
-    depends_on("adios~mpi~hdf5~shared~blosc", when="+adios~mpi~shared")
+    depends_on("adios+mpi+shared",       when="+adios+mpi+shared")
+    depends_on("adios+mpi~shared~blosc", when="+adios+mpi~shared")
+    depends_on("adios+shared",       when="+adios~mpi+shared")
+    depends_on("adios~shared~blosc", when="+adios~mpi~shared")
 
     #######################
     # MPI

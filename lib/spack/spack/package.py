@@ -1389,6 +1389,8 @@ class PackageBase(with_metaclass(PackageMeta, PackageViewMixin, object)):
             setups (set):
                 Names of packages to be setup, instead of installed.
         """
+        print('do_install {} {} install_deps={}'.format(self, setup, install_deps))
+
         if not self.spec.concrete:
             raise ValueError("Can only install concrete packages: %s."
                              % self.spec.name)
@@ -1431,7 +1433,10 @@ class PackageBase(with_metaclass(PackageMeta, PackageViewMixin, object)):
         # First, install dependencies recursively.
         if install_deps:
             tty.debug('Installing {0} dependencies'.format(self.name))
+            print('Installing {0} dependencies'.format(self.name))
+            print('deps = {}'.format(sorted(list(x.name for x in self.spec.traverse(order='post', root=False)))))
             for dep in self.spec.traverse(order='post', root=False):
+#                print('     dep = {}'.format(dep))
                 dep.package.do_install(
                     install_deps=False,
                     explicit=False,
