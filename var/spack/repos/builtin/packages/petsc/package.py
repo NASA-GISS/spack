@@ -142,8 +142,8 @@ class Petsc(Package):
     depends_on('superlu-dist@5.4:5.4.99+int64', when='@3.10:3.10.2+superlu-dist+mpi+int64')
     depends_on('superlu-dist@6.1:6.1.99~int64', when='@3.10.3:3.10.99+superlu-dist+mpi~int64')
     depends_on('superlu-dist@6.1:6.1.99+int64', when='@3.10.3:3.10.99+superlu-dist+mpi+int64')
-    depends_on('superlu-dist@xsdk-0.2.0~int64', when='@xsdk-0.2.0+superlu-dist+mpi~int64')
-    depends_on('superlu-dist@xsdk-0.2.0+int64', when='@xsdk-0.2.0+superlu-dist+mpi+int64')
+#    depends_on('superlu-dist@xsdk-0.2.0~int64', when='@xsdk-0.2.0+superlu-dist+mpi~int64')
+#    depends_on('superlu-dist@xsdk-0.2.0+int64', when='@xsdk-0.2.0+superlu-dist+mpi+int64')
     depends_on('superlu-dist@develop~int64', when='@develop+superlu-dist+mpi~int64')
     depends_on('superlu-dist@develop+int64', when='@develop+superlu-dist+mpi+int64')
     depends_on('mumps+mpi', when='+mumps+mpi~int64')
@@ -238,7 +238,8 @@ class Petsc(Package):
         if spec.satisfies('+mumps+mpi~int64'):
             scalapack = spec['scalapack'].libs
             options.extend([
-                '--with-scalapack-lib=%s' % scalapack.joined(),
+#                '--with-scalapack-lib=%s' % scalapack.joined(),
+                '--with-scalapack-dir=%s' % spec['scalapack'].prefix,
                 '--with-scalapack=1'
             ])
         else:

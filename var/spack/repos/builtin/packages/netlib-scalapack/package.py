@@ -37,7 +37,8 @@ class NetlibScalapack(CMakePackage):
     depends_on('mpi')
     depends_on('lapack')
     depends_on('blas')
-    depends_on('cmake', when='@2.0.0:', type='build')
+    #depends_on('cmake', when='@2.0.0:', type='build')
+    depends_on('cmake@:3.12.4', when='@2.0.0:', type='build')
 
     # See: https://github.com/Reference-ScaLAPACK/scalapack/issues/9
     patch("cmake_fortran_mangle.patch", when='@2.0.2:')
