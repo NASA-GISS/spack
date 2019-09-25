@@ -49,11 +49,13 @@ class SuperluDist(Package):
 
     def install(self, spec, prefix):
 
+        # ---------- These lines are package-specific
         if self.version >= Version('5.0.0'):
             sub = SuperluDist_CMake(spec)
         else:
             sub = SuperluDist_Legacy(spec)
 
+        # ----------- These lines should go into a general MultiPackage
         # See lib/spack/spack/directives.py
         sub.versions = self.versions
         sub.name = self.name
