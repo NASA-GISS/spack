@@ -49,6 +49,7 @@ class Ibmisc(CMakePackage):
     depends_on('proj', when='+proj')
     depends_on('blitz', when='+blitz')
     depends_on('netcdf-cxx4', when='+netcdf')
+    depends_on('netcdf', when='+netcdf')
     depends_on('udunits2', when='+udunits2')
     depends_on('googletest', when='+googletest', type='build')
     depends_on('py-cython', when='+python', type=('build', 'run'))
