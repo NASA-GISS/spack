@@ -22,6 +22,9 @@ packages:
     # Required for PETSc; you might have to hack openmpi/package.py to make this stick
 #    openmpi:
 #        version: [1.10.7]
+    # PISM seems to like this version???
+    openmpi:
+        version: [3.1.0]
 
     # --------- Our Stuff
     modele-utils:
@@ -35,7 +38,8 @@ packages:
         # Enables IceBin support code in PISM; no additional dependencies
         variants: [+icebin,+everytrace]
     petsc:
-        version: [3.4.4]
+#        version: [3.4.4]
+        version: [3.5]
         variants: [+mumps]
     modele:
         variants: [+pnetcdf,+everytrace,+tests]
