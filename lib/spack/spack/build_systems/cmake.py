@@ -298,6 +298,8 @@ import subprocess
 
 def cmdlist(str):
     return list(x.strip().replace("'",'') for x in str.split('\n') if x)
+env = dict(os.environ)
+
 """ % (sys.executable, ' '.join(sys.argv)))
 
         if dirty:
