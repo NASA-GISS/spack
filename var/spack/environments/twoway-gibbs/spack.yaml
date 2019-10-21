@@ -1,0 +1,67 @@
+# This is a Spack Environment file.
+#
+# It describes a set of packages to be installed, along with
+# configuration settings.
+spack:
+  include:
+#    - ../configs/beauregard.yaml      # Highest precedence
+    - ../configs/twoway.yaml
+    - ../configs/gissversions.yaml
+    - ../configs/centos7.yaml          # Lowest precedence
+
+  # add package specs to the `specs` list
+  specs:
+  - setup:
+    - modele
+    - ibmisc
+    - pism
+    - icebin
+    spec: modele
+  - setup: []
+    spec: modele-control
+  - setup:
+    - modele-utils
+    spec: modele-utils
+  - setup: []
+    spec: ncview
+  - setup: []
+    spec: netcdf
+  - setup: []
+    spec: nco
+  - setup: []
+    spec: pdftk
+  - setup: []
+    spec: git
+  mirrors: {}
+  modules:
+    enable: []
+  repos: []
+  packages: {}
+  config: {}
+#  config: {}
+
+
+
+
+
+
+
+
+
+# library(sp)
+# library(spam)
+#Error in library(spam) : there is no package called ‘spam’
+# library(maps)
+# library(fields)
+#Error in library(fields) : there is no package called ‘fields’
+# library(maptools)
+#Checking rgeos availability: FALSE
+#        Note: when rgeos is not available, polygon geometry     computations in maptools depend on gpclib,
+#        which has a restricted licence. It is disabled by default;
+#        to enable gpclib, type gpclibPermit()
+# library(rworldmap)
+#Error in library(rworldmap) : there is no package called ‘rworldmap’
+# library(SDMTools)
+# library(plotrix)
+# library(RNetCDF)
+#Error in library(RNetCDF) : there is no package called ‘RNetCDF’
