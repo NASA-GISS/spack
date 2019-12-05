@@ -9,7 +9,8 @@ spack:
 #  - ../configs/centos7.yaml            # Lowest precedence
 
   # add package specs to the `specs` list
-  specs: [{setup: [modele], spec: modele}, {setup: [], spec: modele-control}]
+  specs: [{setup: [modele], spec: modele}, {setup: [], spec: modele-control}, {setup: [],
+      spec: nco}]
   mirrors: {}
   modules:
     enable: []
