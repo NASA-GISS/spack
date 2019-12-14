@@ -83,6 +83,8 @@ class Petsc(Package):
 
     variant('X', default=False,
             description='Activate X support')
+    variant('fortran', default=True,
+            description='Activate Fortran bindings')
 
     # 3.8.0 has a build issue with MKL - so list this conflict explicitly
     conflicts('^intel-mkl', when='@3.8.0')
@@ -97,7 +99,7 @@ class Petsc(Package):
 
     # Virtual dependencies
     # Git repository needs sowing to build Fortran interface
-    depends_on('sowing', when='@develop')
+    depends_on('sowing', when='@develop+fortran')
 
     # PETSc, hypre, superlu_dist when built with int64 use 32 bit integers
     # with BLAS/LAPACK
@@ -117,7 +119,8 @@ class Petsc(Package):
     depends_on('metis@5:~int64', when='@3.8:+metis~int64')
     depends_on('metis@5:+int64', when='@3.8:+metis+int64')
 
-    depends_on('hdf5+mpi+hl+fortran', when='+hdf5+mpi')
+    depends_on('hdf5+mpi+hl', when='+hdf5+mpi~fortran')
+    depends_on('hdf5+mpi+hl+fortran', when='+hdf5+mpi+fortran')
     depends_on('zlib', when='+hdf5')
     depends_on('parmetis', when='+metis+mpi')
     # Hypre does not support complex numbers.
@@ -160,10 +163,13 @@ class Petsc(Package):
                 '--with-cc=%s' % os.environ['CC'],
                 '--with-cxx=%s' % (os.environ['CXX']
                                    if self.compiler.cxx is not None else '0'),
-                '--with-fc=%s' % (os.environ['FC']
-                                  if self.compiler.fc is not None else '0'),
                 '--with-mpi=0'
             ]
+            if 'fortran' in self.spec:
+                compiler_opts.append(
+                    '--with-fc=%s' % (os.environ['FC']
+                         if self.compiler.fc is not None else '0'))
+
             error_message_fmt = \
                 '\t{library} support requires "+mpi" to be activated'
 
@@ -180,15 +186,28 @@ class Petsc(Package):
             compiler_opts = [
                 '--with-cc=%s' % self.spec['mpi'].mpicc,
                 '--with-cxx=%s' % self.spec['mpi'].mpicxx,
-                '--with-fc=%s' % self.spec['mpi'].mpifc,
             ]
+            if 'fortran' in self.spec:
+                compiler_opts.append(
+                    '--with-fc=%s' % self.spec['mpi'].mpifc)
+
             if self.spec.satisfies('%intel'):
-                # mpiifort needs some help to automatically link
-                # all necessary run-time libraries
+                # mpiifort needs help to link C runtime libraries
                 compiler_opts.append('--FC_LINKER_FLAGS=-lintlc')
+                # mpiicc needs help to link necessary Fortran runtime libraries
+                compiler_opts.append('--CC_LINKER_FLAGS=-lifcore')
+                compiler_opts.append('--CXX_LINKER_FLAGS=-lifcore')
         return compiler_opts
 
     def install(self, spec, prefix):
+        
+
+
+#        print('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx {0}'.format(type(spec['scalapack'].prefix)))
+#        print('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx {0}'.format(spec['scalapack'].prefix.lib))
+#        print('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx {0}'.format(spec['scalapack'].libs))
+#        raise ValueError(17)
+
         options = ['--with-ssl=0',
                    '--download-c2html=0',
                    '--download-sowing=0',
@@ -236,12 +255,38 @@ class Petsc(Package):
         # PETSc depends on scalapack when '+mumps+mpi~int64' (see depends())
         # help PETSc pick up Scalapack from MKL
         if spec.satisfies('+mumps+mpi~int64'):
-            scalapack = spec['scalapack'].libs
+            scalapack_prefix = spec['scalapack'].package.prefix
             options.extend([
-#                '--with-scalapack-lib=%s' % scalapack.joined(),
-                '--with-scalapack-dir=%s' % spec['scalapack'].prefix,
+                '--with-scalapack-dir=%s' % scalapack_prefix,
                 '--with-scalapack=1'
             ])
+
+            # PETSc build system assumes library named `libscalapack.a`,
+            # which is not the case when using scalapack from Intel MKL.
+            # It has no way for the user to specify a different library name.
+            # Fix the problem by patching the appropriate file in the PETSc build system.
+            #
+            # NOTES:
+            #  1. This is not a problem for BLAS/LAPACK because PETSc has the
+            #     --with-blas-lapack-lib flag (see below)
+            #  2. The Intel MKL ILP64 libraries use the 64-bit integer type
+            #     (necessary for indexing large arrays, with more than 2 31-1
+            #     elements), whereas the LP64 libraries index arrays with the
+            #     32-bit integer type.  (see the patch file)
+            if spec.satisfies('^intel-mkl'):
+                # Leaf name of library directory, UNDERNEATH the root prefix.
+                libdir = str(scalapack_prefix.lib)[len(scalapack_prefix)+1:]
+
+                # Remove directories from library names
+                sliblist = [os.path.split(x)[1] for x in spec['scalapack'].libs]
+
+                # Patch scalapack.py
+                filter_file(r"^    self.liblist\s*=.*",
+                    "    self.liblist = [[],{0}]\n".format(repr(sliblist)) +
+                    "    self.libdir = '{0}'\n".format(libdir) +
+                    "    self.altlibdir = '{0}'\n".format(libdir),
+                    'config/PETSc/packages/scalapack.py')
+
         else:
             options.extend([
                 '--with-scalapack=0'
@@ -300,6 +345,12 @@ class Petsc(Package):
         else:
             options.append('--with-zlib=0')
 
+
+        # Disable fortran
+        # https://www.mcs.anl.gov/petsc/documentation/installation.html
+        if '+gfortran' not in spec:
+            options.append('--with-fc=0')
+
         which('python2')('configure', '--prefix=%s' % prefix, *options)
 
         # PETSc has its own way of doing parallel make.
@@ -354,6 +405,15 @@ class Petsc(Package):
         spack_env.unset('PETSC_ARCH')
         spack_env.unset('PYTHONPATH')
         spack_env.unset('PYTHONHOME')
+
+        # For some reason, these are set to gfortran in spite of Intel
+        # compiler being specified.  This causes parts of PETSc to
+        # wrongly pick up gfortran.
+        # The upper-case variables are set properly.
+        spack_env.unset('f77')
+        spack_env.unset('f90')
+        spack_env.unset('fc')
+        spack_env.unset('F90')   # Why is this not set in build_environment.py???
 
         # Set PETSC_DIR in the module file
         run_env.set('PETSC_DIR', self.prefix)
