@@ -1,0 +1,28 @@
+# This is a Spack Environment file.
+#
+# It describes a set of packages to be installed, along with
+# configuration settings.
+spack:
+  include:
+  - ../configs/twoway.yaml        # Highest precedence
+  - ../configs/gissversions.yaml
+  - ../configs/discover.yaml
+#  - ../configs/centos7.yaml            # Lowest precedence
+
+  # add package specs to the `specs` list
+  specs:
+  - setup:
+    - modele
+    - ibmisc
+    - pism
+    - icebin
+    spec: modele
+  - setup: []
+    spec: modele-control
+  mirrors: {}
+  modules:
+    enable: []
+  repos: []
+  packages: {}
+  config: {}
+#  config: {}

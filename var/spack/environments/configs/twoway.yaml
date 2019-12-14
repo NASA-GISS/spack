@@ -1,0 +1,35 @@
+# Updates to <gissversions> to support two-way coupling
+packages:
+
+    pism:
+        # icebin needs these variants
+        variants: [~python,+examples]
+
+    icebin:
+        variants: [+coupler,+modele,+pism]
+
+    modele:
+        variants: [+everytrace,+pnetcdf,+icebin,+mpi,+model]
+
+    # --------- Get around concretizer bugs
+    metis:
+        variants: [+real64]
+    hdf5:
+        variants: [+fortran]
+    # netlib-scalapack needs this specific version.
+    # https://github.com/spack/spack/issues/10530
+    cmake:
+        version: [3.12.4]
+
+    # Concretizer bug related to PETSc mess
+    # https://github.com/spack/spack/issues/12938
+    superlu-dist:
+        version: [5.2.2]
+
+    # I just can't get this version of PETSc working with superlu-dist
+    petsc:
+        variants: [~superlu-dist]
+
+#    # This is the same as was used in spack6/twoway-dev-gibbs
+#    petsc:
+#        version: [3.9.0]

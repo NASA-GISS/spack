@@ -1,15 +1,16 @@
 packages:
-    modele:
-        variants: [~tests,~everytrace]
-
-    modele-control:
-        version: [develop]
+# Commented-out items need to be added back to oneway-discover
+#    modele:
+#        variants: [~tests,~everytrace]
+#
+#    modele-control:
+#        version: [develop]
     py-giss:
         version: [develop]
         variants: [~plot]
-    python:
-        variants: [~pythoncmd]
-        version: [3.5.2]
+#    python:
+#        variants: [~pythoncmd]
+#        version: [3.5.2]
     intel-mpi:
         paths:
             intel-mpi@2018.4.274: /usr/local/intel/2018/compilers_and_libraries_2018.5.274/linux/mpi
