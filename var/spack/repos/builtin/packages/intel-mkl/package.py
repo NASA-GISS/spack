@@ -6,7 +6,7 @@
 import sys
 
 from spack import *
-
+import spack.util.prefix
 
 class IntelMkl(IntelPackage):
     """Intel Math Kernel Library."""
@@ -62,3 +62,20 @@ class IntelMkl(IntelPackage):
     if sys.platform == 'darwin':
         # there is no libmkl_gnu_thread on macOS
         conflicts('threads=openmp', when='%gcc')
+
+    @property
+    def prefix(self):
+        """Intel MKL stores its libraries in a non-stanard location under installation prefix.
+        This property makes spec['intel-mkl'].package.prefix.lib work correctly, for
+        packages that need the library DIRECTORY for blas/lapack/scalapack/etc.
+        HOWEVER: spec['intel-mkl'].prefix.lib will NOT work."""
+        class MklPrefix(spack.util.prefix.Prefix):
+            @property
+            def lib(self):
+                return join_path(self, *libleaf)
+
+        # Must choose between ia32/ and intel64/
+        libleaf = ('lib', 'intel64')  # Hardcode for now; does anyone do this on 32-bit?
+        ret = MklPrefix(self.spec.prefix)
+        return MklPrefix(self.spec.prefix)
+
