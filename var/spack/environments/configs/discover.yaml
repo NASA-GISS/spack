@@ -16,11 +16,22 @@ packages:
             intel-mpi@2018.4.274: /usr/local/intel/2018/compilers_and_libraries_2018.5.274/linux/mpi
         version: [2018.4.274]
         buildable: False
+    intel-mkl:
+        paths:
+            intel-mkl@2018.4.274: /usr/local/intel/2018/compilers_and_libraries_2018.5.274/linux/mkl
+        version: [2018.4.274]
+        buildable: False
     all:
         variants: [+python3]
         compiler: [intel@18.0.4]
         providers:
             mpi: [intel-mpi]
+            blas: [intel-mkl]
+            lapack: [intel-mkl]
+            scalapack: [intel-mkl]
+            mkl: [intel-mkl]
+            fftw-api: [intel-mkl]
+
 #            blas: [openblas]
 #            lapack: [openblas]
 
