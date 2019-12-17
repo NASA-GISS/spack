@@ -5,6 +5,8 @@
 
 import os
 import sys
+import re
+import collections
 
 import llnl.util.tty as tty
 import llnl.util.filesystem as fs
@@ -19,6 +21,7 @@ import spack.cmd.modules
 import spack.cmd.common.arguments as arguments
 import spack.environment as ev
 import spack.util.string as string
+import spack.paths
 
 description = "manage virtual environments"
 section = "environments"
@@ -34,6 +37,7 @@ subcommands = [
     ['list', 'ls'],
     ['status', 'st'],
     'loads',
+    'harness',
 ]
 
 
@@ -327,9 +331,81 @@ def env_loads(args):
     print('   source %s' % loads_file)
 
 
+#
+# env harness
+#
+def env_harness_setup_parser(subparser):
+    """create a harness for user compilation of "setup" programs to be
+    built and installed outside of Spack installation location."""
+    subparser.add_argument(
+        'env', nargs='?', help='name of env to generate loads file for')
+    subparser.add_argument(
+        '-o', '--output', default=None,
+        help='directory in which to store harness source and CMake setup scripts.')
+
+install_prefixRE = re.compile(r'^\s*-DCMAKE_INSTALL_PREFIX\:PATH=(.*)$', re.MULTILINE)
+
+
+# https://gist.github.com/carlsmith/b2e6ba538ca6f58689b4c18f46fef11c
+def replace(string, substitutions):
+    def _sub(match):
+        print('matched {0}'.format(match.group(0)))
+        ret = substitutions[match.group(0)]
+        return ret
+
+    substrings = sorted(substitutions, key=len, reverse=True)
+    regex = re.compile('|'.join(map(re.escape, substrings)))
+    return regex.sub(_sub, string)
+
+SetupFile = collections.namedtuple('SetupFile', ('pkg', 'ifsetup', 'ofsetup', 'setup'))
+
+def env_harness(args):
+    env = ev.get_env(args, 'env harness', required=True)
+    harness_home = os.path.abspath(env.name) if args.output is None else os.path.abspath(args.output)
+    opt = os.path.join(harness_home, 'opt')
+
+
+    # Read setup files
+    setups = []
+    for pkg in [x[:-9] for x in os.listdir(env.path) if x.endswith('-setup.py')]:
+        ifsetup = os.path.join(env.path, pkg+'-setup.py')
+        ofsetup = os.path.join(harness_home, pkg+'-setup.py')
+        with open(ifsetup) as fin:
+            setup = fin.read()
+        setups.append(SetupFile(pkg, ifsetup, ofsetup, setup))
+
+    # Replacements to make in the setup files
+    repl = {
+        r'export SPACK_ENV_DIR=' : 'export SPACK_ENV_DIR={0} #'.format(env.path),
+        r'export HARNESS_HOME=' : 'export HARNESS_HOME={0} #'.format(harness_home),
+    }
+    for ss in setups:
+        match = install_prefixRE.search(ss.setup)
+        loc0 = match.group(1)    # Old install location of this package
+        # loc1 = os.path.join(opt, ss.pkg)  # Don't need hashes in new location
+        repl[loc0] = opt
+
+    # Add in the loads file
+    for fname in ('loads', 'loads-x'):
+        ifsetup = os.path.join(env.path, fname)
+        ofsetup = os.path.join(harness_home, fname)
+        with open(ifsetup) as fin:
+            setup = fin.read()
+        setups.append(SetupFile('__'+fname, ifsetup, ofsetup, setup))
+
+
+    # Write new files
+    if not os.path.isdir(harness_home):
+        os.makedirs(harness_home)
+    for ss in setups:
+        print('Writing {0}'.format(ss.ofsetup))
+        with open(ss.ofsetup, 'w') as out:
+            out.write(replace(ss.setup, repl))
+
+
+
 #: Dictionary mapping subcommand names and aliases to functions
 subcommand_functions = {}
-
 
 #
 # spack env
