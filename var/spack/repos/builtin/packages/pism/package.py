@@ -15,9 +15,14 @@ class Pism(CMakePackage):
 
     maintainers = ['citibeth']
 
-    version('develop', branch='dev')
+    # This is the version of PISM used in "Contribution of the
+    # Greenland Ice Sheet to sea-level over the next millennium" by
+    # Andy Aschwanden et al
+    version('1.1.4', sha256='1769d4451c7f200c0a0c061467863602cc068753',
+        url='https://github.com/pism/pism/archive/v1.0-millennium-study.tar.gz')
     version('0.7.3', '7cfb034100d99d5c313c4ac06b7f17b6')
     version('0.7.x', branch='stable0.7')
+    version('develop', branch='dev')
     version('icebin', branch='efischer/dev')
 
     variant('extra', default=False,
