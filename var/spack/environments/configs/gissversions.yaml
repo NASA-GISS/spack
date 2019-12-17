@@ -33,14 +33,6 @@ packages:
         variants: [+everytrace]
     icebin:
         variants: [+gridgen,+python,+everytrace]
-    pism:
-        version: [icebin]
-        # Enables IceBin support code in PISM; no additional dependencies
-        variants: [+icebin,+everytrace]
-    petsc:
-#        version: [3.4.4]
-        version: [3.5]
-        variants: [+mumps~fortran]
     modele:
         variants: [+pnetcdf,+everytrace,+tests]
 

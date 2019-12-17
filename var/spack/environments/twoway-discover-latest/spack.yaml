@@ -11,7 +11,7 @@ spack:
 
   packages:
     pism:
-      version: [icebin]
+      version: [1.1.4]
         # Enables IceBin support code in PISM; no additional dependencies
       variants: [+icebin, +everytrace]
       buildable: true
@@ -20,19 +20,16 @@ spack:
       modules: {}
       compiler: []
     petsc:
-#        version: [3.4.4]
-      version: [3.5]
-      variants: [+mumps~fortran]
+      version: [3.12.2]
+      # variants: [+mumps,~fortran]
+      # "we [UAF; PISM]] haven't used ScaLAPACK and don't know if it
+      # makes any difference."
+      variants: [~mumps, ~fortran]
       buildable: true
       providers: {}
       paths: {}
       modules: {}
       compiler: []
-        # we [UAF; PISM]] haven't used ScaLAPACK and don't know if it
-        # makes any difference.
-        # variants: [~mumps~fortran]
-
-
   # add package specs to the `specs` list
   specs:
   - setup:
@@ -48,4 +45,3 @@ spack:
     enable: []
   repos: []
   config: {}
-#  config: {}
