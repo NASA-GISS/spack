@@ -24,6 +24,16 @@ class Petsc(Package):
     version('develop', branch='master')
     version('xsdk-0.2.0', tag='xsdk-0.2.0')
 
+    version('3.12.2', sha256='d874b2e198c4cb73551c2eca1d2c5d27da710be4d00517adb8f9eb3d6d0375e8')
+    version('3.12.1', sha256='b72d895d0f4a79acb13ebc782b47b26d10d4e5706d399f533afcd5b3dba13737')
+    version('3.12.0', sha256='ba9ecf69783c7ebf05bd1c91dd1d4b38bf09b7a2d5f9a774aa6bb46deff7cb14')
+    version('3.11.4', sha256='319cb5a875a692a67fe5b1b90009ba8f182e21921ae645d38106544aff20c3c1')
+    version('3.11.3', sha256='199ad9650a9f58603b49e7fff7cd003ceb03aa231e5d37d0bf0496c6348eca81')
+    version('3.11.2', sha256='4d244dd7d1565d6534e776445fcf6977a6ee2a8bb2be4a36ac1e0fc1f9ad9cfa')
+    version('3.11.1', sha256='cb627f99f7ce1540ebbbf338189f89a5f1ecf3ab3b5b0e357f9e46c209f1fb23')
+    version('3.11.0', sha256='b3bed2a9263193c84138052a1b92d47299c3490dd24d1d0bf79fb884e71e678a')
+    version('3.10.5', sha256='3a81c8406410e0ffa8a3e9f8efcdf2e683cc40613c9bb5cb378a6498f595803e')
+    version('3.10.4', sha256='6c836df84caa9ae683ae401d3f94eb9471353156fec6db602bf2e857e4ec339f')
     version('3.10.3', 'cd106babbae091604fee40c258737c84dec048949be779eaef5a745df3dc8de4')
     version('3.10.2', '63ed950653ae9b8d19daea47e24c0338')
     version('3.10.1', '2d0d5a9bd8112a4147a2a23f7f62a906')
@@ -255,37 +265,44 @@ class Petsc(Package):
         # PETSc depends on scalapack when '+mumps+mpi~int64' (see depends())
         # help PETSc pick up Scalapack from MKL
         if spec.satisfies('+mumps+mpi~int64'):
-            scalapack_prefix = spec['scalapack'].package.prefix
-            options.extend([
-                '--with-scalapack-dir=%s' % scalapack_prefix,
-                '--with-scalapack=1'
-            ])
+            if spec.satisfies('@3.6:'):    # Guessing at the version where this change appeared
+                scalapack = spec['scalapack'].libs
+                options.extend([
+                    '--with-scalapack-lib=%s' % scalapack.joined(),
+                    '--with-scalapack=1'
+                ])
+            else:
+                scalapack_prefix = spec['scalapack'].package.prefix
+                options.extend([
+                    '--with-scalapack-dir=%s' % scalapack_prefix,
+                    '--with-scalapack=1'
+                ])
 
-            # PETSc build system assumes library named `libscalapack.a`,
-            # which is not the case when using scalapack from Intel MKL.
-            # It has no way for the user to specify a different library name.
-            # Fix the problem by patching the appropriate file in the PETSc build system.
-            #
-            # NOTES:
-            #  1. This is not a problem for BLAS/LAPACK because PETSc has the
-            #     --with-blas-lapack-lib flag (see below)
-            #  2. The Intel MKL ILP64 libraries use the 64-bit integer type
-            #     (necessary for indexing large arrays, with more than 2 31-1
-            #     elements), whereas the LP64 libraries index arrays with the
-            #     32-bit integer type.  (see the patch file)
-            if spec.satisfies('^intel-mkl'):
-                # Leaf name of library directory, UNDERNEATH the root prefix.
-                libdir = str(scalapack_prefix.lib)[len(scalapack_prefix)+1:]
+                # PETSc build system assumes library named `libscalapack.a`,
+                # which is not the case when using scalapack from Intel MKL.
+                # It has no way for the user to specify a different library name.
+                # Fix the problem by patching the appropriate file in the PETSc build system.
+                #
+                # NOTES:
+                #  1. This is not a problem for BLAS/LAPACK because PETSc has the
+                #     --with-blas-lapack-lib flag (see below)
+                #  2. The Intel MKL ILP64 libraries use the 64-bit integer type
+                #     (necessary for indexing large arrays, with more than 2 31-1
+                #     elements), whereas the LP64 libraries index arrays with the
+                #     32-bit integer type.  (see the patch file)
+                if spec.satisfies('^intel-mkl'):
+                    # Leaf name of library directory, UNDERNEATH the root prefix.
+                    libdir = str(scalapack_prefix.lib)[len(scalapack_prefix)+1:]
 
-                # Remove directories from library names
-                sliblist = [os.path.split(x)[1] for x in spec['scalapack'].libs]
+                    # Remove directories from library names
+                    sliblist = [os.path.split(x)[1] for x in spec['scalapack'].libs]
 
-                # Patch scalapack.py
-                filter_file(r"^    self.liblist\s*=.*",
-                    "    self.liblist = [[],{0}]\n".format(repr(sliblist)) +
-                    "    self.libdir = '{0}'\n".format(libdir) +
-                    "    self.altlibdir = '{0}'\n".format(libdir),
-                    'config/PETSc/packages/scalapack.py')
+                    # Patch scalapack.py
+                    filter_file(r"^    self.liblist\s*=.*",
+                        "    self.liblist = [[],{0}]\n".format(repr(sliblist)) +
+                        "    self.libdir = '{0}'\n".format(libdir) +
+                        "    self.altlibdir = '{0}'\n".format(libdir),
+                        'config/PETSc/packages/scalapack.py')
 
         else:
             options.extend([
