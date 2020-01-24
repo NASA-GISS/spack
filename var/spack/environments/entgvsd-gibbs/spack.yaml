@@ -10,6 +10,9 @@ spack:
 
   # add package specs to the `specs` list
   specs:
+  - setup:
+    - entgvsd
+    spec: entgvsd
   - setup: []
     spec: cmake
   - setup: []
