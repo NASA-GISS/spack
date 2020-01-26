@@ -17,7 +17,7 @@ class RRnetcdf(RPackage):
     modification of existing files."""
 
     homepage = "http://rnetcdf.r-forge.r-project.org"
-    url      = "https://cran.r-project.org/src/contrib/RNetCDF_1.9-1.tar.gz"
+    url      = "https://cran.r-project.org/src/contrib/Archive/RNetCDF/RNetCDF_1.9-1.tar.gz"
 
     version('1.9-1', sha256='7d5a1e47ba3f41050e92ac27fe12c9ffd8dea67e132c43ff071dcdb0fad4ae45')
 

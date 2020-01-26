@@ -21,6 +21,12 @@ packages:
             intel-mkl@2018.4.274: /usr/local/intel/2018/compilers_and_libraries_2018.5.274/linux/mkl
         version: [2018.4.274]
         buildable: False
+
+    # Intel 18 doesn't support features needed by Freetype 2.9
+    # https://github.com/spack/spack/issues/13984
+    freetype:
+        version: [2.7.1]
+
     all:
         variants: [+python3]
         compiler: [intel@18.0.4]

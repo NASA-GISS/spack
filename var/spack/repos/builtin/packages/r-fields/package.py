@@ -14,7 +14,7 @@ class RFields(RPackage):
 
     # FIXME: Add a proper url for your package's homepage here.
     homepage = "https://github.com/NCAR/Fields"
-    url      = "https://cran.r-project.org/src/contrib/fields_9.8-3.tar.gz"
+    url      = "https://cran.r-project.org/src/contrib/Archive/fields/fields_9.8-3.tar.gz"
 
     version('9.8-3', sha256='010676e009d48ff605d9881bcedb903b95bc4a271da47eb629d5cbcf1a323de1')
 

@@ -14,7 +14,7 @@ class RRgeos(RPackage):
     are provided on 'CRAN'."""
 
     homepage = "https://cran.r-project.org/package=rgeos"
-    url      = "https://cran.rstudio.com/src/contrib/rgeos_0.3-26.tar.gz"
+    url      = "https://cran.r-project.org/src/contrib/Archive/rgeos/rgeos_0.3-26.tar.gz"
     list_url = "https://cran.rstudio.com/src/contrib/Archive/rgeos"
 
     version('0.3-26', '7d10a28011b49f68c5817b6fbca132df')
