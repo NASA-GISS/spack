@@ -25,3 +25,5 @@ source $SPACK_ENV_DIR/loads2
 # Clear out Spack-set LD_LIBRARY_PATH
 #export LD_LIBRARY_PATH=/usr/local/other/SLES11.3/openmpi/1.10.1/gcc-5.3/lib:/usr/local/other/SLES11.3/gcc/5.3.0/lib64
 
+# Make entgvsd build work right
+FC=$(which ifort)

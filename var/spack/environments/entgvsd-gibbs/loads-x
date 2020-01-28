@@ -12,3 +12,6 @@ export PYTHONPATH=/home2/rpfische/git/pygiss:$PYTHONPATH
 
 # LD_LIBRARY_PATH is not needed because of RPATH, and it pollutes the system gs
 unset LD_LIBRARY_PATH
+
+# Make entgvsd build work right
+FC=$(which gfortran)
