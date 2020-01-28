@@ -1,0 +1,14 @@
+# http://stackoverflow.com/questions/59895/can-a-bash-script-tell-which-directory-it-is-stored-in
+ENV="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+module purge
+
+# Load the compiler; so we can have a simple script that compiles stuff
+module load gcc-4.9.3-gcc-4.8.5-jfebnuuusdch34j7pvdnvlxffe2rmoe4
+# Load the modules we built
+source $ENV/loads
+
+export PYTHONPATH=/home2/rpfische/git/pygiss:$PYTHONPATH
+
+# LD_LIBRARY_PATH is not needed because of RPATH, and it pollutes the system gs
+unset LD_LIBRARY_PATH
