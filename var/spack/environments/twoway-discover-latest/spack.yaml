@@ -40,6 +40,8 @@ spack:
     spec: modele
   - setup: []
     spec: modele-control
+  - setup: []
+    spec: nco
   mirrors: {}
   modules:
     enable: []

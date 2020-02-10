@@ -349,7 +349,7 @@ install_prefixRE = re.compile(r'^\s*-DCMAKE_INSTALL_PREFIX\:PATH=(.*)$', re.MULT
 # https://gist.github.com/carlsmith/b2e6ba538ca6f58689b4c18f46fef11c
 def replace(string, substitutions):
     def _sub(match):
-        print('matched {0}'.format(match.group(0)))
+        # print('matched {0}'.format(match.group(0)))
         ret = substitutions[match.group(0)]
         return ret
 
@@ -357,7 +357,7 @@ def replace(string, substitutions):
     regex = re.compile('|'.join(map(re.escape, substrings)))
     return regex.sub(_sub, string)
 
-SetupFile = collections.namedtuple('SetupFile', ('pkg', 'ifsetup', 'ofsetup', 'setup'))
+ReplacePlan = collections.namedtuple('ReplacePlan', ('label', 'ifname', 'ofname', 'txt'))
 
 def env_harness(args):
     env = ev.get_env(args, 'env harness', required=True)
@@ -366,41 +366,55 @@ def env_harness(args):
 
 
     # Read setup files
-    setups = []
+    replaces = []
+    setup_pkgs = set()
     for pkg in [x[:-9] for x in os.listdir(env.path) if x.endswith('-setup.py')]:
-        ifsetup = os.path.join(env.path, pkg+'-setup.py')
-        ofsetup = os.path.join(harness_home, pkg+'-setup.py')
-        with open(ifsetup) as fin:
-            setup = fin.read()
-        setups.append(SetupFile(pkg, ifsetup, ofsetup, setup))
+        ifname = os.path.join(env.path, pkg+'-setup.py')
+        ofname = os.path.join(harness_home, pkg+'-setup.py')
+        with open(ifname) as fin:
+            txt = fin.read()
+        replaces.append(ReplacePlan(pkg, ifname, ofname, txt))
+        setup_pkgs.add(pkg)
 
     # Replacements to make in the setup files
     repl = {
         r'export SPACK_ENV_DIR=' : 'export SPACK_ENV_DIR={0} #'.format(env.path),
         r'export HARNESS_HOME=' : 'export HARNESS_HOME={0} #'.format(harness_home),
     }
-    for ss in setups:
-        match = install_prefixRE.search(ss.setup)
+    module_loadRE = re.compile('\s*module\sload\s([^-]+)-.+')
+    for ss in replaces:
+        match = install_prefixRE.search(ss.txt)
         loc0 = match.group(1)    # Old install location of this package
         # loc1 = os.path.join(opt, ss.pkg)  # Don't need hashes in new location
         repl[loc0] = opt
 
     # Add in the loads file
     for fname in ('loads', 'loads-x'):
-        ifsetup = os.path.join(env.path, fname)
-        ofsetup = os.path.join(harness_home, fname)
-        with open(ifsetup) as fin:
-            setup = fin.read()
-        setups.append(SetupFile('__'+fname, ifsetup, ofsetup, setup))
+        ifname = os.path.join(env.path, fname)
+        ofname = os.path.join(harness_home, fname)
+        with open(ifname) as fin:
+            txt = fin.read()
 
+        # Remove setup items from load script
+        if fname == 'loads':
+            loads = set()
+            for line in txt.splitlines():
+                match = module_loadRE.match(line)
+                if match is not None:
+                    pkg = match.group(1)
+                    if pkg not in setup_pkgs:
+                        loads.add(line)
+            txt = '\n'.join(sorted(list(loads)))
+
+        replaces.append(ReplacePlan('__'+fname, ifname, ofname, txt))
 
     # Write new files
     if not os.path.isdir(harness_home):
         os.makedirs(harness_home)
-    for ss in setups:
-        print('Writing {0}'.format(ss.ofsetup))
-        with open(ss.ofsetup, 'w') as out:
-            out.write(replace(ss.setup, repl))
+    for ss in replaces:
+        print('Writing {0}'.format(ss.ofname))
+        with open(ss.ofname, 'w') as out:
+            out.write(replace(ss.txt, repl))
 
 
 
