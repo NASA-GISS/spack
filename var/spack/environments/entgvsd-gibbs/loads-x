@@ -8,8 +8,6 @@ module load gcc-4.9.3-gcc-4.8.5-jfebnuuusdch34j7pvdnvlxffe2rmoe4
 # Load the modules we built
 source $ENV/loads
 
-export PYTHONPATH=/home2/rpfische/git/pygiss:$PYTHONPATH
-
 # LD_LIBRARY_PATH is not needed because of RPATH, and it pollutes the system gs
 unset LD_LIBRARY_PATH
 
