@@ -1,9 +1,9 @@
 # Set up Spack and Modules
-export EHOME=/home/rpfische
+export EHOME=/home/eafisch2
 export SPACK_ROOT=$EHOME/spack7
 #source $SPACK_ROOT/share/spack/setup-env.sh
 export MODULEPATH=$MODULEPATH:$EHOME/spack7/share/spack/modules/linux-suse_linux11-x86_64
-export PATH=$PATH:/home/rpfische/spack7/bin
+export PATH=$PATH:/home/eafisch2/spack7/bin
 
 # http://stackoverflow.com/questions/59895/can-a-bash-script-tell-which-directory-it-is-stored-in
 export SPACK_ENV_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
@@ -17,7 +17,7 @@ module load other/comp/gcc-5.3-sp3   # Used by intel
 module load mpi/impi-18.0.5.274
 
 # Bootstrap with Spack-built replacements of system tools
-source /gpfsm/dnb53/rpfische/spack7/var/spack/environments/tools-discover/loads
+source /gpfsm/dnb53/eafisch2/spack7/var/spack/environments/tools-discover/loads
 
 # Load Spack-generated modules
 source $SPACK_ENV_DIR/loads2
