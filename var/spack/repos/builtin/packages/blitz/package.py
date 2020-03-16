@@ -6,16 +6,13 @@
 from spack import *
 
 
-class Blitz(AutotoolsPackage):
+class Blitz(CMakePackage):
     """N-dimensional arrays for C++"""
     homepage = "http://github.com/blitzpp/blitz"
-    url = "https://github.com/blitzpp/blitz/archive/1.0.1.tar.gz"
+    url = "https://github.com/blitzpp/blitz/archive/1.0.2.tar.gz"
 
-    version('1.0.1', 'fe43e2cf6c9258bc8b369264dd008971')
-    version('1.0.0', '971c43e22318bbfe8da016e6ef596234')
-
-    build_targets = ['lib']
-
-    def check(self):
-        make('check-testsuite')
-        make('check-examples')
+    # CMake...
+    version('1.0.2', '500db9c3b2617e1f03d0e548977aec10d36811ba1c43bb5ef250c0e3853ae1c2')
+    # Autotools... won't work with CMakePackage
+    # version('1.0.1', 'fe43e2cf6c9258bc8b369264dd008971')
+    # version('1.0.0', '971c43e22318bbfe8da016e6ef596234')
