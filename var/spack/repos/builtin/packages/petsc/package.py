@@ -365,7 +365,7 @@ class Petsc(Package):
 
         # Disable fortran
         # https://www.mcs.anl.gov/petsc/documentation/installation.html
-        if '+gfortran' not in spec:
+        if '+fortran' not in spec:
             options.append('--with-fc=0')
 
         which('python2')('configure', '--prefix=%s' % prefix, *options)
