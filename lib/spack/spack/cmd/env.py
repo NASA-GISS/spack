@@ -378,8 +378,8 @@ def env_harness(args):
 
     # Replacements to make in the setup files
     repl = {
-        r'export SPACK_ENV_DIR=' : 'export SPACK_ENV_DIR={0} #'.format(env.path),
-        r'export HARNESS_HOME=' : 'export HARNESS_HOME={0} #'.format(harness_home),
+        r'export SPACK_ENV=' : 'export SPACK_ENV={0} #'.format(env.path),
+        r'export HARNESS=' : 'export HARNESS={0} #'.format(harness_home),
     }
     module_loadRE = re.compile('\s*module\sload\s([^-]+)-.+')
     for ss in replaces:

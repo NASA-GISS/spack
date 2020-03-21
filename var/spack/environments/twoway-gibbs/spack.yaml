@@ -32,6 +32,8 @@ spack:
     spec: pdftk
   - setup: []
     spec: git
+  - setup: []
+    spec: py-pillow
   mirrors: {}
   modules:
     enable: []

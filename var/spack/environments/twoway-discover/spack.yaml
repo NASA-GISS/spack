@@ -47,6 +47,8 @@ spack:
     spec: modele
   - setup: []
     spec: modele-control
+  - setup: []
+    spec: py-pillow
   mirrors: {}
   modules:
     enable: []

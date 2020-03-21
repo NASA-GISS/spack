@@ -1,13 +1,22 @@
-# Set up Spack and Modules
-export EHOME=/home/eafisch2
-export SPACK_ROOT=$EHOME/spack7
-#source $SPACK_ROOT/share/spack/setup-env.sh
-export MODULEPATH=$MODULEPATH:$EHOME/spack7/share/spack/modules/linux-suse_linux11-x86_64
-export PATH=$PATH:/home/eafisch2/spack7/bin
+# https://stackoverflow.com/questions/3430569/globbing-pathname-expansion-with-colon-as-separator
+function join() {
+    local IFS=$1
+    shift
+    echo "$*"
+}
 
+# Set up Spack and Modules
 # http://stackoverflow.com/questions/59895/can-a-bash-script-tell-which-directory-it-is-stored-in
-export SPACK_ENV_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-export SPACK_ENV=${SPACK_ENV_DIR##*/}    # Name of currently loaded Spack environment
+export SPACK_ENV=$(readlink -f $(dirname "${BASH_SOURCE[0]}"))
+export HARNESS=$SPACK_ENV
+
+export SPACK_ENV_NAME=$(basename $SPACK_ENV)
+export SPACK_ROOT=$(dirname $(dirname $(dirname $(dirname $SPACK_ENV))))
+# This will be overwritten when the harness is created.
+
+# Minimal Spack setup without invoking Spack's setup_env.sh stuff
+export MODULEPATH=$MODULEPATH:$(join ':' $SPACK_ROOT/share/spack/modules/*)
+export PATH=$PATH:SPACK_ROOT/bin
 
 # Load the main environment
 module purge
@@ -17,10 +26,10 @@ module load other/comp/gcc-5.3-sp3   # Used by intel
 module load mpi/impi-18.0.5.274
 
 # Bootstrap with Spack-built replacements of system tools
-source /gpfsm/dnb53/eafisch2/spack7/var/spack/environments/tools-discover/loads
+source $SPACK_ENV/../tools-discover/loads
 
 # Load Spack-generated modules
-source $SPACK_ENV_DIR/loads
+source $SPACK_ENV/loads
 
 # Add cmake to the command-line environment (after the fact)
 # module load cmake-3.13.3-intel-18.0.4-dxop5rh
@@ -28,9 +37,9 @@ source $SPACK_ENV_DIR/loads
 # Clear out Spack-set LD_LIBRARY_PATH
 #export LD_LIBRARY_PATH=/usr/local/other/SLES11.3/openmpi/1.10.1/gcc-5.3/lib:/usr/local/other/SLES11.3/gcc/5.3.0/lib64
 
-# Use open source code for a few of the modules
-export PATH=$SPACK_ENV_DIR/git/modele-control/bin:$SPACK_ENV_DIR/git/pygiss/main:$PATH
-export PYTHONPATH=$SPACK_ENV_DIR/git/modele-control/lib:$SPACK_ENV_DIR/git/pygiss:$PYTHONPATH
+# Make sure our harness bin/ directory is in the path.
+export PATH=$HARNESS/opt/bin:$PATH
 
-# Use system Python2 for Spack
-#alias spack='PYTHONPATH= spack'
+# Use environment-provided source code for a few of the modules
+export PATH=$SPACK_ENV/git/modele-control/bin:$SPACK_ENV/git/pygiss/main:$PATH
+export PYTHONPATH=$SPACK_ENV/git/modele-control/lib:$SPACK_ENV/git/pygiss:$PYTHONPATH
