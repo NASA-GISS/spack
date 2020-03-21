@@ -43,3 +43,6 @@ export PATH=$HARNESS/opt/bin:$PATH
 # Use environment-provided source code for a few of the modules
 export PATH=$SPACK_ENV/git/modele-control/bin:$SPACK_ENV/git/pygiss/main:$PATH
 export PYTHONPATH=$SPACK_ENV/git/modele-control/lib:$SPACK_ENV/git/pygiss:$PYTHONPATH
+
+# The PISM_BIN variable is now wrong in harness-land; so unset it
+unset PISM_BIN
