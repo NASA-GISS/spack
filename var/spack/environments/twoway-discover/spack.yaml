@@ -55,7 +55,6 @@ spack:
     spec: ncview
   - setup: []
     spec: nco
-
   mirrors: {}
   modules:
     enable: []

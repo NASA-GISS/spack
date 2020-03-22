@@ -38,7 +38,9 @@ source $SPACK_ENV/loads
 #export LD_LIBRARY_PATH=/usr/local/other/SLES11.3/openmpi/1.10.1/gcc-5.3/lib:/usr/local/other/SLES11.3/gcc/5.3.0/lib64
 
 # Make sure our harness bin/ directory is in the path.
+# TODO: This can be fixed by reprocessing the modules correctly.
 export PATH=$HARNESS/opt/bin:$PATH
+export PYTHONPATH=$HARNESS/opt/lib/python3.5/site-packages:$PYTHONPATH
 
 # Use environment-provided source code for a few of the modules
 export PATH=$SPACK_ENV/git/modele-control/bin:$SPACK_ENV/git/pygiss/main:$PATH
