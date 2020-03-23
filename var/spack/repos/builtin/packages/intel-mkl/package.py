@@ -13,6 +13,8 @@ class IntelMkl(IntelPackage):
 
     homepage = "https://software.intel.com/en-us/intel-mkl"
 
+    version('2020.0.166', '5205a460a9c685f7a442868367389b2d0c25e1455346bc6a37c5b8ff90a20fbb',
+            url="http://registrationcenter-download.intel.com/akdlm/irc_nas/tec/14895/l_mkl_2020.0.166.tgz")    # Checksum known to be wrong
     version('2019.1.144', '5205a460a9c685f7a442868367389b2d0c25e1455346bc6a37c5b8ff90a20fbb',
             url="http://registrationcenter-download.intel.com/akdlm/irc_nas/tec/14895/l_mkl_2019.1.144.tgz")
     version('2019.0.117', 'd9e1b6b96fbffd4b306c7e8291f141a2',

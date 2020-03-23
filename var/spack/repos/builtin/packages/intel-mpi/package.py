@@ -11,6 +11,9 @@ class IntelMpi(IntelPackage):
 
     homepage = "https://software.intel.com/en-us/intel-mpi-library"
 
+    version('2020.0.166', 'dac86a5db6b86503313742b17535856a432955604f7103cb4549a9bfc256c3cd',
+            url='http://registrationcenter-download.intel.com/akdlm/irc_nas/tec/14879/l_mpi_2020.0.166.tgz')   # Checksum here is wrong...
+
     version('2019.1.144', 'dac86a5db6b86503313742b17535856a432955604f7103cb4549a9bfc256c3cd',
             url='http://registrationcenter-download.intel.com/akdlm/irc_nas/tec/14879/l_mpi_2019.1.144.tgz')
     version('2019.0.117', '8572d5fa1f26a7de8edc8b64653b0955',
