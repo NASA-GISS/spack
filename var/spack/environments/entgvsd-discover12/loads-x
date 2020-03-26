@@ -1,0 +1,13 @@
+# Set up Spack and Modules
+# http://stackoverflow.com/questions/59895/can-a-bash-script-tell-which-directory-it-is-stored-in
+export SPACK_ENV=$(readlink -f $(dirname "${BASH_SOURCE[0]}"))
+
+# Stuff common to all environments on discover12
+source $SPACK_ENV/../machines/discover12.sh
+
+# Above the line is standard for any project on discover12
+# ---------------------------------------------------
+# Below the line: specific to the twoway project
+
+# Make entgvsd build work right
+FC=$(which ifort)

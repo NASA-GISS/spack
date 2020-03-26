@@ -1,0 +1,77 @@
+# This is a Spack Environment file.
+#
+# It describes a set of packages to be installed, along with
+# configuration settings.
+spack:
+  include:
+#    - ../configs/beauregard.yaml      # Highest precedence
+    - ../configs/gissversions.yaml
+    - ../configs/discover12.yaml
+#    - ../configs/centos7.yaml          # Lowest precedence
+
+  # add package specs to the `specs` list
+  specs:
+  - setup: []
+    spec: cmake
+  - setup: []
+    spec: netcdf-fortran
+  - setup: []
+    spec: ncview
+  - setup: []
+    spec: nco
+  - setup: []
+    spec: git
+  - setup: []
+    spec: py-giss
+  - setup: []
+    spec: py-ply
+  - setup: []
+    spec: py-psutil
+  - setup: []
+    spec: py-sphinx
+  - setup: []
+    spec: r
+  - setup: []
+    spec: r-sp
+  - setup: []
+    spec: r-maps
+  - setup: []
+    spec: r-sdmtools
+  - setup: []
+    spec: r-plotrix
+  - setup: []
+    spec: r-spam
+  - setup: []
+    spec: r-fields
+  - setup: []
+    spec: r-maptools
+  - setup: []
+    spec: r-rworldmap
+  - setup: []
+    spec: r-rnetcdf
+  mirrors: {}
+  modules:
+    enable: []
+  repos: []
+  packages: {}
+  config: {}
+#  config: {}
+
+
+# library(sp)
+# library(spam)
+#Error in library(spam) : there is no package called ‘spam’
+# library(maps)
+# library(fields)
+#Error in library(fields) : there is no package called ‘fields’
+# library(maptools)
+#Checking rgeos availability: FALSE
+#        Note: when rgeos is not available, polygon geometry     computations in maptools depend on gpclib,
+#        which has a restricted licence. It is disabled by default;
+#        to enable gpclib, type gpclibPermit()
+# library(rworldmap)
+#Error in library(rworldmap) : there is no package called ‘rworldmap’
+# library(SDMTools)
+# library(plotrix)
+# library(RNetCDF)
+#Error in library(RNetCDF) : there is no package called ‘RNetCDF’
