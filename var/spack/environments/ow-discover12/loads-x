@@ -1,0 +1,28 @@
+# Set up Spack and Modules
+# http://stackoverflow.com/questions/59895/can-a-bash-script-tell-which-directory-it-is-stored-in
+export SPACK_ENV=$(readlink -f $(dirname "${BASH_SOURCE[0]}"))
+
+# Stuff common to all environments on discover12
+source $SPACK_ENV/../machines/discover12.sh
+
+# Above the line is standard for any project on discover12
+# ---------------------------------------------------
+# Below the line: specific to the twoway project
+
+# Add cmake to the command-line environment (after the fact)
+# module load cmake-3.13.3-intel-18.0.4-dxop5rh
+
+# Clear out Spack-set LD_LIBRARY_PATH
+#export LD_LIBRARY_PATH=/usr/local/other/SLES11.3/openmpi/1.10.1/gcc-5.3/lib:/usr/local/other/SLES11.3/gcc/5.3.0/lib64
+
+# Make sure our harness bin/ directory is in the path.
+# TODO: This can be fixed by reprocessing the modules correctly.
+export PATH=$HARNESS/opt/bin:$PATH
+export PYTHONPATH=$HARNESS/opt/lib/python3.5/site-packages:$PYTHONPATH
+
+# Use environment-provided source code for a few of the modules
+export PATH=$SPACK_ENV/modele-control/bin:$SPACK_ENV/pygiss/main:$PATH
+export PYTHONPATH=$SPACK_ENV/modele-control/lib:$SPACK_ENV/pygiss:$PYTHONPATH
+
+# The PISM_BIN variable is now wrong in harness-land; so unset it
+unset PISM_BIN

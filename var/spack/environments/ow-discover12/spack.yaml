@@ -1,0 +1,63 @@
+# This is a Spack Environment file.
+#
+# It describes a set of packages to be installed, along with
+# configuration settings.
+spack:
+  include:
+  - ../configs/oneway.yaml        # Highest precedence
+  - ../configs/gissversions.yaml
+  - ../configs/discover12.yaml
+#  - ../configs/centos7.yaml            # Lowest precedence
+
+  packages:
+    pism:
+      version: [icebin]
+        # Enables IceBin support code in PISM; no additional dependencies
+      variants: [+icebin, +everytrace]
+      buildable: true
+      providers: {}
+      paths: {}
+      modules: {}
+      compiler: []
+    petsc:
+#        version: [3.4.4]
+      version: [3.5]
+    # 2. parmetis.c requires a real_t type that's defined nowhere.
+    #   Maybe I'm using the wrong version of parmetis or metis, or mabye something
+    #   funky about it isn't working with Intel compiler.
+    # 3. Constantine says scalapack (related to MUMPS) isn't needed, so don't require it.
+      variants: [~metis~mumps~fortran]   # Overrides twoway.yaml
+      buildable: true
+      providers: {}
+      paths: {}
+      modules: {}
+      compiler: []
+        # we [UAF; PISM]] haven't used ScaLAPACK and don't know if it
+        # makes any difference.
+        # variants: [~mumps~fortran]
+
+
+  # add package specs to the `specs` list
+  specs:
+  - setup:
+    - modele
+    - ibmisc
+    - pism
+    - icebin
+    spec: modele
+  - setup: []
+    spec: modele-control
+  - setup: []
+    spec: py-pillow
+  - setup: []
+    spec: modele-utils
+  - setup: []
+    spec: ncview
+  - setup: []
+    spec: nco
+  mirrors: {}
+  modules:
+    enable: []
+  repos: []
+  config: {}
+#  config: {}
