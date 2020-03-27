@@ -10,10 +10,11 @@ class Ibmisc(CMakePackage):
     """Misc. reusable utilities used by IceBin."""
 
     homepage = "https://github.com/citibeth/ibmisc"
-    url      = "https://codeload.github.com/citibeth/ibmisc/tar.gz/v0.1.3.tar.gz"
+    url      = "https://github.com/citibeth/ibmisc/tarball/v0.1.3"
 
     maintainers = ['citibeth']
 
+    version('0.2.0', 'f0c89a0889d1136795003639389db1513b56e1d5a65b0f6778af3630ba4bc981')
     version('0.1.3', 'bb1876a8d1f0710c1a031280c0fc3f2e')
 
     version('develop',

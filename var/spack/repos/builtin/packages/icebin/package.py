@@ -29,10 +29,12 @@ class Icebin(CMakePackage):
     """Regridding/Coupling library for GCM + Ice Sheet Model"""
 
     homepage = "https://github.com/citibeth/icebin"
-    url = "https://codeland.github.com/citibeth/icebin/tar.gz/v0.1.0.tar.gz"
+    url = "https://github.com/citibeth/icebin/tarball/v0.1.0"
 
     maintainers = ['citibeth']
 
+    version('0.2.1', '08643759d0f4d66b1c7ce2052a0509474339e924873c2b57488daa46b9d9433d')
+    version('0.1.5', 'a209c4cd4502b9ded7525ebaa7c6107f')
     version('0.1.5', 'a209c4cd4502b9ded7525ebaa7c6107f')
     version('0.1.4', '5c8ecd778255f2972c0caa3a9f5d82ea')
     version('0.1.3', '98d9b28ef8f8a145a7eed2cb1e92e7e4')
