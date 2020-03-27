@@ -11,7 +11,10 @@ class RSdmtools(RPackage):
     associated with species distribution modelling exercises
 
     This packages provides a set of tools for post processing the outcomes of
-    species distribution modeling exercises."""
+    species distribution modeling exercises.
+
+    NOTE: This packages is no longer in CRAN, for lack of maintenance.
+    """
 
     homepage = "https://cran.r-project.org/web/packages/SDMTools/index.html"
     url      = "https://cran.r-project.org/src/contrib/SDMTools_1.1-221.tar.gz"
@@ -23,5 +26,5 @@ class RSdmtools(RPackage):
     version('1.1-12', 'a13d75e4024d908a57ea462112d8a437')
     version('1.1-11', 'cb890ee06eb862f97141b73c7390a0a9')
 
-    depends_on('r@3.4.0:3.4.9')
+#    depends_on('r@3.4.0:3.4.9')
     depends_on('r-utils', type=('build', 'run'))
