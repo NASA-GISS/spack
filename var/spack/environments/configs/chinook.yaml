@@ -4,11 +4,13 @@ packages:
         variants: [~plot]
 
     # Chinook uses OpenMPI
-    openmpi:
-        paths:
-            openmpi@4.0.2: /opt/scyld/openmpi/4.0.2/intel
-        version: [4.0.2]
-        buildable: False
+    # This has been moved to tw-chinook/spack.yaml
+#    openmpi:
+#        paths:
+#            openmpi@4.0.2: /opt/scyld/openmpi/4.0.2/intel
+#            openmpi@3.1.4: /opt/scyld/openmpi/3.1.4/intel
+#        version: [3.1.4,4.0.2]   # Don't choose version for the user
+#        buildable: False
     intel-mkl:
         paths:
             intel-mkl@2018.4.274: /usr/local/pkg/compiler/icc/2018.5.274-GCC-5.4.0-2.26/compilers_and_libraries_2018.5.274/linux/mkl/lib

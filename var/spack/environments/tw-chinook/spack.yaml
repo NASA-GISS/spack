@@ -3,12 +3,6 @@
 # It describes a set of packages to be installed, along with
 # configuration settings.
 spack:
-  include:
-  - ../configs/twoway.yaml        # Highest precedence
-  - ../configs/gissversions.yaml
-  - ../configs/chinook.yaml
-#  - ../configs/centos7.yaml            # Lowest precedence
-
   packages:
     pism:
       version: [icebin]
@@ -35,7 +29,23 @@ spack:
         # we [UAF; PISM]] haven't used ScaLAPACK and don't know if it
         # makes any difference.
         # variants: [~mumps~fortran]
-
+    # PETSc 3.5 uses MPI_Handler_function, which is undefined in OpenMPI 4.0
+    # Presumably modern versions of PETSc can work with modern versions of MPI
+    # https://www.open-mpi.org/doc/v3.1/man3/MPI_Comm_create_errhandler.3.php
+    # https://www.mpi-forum.org/docs/mpi-3.1/mpi31-report/node34.htm
+    openmpi:
+      paths:
+        openmpi@3.1.4: /opt/scyld/openmpi/3.1.4/intel
+      version: [3.1.4]     # Don't choose version for the user
+      buildable: false
+      providers: {}
+      modules: {}
+      compiler: []
+  include:
+  - ../configs/twoway.yaml        # Highest precedence
+  - ../configs/gissversions.yaml
+  - ../configs/chinook.yaml
+#  - ../configs/centos7.yaml            # Lowest precedence
 
   # add package specs to the `specs` list
   specs:
