@@ -16,3 +16,5 @@ class Blitz(CMakePackage):
     # Autotools... won't work with CMakePackage
     # version('1.0.1', 'fe43e2cf6c9258bc8b369264dd008971')
     # version('1.0.0', '971c43e22318bbfe8da016e6ef596234')
+
+    depends_on('papi')
