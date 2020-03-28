@@ -6,7 +6,7 @@ spack:
   include:
   - ../configs/twoway.yaml        # Highest precedence
   - ../configs/gissversions.yaml
-  - ../configs/discover12.yaml
+  - ../configs/chinook.yaml
 #  - ../configs/centos7.yaml            # Lowest precedence
 
   packages:
