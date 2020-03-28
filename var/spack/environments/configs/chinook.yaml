@@ -1,24 +1,17 @@
 packages:
-# Commented-out items need to be added back to oneway-discover
-#    modele:
-#        variants: [~tests,~everytrace]
-#
-#    modele-control:
-#        version: [develop]
     py-giss:
         version: [develop]
         variants: [~plot]
-#    python:
-#        variants: [~pythoncmd]
-#        version: [3.5.2]
-    intel-mpi:
+
+    # Chinook uses OpenMPI
+    openmpi:
         paths:
-            intel-mpi@2018.4.274: /usr/local/intel/2018/compilers_and_libraries_2018.5.274/linux/mpi
-        version: [2018.4.274]
+            openmpi@4.0.2: /opt/scyld/openmpi/4.0.2/intel
+        version: [4.0.2]
         buildable: False
     intel-mkl:
         paths:
-            intel-mkl@2018.4.274: /usr/local/intel/2018/compilers_and_libraries_2018.5.274/linux/mkl
+            intel-mkl@2018.4.274: /usr/local/pkg/compiler/icc/2018.5.274-GCC-5.4.0-2.26/compilers_and_libraries_2018.5.274/linux/mkl/lib
         version: [2018.4.274]
         buildable: False
 
@@ -29,9 +22,9 @@ packages:
 
     all:
         variants: [+python3]
-        compiler: [intel@18.0.4]
+        compiler: [intel@18.5.274]
         providers:
-            mpi: [intel-mpi]
+            mpi: [openmpi]
             blas: [intel-mkl]
             lapack: [intel-mkl]
             scalapack: [intel-mkl]

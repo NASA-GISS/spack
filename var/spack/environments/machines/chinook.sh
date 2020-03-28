@@ -20,9 +20,11 @@ export PATH=$PATH:SPACK_ROOT/bin
 # Load the main environment
 module purge
 
-module load comp/gcc/9.2.0
-module load comp/intel/20.0.0.166
-module load mpi/impi/20.0.0.166
+# icc also loads gcc-5.4.0
+module load compiler/icc/2018.5.274-GCC-5.4.0-2.26
+module load compiler/ifort/2018.5.274-GCC-5.4.0-2.26
+module load openmpi/intel/4.0.2
+# We will build our own intel-mkl with Spack
 
 # Bootstrap with Spack-built replacements of system tools
 #source $SPACK_ENV/../tools-discover/loads
