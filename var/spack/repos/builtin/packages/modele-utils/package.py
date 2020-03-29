@@ -31,8 +31,9 @@ class ModeleUtils(CMakePackage):
     homepage = "http://www.giss.nasa.gov/tools/modelE"
 
     # This must be built by a user with access to simplex.
-    version('develop',
-            git='simplex.giss.nasa.gov:/giss/gitrepo/modelE.git',
+    version('0.18.05.21',
+            git='git@gitlab.com:citibeth/modelE.git',
+#            git='simplex.giss.nasa.gov:/giss/gitrepo/modelE.git',
             branch='efischer/archive/180521-landice')
 
     maintainers = ['citibeth']
