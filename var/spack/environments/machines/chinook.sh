@@ -1,20 +1,21 @@
 # Standard stuff for any loads-x environment on discover12
 
-# https://stackoverflow.com/questions/3430569/globbing-pathname-expansion-with-colon-as-separator
-function join() {
-    local IFS=$1
-    shift
-    echo "$*"
-}
 
-export HARNESS=$SPACK_ENV
+## https://stackoverflow.com/questions/3430569/globbing-pathname-expansion-with-colon-as-separator
+#function join() {
+#    local IFS=$1
+#    shift
+#    echo "$*"
+#}
 
 export SPACK_ENV_NAME=$(basename $SPACK_ENV)
 export SPACK_ROOT=$(dirname $(dirname $(dirname $(dirname $SPACK_ENV))))
 # This will be overwritten when the harness is created.
 
 # Minimal Spack setup without invoking Spack's setup_env.sh stuff
-export MODULEPATH=$MODULEPATH:$(join ':' $SPACK_ROOT/share/spack/modules/*)
+#export MODULEPATH=$MODULEPATH:$(join ':' $SPACK_ROOT/share/spack/modules/*)
+export MODULEPATH=$MODULEPATH:$SPACK_ROOT/share/spack/modules/linux-centos6-x86_64
+
 export PATH=$PATH:SPACK_ROOT/bin
 
 # Load the main environment
@@ -30,4 +31,8 @@ module load openmpi/intel/4.0.2
 #source $SPACK_ENV/../tools-discover/loads
 
 # Load Spack-generated modules
+# For some reason, one module unsets the prompt env var PS1:
+#        intel-mkl-2018.4.274-intel-18.5.274-doboyrw
+PS1_SAVE="$PS1"
 source $SPACK_ENV/loads
+export PS1="$PS1_SAVE"
