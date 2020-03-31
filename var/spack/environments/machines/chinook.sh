@@ -22,9 +22,12 @@ export PATH=$PATH:SPACK_ROOT/bin
 module purge
 
 # icc also loads gcc-5.4.0
+# module load compiler/GCC/5.4.0-2.26
 module load compiler/icc/2018.5.274-GCC-5.4.0-2.26
 module load compiler/ifort/2018.5.274-GCC-5.4.0-2.26
-module load openmpi/intel/4.0.2
+# Needed to get the right mpicc to link to the right libraries.
+# Without this, it links to /usr/lib64/libstdc++
+module load openmpi/intel/3.1.4
 # We will build our own intel-mkl with Spack
 
 # Bootstrap with Spack-built replacements of system tools
