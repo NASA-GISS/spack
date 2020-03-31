@@ -35,7 +35,12 @@ spack:
     # https://www.mpi-forum.org/docs/mpi-3.1/mpi31-report/node34.htm
     openmpi:
       paths:
-        openmpi@3.1.4: /opt/scyld/openmpi/3.1.4/intel
+        # openmpi@3.1.4: /opt/scyld/openmpi/3.1.4/intel
+
+        # Copy of the above in which /usr/lib64 has been removed from the rpath
+        # This prevents /usr/lib64/stdc++ from being loaded by accident
+        openmpi@3.1.4: /import/unsupported/TWOWAY/opt/scyld/openmpi/3.1.4
+
       version: [3.1.4]     # Don't choose version for the user
       buildable: false
       providers: {}
