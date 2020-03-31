@@ -15,6 +15,8 @@ packages:
     netcdf:
         version: [4.4.0]
         variants: [+mpi]
+    netcdf-cxx4:
+        version: [4.3.0]    # 4.3.1 does NOT work, undefined nc_def_var_filter
     # Required for NetCDF 4.4.0
     # See https://github.com/spack/spack/issues/3056
     hdf5:

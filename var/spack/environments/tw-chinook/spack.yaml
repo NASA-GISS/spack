@@ -65,6 +65,8 @@ spack:
     spec: ncview
   - setup: []
     spec: nco
+  - setup: []
+    spec: netcdf-cxx4@4.3.0
   mirrors: {}
   modules:
     enable: []
