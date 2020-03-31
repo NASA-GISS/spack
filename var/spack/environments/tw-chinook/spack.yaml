@@ -39,7 +39,7 @@ spack:
 
         # Copy of the above in which /usr/lib64 has been removed from the rpath
         # This prevents /usr/lib64/stdc++ from being loaded by accident
-        openmpi@3.1.4: /import/unsupported/TWOWAY/opt/scyld/openmpi/3.1.4
+        openmpi@3.1.4: /import/unsupported/TWOWAY/opt/scyld/openmpi/3.1.4/intel
 
       version: [3.1.4]     # Don't choose version for the user
       buildable: false
@@ -72,6 +72,8 @@ spack:
     spec: nco
   - setup: []
     spec: netcdf-cxx4@4.3.0
+  - setup: []
+    spec: hdf5
   mirrors: {}
   modules:
     enable: []
