@@ -8,6 +8,8 @@
 #    echo "$*"
 #}
 
+PS1_SAVE="$PS1"    # Save command prompt; some modules destroy it
+
 export SPACK_ENV_NAME=$(basename $SPACK_ENV)
 export SPACK_ROOT=$(dirname $(dirname $(dirname $(dirname $SPACK_ENV))))
 # This will be overwritten when the harness is created.
@@ -36,6 +38,18 @@ module load openmpi/intel/3.1.4
 # Load Spack-generated modules
 # For some reason, one module unsets the prompt env var PS1:
 #        intel-mkl-2018.4.274-intel-18.5.274-doboyrw
-PS1_SAVE="$PS1"
 source $SPACK_ENV/loads
 export PS1="$PS1_SAVE"
+
+# We will have to replace in it
+#     '/opt/scyld/openmpi/3.1.4' --> '/home/eafischer2/om3.1.4'
+#unset LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=$(echo $LD_LIBRARY_PATH | sed 's@/opt/scyld/openmpi/3.1.4@/home/eafischer2/om3.1.4@g')
+export PATH=$(echo $PATH | sed 's@/opt/scyld/openmpi/3.1.4@/home/eafischer2/om3.1.4@g')
+
+
+# Make sure `ectl setup` (ModelE setup; see modele-control repo) can
+# find MPI, and that we can do mpirun when needed.
+export PATH=$PATH:/home/eafischer2/om3.1.4/intel/bin/
+
+
