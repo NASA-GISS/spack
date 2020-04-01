@@ -35,11 +35,14 @@ spack:
     # https://www.mpi-forum.org/docs/mpi-3.1/mpi31-report/node34.htm
     openmpi:
       paths:
-        # openmpi@3.1.4: /opt/scyld/openmpi/3.1.4/intel
+        # Need to remove:
+        #   1. Create a copy of scyld/openmpi/3.1.4 in user space, with rpath fixed.
+        #   2. Replace /opt/scyld/openmpi with user copy on all Spack-generated binaries (hopefully just libraries)
+        openmpi@3.1.4: /opt/scyld/openmpi/3.1.4/intel
 
         # Copy of the above in which /usr/lib64 has been removed from the rpath
         # This prevents /usr/lib64/stdc++ from being loaded by accident
-        openmpi@3.1.4: /import/unsupported/TWOWAY/opt/scyld/openmpi/3.1.4/intel
+        #openmpi@3.1.4: /import/unsupported/TWOWAY/opt/scyld/openmpi/3.1.4/intel
 
       version: [3.1.4]     # Don't choose version for the user
       buildable: false
