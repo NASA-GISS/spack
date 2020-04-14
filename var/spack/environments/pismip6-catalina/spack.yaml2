@@ -1,0 +1,50 @@
+# This is a Spack Environment file.
+#
+# It describes a set of packages to be installed, along with
+# configuration settings.
+spack:
+  # add package specs to the `specs` list
+
+  concretization: together
+  packages:
+    ffmpeg:
+        variants: [+nonfree]
+    qgis:
+        variants: [+grass7]
+    gdal:
+        variants: [+python]
+    py-pyqt5:
+        variants: [+qsci_api]
+
+    # Get around concretizer bug
+    hdf5:
+        variants: [+hl+threadsafe]
+
+#    # Agree on proj@5
+#    proj:
+#        version: [5.2.0]
+#    gdal:
+#        version: [2.4.4]
+#    grass:
+#        version: [7.8.2]
+
+
+
+#    py-pyproj:
+#        version: [2.2.0]
+
+
+    all:
+#        variants: [+python3]
+#        compiler: [intel@18.5.274]
+        providers:
+            mpi: [mpich]
+#            blas: [intel-mkl]
+#            lapack: [intel-mkl]
+#            scalapack: [intel-mkl]
+#            mkl: [intel-mkl]
+#            fftw-api: [intel-mkl]
+
+  specs: [qgis, cdo, nco, gdal, ncview, git, ffmpeg, py-black, py-numpy, py-qtpy, py-pytest, py-nose, py-simplegeneric, py-sphinx, py-sphinx-rtd-theme, py-jupyter, py-pip, py-autopep8, py-pyproj, py-scipy, py-cython, py-netcdf4, py-matplotlib, py-basemap, py-seaborn, py-statsmodels, py-pandas, py-fiona, py-unidecode, py-scikit-learn, py-xarray, py-sympy]
+  view: false
+

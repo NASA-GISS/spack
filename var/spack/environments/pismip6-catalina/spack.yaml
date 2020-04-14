@@ -1,0 +1,69 @@
+# This is a Spack Environment file.
+#
+# It describes a set of packages to be installed, along with
+# configuration settings.
+spack:
+  # add package specs to the `specs` list
+
+  concretization: together
+  packages:
+    ffmpeg:
+      variants: [+nonfree]
+      version: []
+      target: []
+      compiler: []
+      buildable: true
+      modules: {}
+      providers: {}
+      paths: {}
+    qgis:
+      variants: [+grass7]
+      version: []
+      target: []
+      compiler: []
+      buildable: true
+      modules: {}
+      providers: {}
+      paths: {}
+    gdal:
+      variants: [+python]
+      version: []
+      target: []
+      compiler: []
+      buildable: true
+      modules: {}
+      providers: {}
+      paths: {}
+    py-pyqt5:
+      variants: [+qsci_api]
+      version: []
+      target: []
+      compiler: []
+      buildable: true
+      modules: {}
+      providers: {}
+      paths: {}
+    hdf5:
+      variants: [+hl+threadsafe]
+      version: []
+      target: []
+      compiler: []
+      buildable: true
+      modules: {}
+      providers: {}
+      paths: {}
+    all:
+      providers:
+        mpi: [mpich]
+      version: []
+      target: []
+      compiler: []
+      buildable: true
+      modules: {}
+      paths: {}
+  specs: [qgis, cdo, nco, gdal, ncview, git, ffmpeg, py-black, py-numpy, py-qtpy,
+    py-pytest, py-nose, py-simplegeneric, py-sphinx, py-sphinx-rtd-theme, py-jupyter,
+    py-pip, py-autopep8, py-pyproj, py-scipy, py-cython, py-netcdf4, py-matplotlib,
+    py-basemap, py-seaborn, py-statsmodels, py-pandas, py-fiona, py-unidecode, py-scikit-learn,
+    py-xarray, py-sympy]
+  view: false
