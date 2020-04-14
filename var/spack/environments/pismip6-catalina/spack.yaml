@@ -52,6 +52,22 @@ spack:
       modules: {}
       providers: {}
       paths: {}
+    openblas:
+      version: [0.2.20]
+      target: []
+      compiler: []
+      buildable: true
+      modules: {}
+      providers: {}
+      paths: {}
+    mpfr:
+      version: [4.0.1]
+      target: []
+      compiler: []
+      buildable: true
+      modules: {}
+      providers: {}
+      paths: {}
     all:
       providers:
         mpi: [mpich]

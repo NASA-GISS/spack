@@ -20,6 +20,24 @@ spack:
     hdf5:
         variants: [+hl+threadsafe]
 
+    # openblas@0.3.9 caused a compiler bug with Apple clang version 11.0.3 (clang-1103.0.32.29) from Catalina
+    # Try a different version of openblas
+    # openblas@02.20 is from July 2017, which is still after the 2015 vintage of tok
+    openblas:
+        version: [0.2.20]
+    # If this doesn't work, try 0.2.12
+    # https://gist.github.com/zachmayer/e591cf868b3a381a01d6
+
+    # mpfr patch has sha256 failure for version 4.0.2
+    mpfr:
+        version: [4.0.1]
+
+    # Apple has Blas and LAPACK built-in as the Accelerate Framework
+    # Maybe just use those, fake it out as openblas, etc.
+    # ls /System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A
+    # ls -l /usr/lib/libblas.dylib
+    # https://developer.apple.com/documentation/accelerate
+
 #    # Agree on proj@5
 #    proj:
 #        version: [5.2.0]
