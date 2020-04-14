@@ -66,7 +66,10 @@ class Grass(AutotoolsPackage):
     depends_on('proj@:4', when='@:7.5')
     # GRASS 7.8.0 was supposed to support PROJ 6, but it still checks for
     # share/proj/epsg, which was removed in PROJ 6
-    depends_on('proj@:5', when='@:7.8')
+    depends_on('proj@:5', when='@:7.8.0')
+    # PROJ6 support released in GRASS 7.8.1
+    # https://courses.neteler.org/grass-gis-7-8-1-released-with-proj-6-and-gdal-3-support/
+    depends_on('proj@6:', when='@7.8.1:')
     depends_on('python@2.7:', type=('build', 'run'))
     depends_on('python@2.7:2.8', when='@:7.6', type=('build', 'run'))
     depends_on('py-six', when='@7.8:', type=('build', 'run'))

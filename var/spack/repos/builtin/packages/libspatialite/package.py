@@ -18,7 +18,8 @@ class Libspatialite(AutotoolsPackage):
 
     depends_on('pkgconfig', type='build')
     depends_on('sqlite+rtree')
-    depends_on('proj@:5')
+    # PROJ.6 is OK: https://www.gaia-gis.it/fossil/libspatialite/wiki?name=PROJ.6
+    depends_on('proj')
     depends_on('geos')
     depends_on('freexl')
     depends_on('iconv')
