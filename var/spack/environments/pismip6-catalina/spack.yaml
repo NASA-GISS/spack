@@ -5,19 +5,10 @@
 spack:
   # add package specs to the `specs` list
 
-  concretization: together
+#  concretization: together
   packages:
     ffmpeg:
       variants: [+nonfree]
-      version: []
-      target: []
-      compiler: []
-      buildable: true
-      modules: {}
-      providers: {}
-      paths: {}
-    qgis:
-      variants: [+grass7]
       version: []
       target: []
       compiler: []
@@ -68,6 +59,32 @@ spack:
       modules: {}
       providers: {}
       paths: {}
+    grass:
+      version: [develop]
+      target: []
+      compiler: []
+      buildable: true
+      modules: {}
+      providers: {}
+      paths: {}
+    llvm:
+      paths:
+        llvm@10.0.0: /Users/eafischer2/opt/clang+llvm-10.0.0-x86_64-apple-darwin
+      buildable: false
+      version: [10.0.0]
+      target: []
+      compiler: []
+      modules: {}
+      providers: {}
+    qt:
+      paths:
+        qt@5.14.2+opengl+dbus: /Users/eafischer2/opt/Qt/5.14.2/clang_64
+      buildable: false
+      version: [5.14.2]
+      target: []
+      compiler: []
+      modules: {}
+      providers: {}
     all:
       providers:
         mpi: [mpich]
@@ -77,9 +94,5 @@ spack:
       buildable: true
       modules: {}
       paths: {}
-  specs: [qgis, cdo, nco, gdal, ncview, git, ffmpeg, py-black, py-numpy, py-qtpy,
-    py-pytest, py-nose, py-simplegeneric, py-sphinx, py-sphinx-rtd-theme, py-jupyter,
-    py-pip, py-autopep8, py-pyproj, py-scipy, py-cython, py-netcdf4, py-matplotlib,
-    py-basemap, py-seaborn, py-statsmodels, py-pandas, py-fiona, py-unidecode, py-scikit-learn,
-    py-xarray, py-sympy]
+  specs: [qgis] #, cdo, nco, gdal, ncview, git, ffmpeg, py-black, py-numpy, py-qtpy, py-pytest, py-nose, py-simplegeneric, py-sphinx, py-sphinx-rtd-theme, py-jupyter, py-pip, py-autopep8, py-pyproj, py-scipy, py-cython, py-netcdf4, py-matplotlib, py-basemap, py-seaborn, py-statsmodels, py-pandas, py-fiona, py-unidecode, py-scikit-learn, py-xarray, py-sympy]
   view: false

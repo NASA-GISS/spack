@@ -5,12 +5,13 @@
 spack:
   # add package specs to the `specs` list
 
-  concretization: together
+#  concretization: together
   packages:
     ffmpeg:
         variants: [+nonfree]
-    qgis:
-        variants: [+grass7]
+#   grass7 just isn't building, maybe we don't need it.
+#    qgis:
+#        variants: [+grass7]
     gdal:
         variants: [+python]
     py-pyqt5:
@@ -32,11 +33,33 @@ spack:
     mpfr:
         version: [4.0.1]
 
+    # The release 7.8 just doesn't compile on MacOS Catalina.
+    grass:
+        version: [develop]
+
     # Apple has Blas and LAPACK built-in as the Accelerate Framework
     # Maybe just use those, fake it out as openblas, etc.
     # ls /System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A
     # ls -l /usr/lib/libblas.dylib
     # https://developer.apple.com/documentation/accelerate
+
+    # Just use manually downloaded LLVM.  It's too much to build, and
+    # keeps hitting errors after 1 hour.
+    llvm:
+        paths:
+            llvm@10.0.0: /Users/eafischer2/opt/clang+llvm-10.0.0-x86_64-apple-darwin
+        buildable: False
+        version: [10.0.0]
+
+    # I just downloaded Qt binaries from the Qt website.  This was more successful
+    # for MacOS than trying to build Qt, Mesa (OpenGL), etc. from scratch.
+    # https://www.qt.io/download-thank-you
+    qt:
+        paths:
+            qt@5.14.2+opengl+dbus: /Users/eafischer2/opt/Qt/5.14.2/clang_64
+        buildable: False
+        version: [5.14.2]
+
 
 #    # Agree on proj@5
 #    proj:
@@ -63,6 +86,6 @@ spack:
 #            mkl: [intel-mkl]
 #            fftw-api: [intel-mkl]
 
-  specs: [qgis, cdo, nco, gdal, ncview, git, ffmpeg, py-black, py-numpy, py-qtpy, py-pytest, py-nose, py-simplegeneric, py-sphinx, py-sphinx-rtd-theme, py-jupyter, py-pip, py-autopep8, py-pyproj, py-scipy, py-cython, py-netcdf4, py-matplotlib, py-basemap, py-seaborn, py-statsmodels, py-pandas, py-fiona, py-unidecode, py-scikit-learn, py-xarray, py-sympy]
+  specs: [qgis]#, cdo, nco, gdal, ncview, git, ffmpeg, py-black, py-numpy, py-qtpy, py-pytest, py-nose, py-simplegeneric, py-sphinx, py-sphinx-rtd-theme, py-jupyter, py-pip, py-autopep8, py-pyproj, py-scipy, py-cython, py-netcdf4, py-matplotlib, py-basemap, py-seaborn, py-statsmodels, py-pandas, py-fiona, py-unidecode, py-scikit-learn, py-xarray, py-sympy]
   view: false
 
