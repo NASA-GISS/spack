@@ -24,6 +24,10 @@ export MODULEPATH=$MODULEPATH:$(join ':' $SPACK_ROOT/share/spack/modules/*)
 #module purge
 
 # Load Spack-generated modules (or view-based env)
+PATH0="$PATH"
 source $SPACK_ENV/loads
+export PATH="$PATH:$PATH0"
+# This just messes things up
+unset DYLD_LIBRARY_PATH
 
 export PATH=$PATH:$SPACK_ROOT/bin
