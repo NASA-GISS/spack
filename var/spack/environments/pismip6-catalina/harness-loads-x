@@ -1,0 +1,15 @@
+# macOS doesn't have readlink -f (but it can be obtained from GNU coreutils)
+# https://stackoverflow.com/questions/5756524/how-to-get-absolute-path-name-of-shell-script-on-macos
+pushd . >/dev/null
+SCRIPT_DIR=$(dirname "${BASH_SOURCE[0]}")
+export HARNESS0=$(cd "$SCRIPT_DIR" >/dev/null; pwd -P )
+popd >/dev/null
+
+
+source $HOME/spack/environments/pismip6-catalina/loads-x
+
+export HARNESS="$HARNESS0"
+# $HARNESS is for pypismtools
+export PYTHONPATH=$PYTHONPATH:$HARNESS:$HARNESS/pygiss:$HARNESS/crios2pism/lib
+cd $HARNESS
+
