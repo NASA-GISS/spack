@@ -82,6 +82,7 @@ class Pism(CMakePackage):
     depends_on('everytrace', when='+everytrace')
 
     extends('python', type=('build', 'run'), when='+python')
+    depends_on('python+shared', type=('build', 'run'), when='+python')
     depends_on('python@2.7:2.8,3.3:', type=('build', 'run'), when='@1.1: +python')
     depends_on('python@2.7:2.8', type=('build', 'run'), when='@:1.0 +python')
     depends_on('swig', type='build', when='+python')
