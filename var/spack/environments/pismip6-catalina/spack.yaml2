@@ -59,7 +59,11 @@ spack:
             qt@5.14.2+opengl+dbus: /Users/eafischer2/opt/Qt/5.14.2/clang_64
         buildable: False
         version: [5.14.2]
-
+    ghostscript:
+        paths:
+            ghostscript@9.27: /usr/local    # Don't know how this was installed
+        buildable: False
+        version: [9.27]
 
 #    # Agree on proj@5
 #    proj:
@@ -74,6 +78,10 @@ spack:
 #    py-pyproj:
 #        version: [2.2.0]
 
+    petsc:
+        variants: [~fortran]    # Don't need Fortran bindings for PISM
+    pism:
+        variants: [+python]
 
     all:
 #        variants: [+python3]
@@ -89,7 +97,7 @@ spack:
 # Install these by hand; should try to sync Python version with QGIS
 # qgis ffmpeg
 
-  specs: [py-cdo, nco, gdal+python+netcdf+hdf5, ncview, git, py-black, py-numpy, py-qtpy, py-pytest, py-nose, py-simplegeneric, py-sphinx, py-sphinx-rtd-theme, py-jupyter, py-pip, py-autopep8, py-pyproj, py-scipy, py-cython, py-netcdf4, py-matplotlib, py-basemap, py-seaborn, py-statsmodels, py-pandas, py-fiona, py-unidecode, py-scikit-learn, py-xarray, py-sympy, py-palettable, py-cf-units]
+  specs: [py-cdo, nco, gdal+python+netcdf+hdf5, ncview, git, py-black, py-numpy, py-qtpy, py-pytest, py-nose, py-simplegeneric, py-sphinx, py-sphinx-rtd-theme, py-jupyter, py-pip, py-autopep8, py-pyproj, py-scipy, py-cython, py-netcdf4, py-matplotlib, py-basemap, py-seaborn, py-statsmodels, py-pandas, py-fiona, py-unidecode, py-scikit-learn, py-xarray, py-sympy, py-palettable, py-cf-units, imagemagick, pism]
 #  view: false
   view: true
 

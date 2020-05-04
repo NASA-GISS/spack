@@ -103,6 +103,8 @@ class Petsc(Package):
             description='Enable when mpiexec is not available to run binaries')
     variant('valgrind', default=False,
             description='Enable Valgrind Client Request mechanism')
+    variant('fortran', default=True,
+            description='Enable Fortran interface')
 
     # 3.8.0 has a build issue with MKL - so list this conflict explicitly
     conflicts('^intel-mkl', when='@3.8.0')
@@ -147,8 +149,12 @@ class Petsc(Package):
     depends_on('metis@5:~int64', when='@3.8:+metis~int64')
     depends_on('metis@5:+int64', when='@3.8:+metis+int64')
 
-    depends_on('hdf5@:1.10.99+mpi+hl+fortran', when='@:3.12.99+hdf5+mpi')
-    depends_on('hdf5+mpi+hl+fortran', when='@3.13:+hdf5+mpi')
+    depends_on('hdf5@:1.10.99+mpi+hl+fortran', when='@:3.12.99+hdf5+mpi+fortran')
+    depends_on('hdf5+mpi+hl+fortran', when='@3.13:+hdf5+mpi+fortran')
+
+    depends_on('hdf5@:1.10.99+mpi+hl', when='@:3.12.99+hdf5+mpi')
+    depends_on('hdf5+mpi+hl', when='@3.13:+hdf5+mpi')
+
     depends_on('zlib', when='+hdf5')
     depends_on('parmetis', when='+metis+mpi')
     depends_on('valgrind', when='+valgrind')
@@ -202,10 +208,16 @@ class Petsc(Package):
                 '--with-cc=%s' % os.environ['CC'],
                 '--with-cxx=%s' % (os.environ['CXX']
                                    if self.compiler.cxx is not None else '0'),
-                '--with-fc=%s' % (os.environ['FC']
-                                  if self.compiler.fc is not None else '0'),
                 '--with-mpi=0'
             ]
+            if '+fortran' in self.spec:
+                compiler_opts.append(
+                    '--with-fc=%s' % (os.environ['FC']
+                    if self.compiler.fc is not None else '0'))
+            else:
+                compiler_opts.append('--with-fc=0')
+
+
             error_message_fmt = \
                 '\t{library} support requires "+mpi" to be activated'
 
@@ -224,6 +236,12 @@ class Petsc(Package):
                 '--with-cxx=%s' % self.spec['mpi'].mpicxx,
                 '--with-fc=%s' % self.spec['mpi'].mpifc,
             ]
+            if '+fortran' in self.spec:
+                compiler_opts.append(
+                    '--with-fc=%s' % self.spec['mpi'].mpifc)
+            else:
+                compiler_opts.append('--with-fc=0')
+
             if self.spec.satisfies('%intel'):
                 # mpiifort needs some help to automatically link
                 # all necessary run-time libraries
