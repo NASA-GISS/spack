@@ -16,6 +16,7 @@ class Pism(CMakePackage):
     maintainers = ['citibeth']
 
     version('develop', branch='dev')
+    version('1.2.1', sha256='f1b1373d8c76b265e12404d5372c1a14cf490d3c53317d2a493f10e337a47202')
     version('1.1.4', sha256='8ccb867af3b37e8d103351dadc1d7e77512e64379519fe8a2592668deb27bc44')
     version('0.7.x', branch='stable0.7')
     version('icebin', branch='efischer/dev')
@@ -76,14 +77,22 @@ class Pism(CMakePackage):
     depends_on('netcdf-c')    # Only the C interface is used, no netcdf-cxx4
     depends_on('petsc')
     depends_on('udunits')
-    depends_on('proj@:4')
+    depends_on('proj@:4', when='@:1.1')
+    depends_on('proj@5:', when='@1.2:')   # Can use PROJ.4 or PROJ.5+ API
     depends_on('everytrace', when='+everytrace')
 
-    extends('python', when='+python')
-    depends_on('python@2.7:2.8,3.3:', when='@1.1: +python')
-    depends_on('python@2.7:2.8', when='@:1.0 +python')
-    depends_on('py-matplotlib', when='+python')
-    depends_on('py-numpy', when='+python')
+    extends('python', type=('build', 'run'), when='+python')
+    depends_on('python@2.7:2.8,3.3:', type=('build', 'run'), when='@1.1: +python')
+    depends_on('python@2.7:2.8', type=('build', 'run'), when='@:1.0 +python')
+    depends_on('swig', type='build', when='+python')
+    depends_on('py-petsc4py', type=('build', 'run'), when='+python')
+
+    # The following Python packages are needed to do all the examples
+    # in the User’s Manual (which run Python scripts):
+    # https://pism-docs.org/sphinx/installation/prerequisites.html
+    depends_on('py-matplotlib', type=('run'), when='+python')
+    depends_on('py-numpy', type=('run'), when='+python')
+    depends_on('py-netcdf4', type=('run'), when='+python')
 
     def cmake_args(self):
         spec = self.spec
@@ -146,3 +155,24 @@ class Pism(CMakePackage):
 # |          0.3 | 2.3.3 to 3.1  |
 # |          0.2 | 2.3.3 to 3.0  |
 # |          0.1 | 2.3.3-p2      |
+
+
+
+# Correspondence with Constantine March 2019
+#
+#  > What are the implications to PISM of building PETSc with / without 
+# scalapack?
+# 
+# The only effect is on PISM's performance (i.e. faster / slower), 
+# although we haven't used ScaLAPACK and don't know if it makes any 
+# difference.
+# 
+# There are two reasons we recommend building PETSc with "--with-fc=0":
+# 
+# 1) PISM does not use PETSc's Fortran API.
+# 2) Because of 1) most PISM users don't need to install a Fortran compiler.
+# 
+# You cannot build PISM using PETSc configured with 
+# "--with-scalar-type=complex". Other than that you are free to configure 
+# PETSc any way you want, e.g. with or without ScaLAPACK and with or 
+# without Fortran support. So feel free to remove --with-fc=0 if you need to.
