@@ -7,6 +7,8 @@ spack:
 
 #  concretization: together
   packages:
+    python:
+        variants: [+shared]   # PISM needs this
     ffmpeg:
         variants: [+nonfree]
 #   grass7 just isn't building, maybe we don't need it.
@@ -81,6 +83,7 @@ spack:
     petsc:
         variants: [~fortran]    # Don't need Fortran bindings for PISM
     pism:
+        version: [develop]
         variants: [+python]
 
     all:
@@ -97,7 +100,7 @@ spack:
 # Install these by hand; should try to sync Python version with QGIS
 # qgis ffmpeg
 
-  specs: [py-cdo, nco, gdal+python+netcdf+hdf5, ncview, git, py-black, py-numpy, py-qtpy, py-pytest, py-nose, py-simplegeneric, py-sphinx, py-sphinx-rtd-theme, py-jupyter, py-pip, py-autopep8, py-pyproj, py-scipy, py-cython, py-netcdf4, py-matplotlib, py-basemap, py-seaborn, py-statsmodels, py-pandas, py-fiona, py-unidecode, py-scikit-learn, py-xarray, py-sympy, py-palettable, py-cf-units, imagemagick, pism]
+  specs: [py-geojson, py-shapely, py-findiff, rclone, py-cdo, nco, gdal+python+netcdf+hdf5, ncview, git, py-black, py-numpy, py-qtpy, py-pytest, py-nose, py-simplegeneric, py-sphinx, py-sphinx-rtd-theme, py-jupyter, py-pip, py-autopep8, py-pyproj, py-scipy, py-cython, py-netcdf4, py-matplotlib, py-basemap, py-seaborn, py-statsmodels, py-pandas, py-fiona, py-unidecode, py-scikit-learn, py-xarray, py-sympy, py-palettable, py-cf-units, imagemagick, pism, wget]
 #  view: false
   view: true
 
