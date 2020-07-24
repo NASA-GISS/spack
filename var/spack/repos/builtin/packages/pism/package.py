@@ -97,7 +97,7 @@ class Pism(CMakePackage):
     def cmake_args(self):
         spec = self.spec
 
-        return [
+        args = [
             '-DCMAKE_C_COMPILER=%s' % spec['mpi'].mpicc,
             '-DCMAKE_CXX_COMPILER=%s' % spec['mpi'].mpicxx,
             # Fortran not needed for PISM...
@@ -124,6 +124,13 @@ class Pism(CMakePackage):
             ('YES' if '+examples' in spec else 'NO'),
             '-DPism_USE_EVERYTRACE=%s' %
             ('YES' if '+everytrace' in spec else 'NO')]
+
+        # See suggestion at https://github.com/spack/spack/issues/16246
+        if spec.satisfies('+python'):
+            args.append('-DPYTHON_EXECUTABLE:FILEPATH={0}'.format(
+            self.spec['python'].command.path))
+
+        return args
 
     def setup_run_environment(self, env):
         env.set('PISM_PREFIX', self.prefix)
