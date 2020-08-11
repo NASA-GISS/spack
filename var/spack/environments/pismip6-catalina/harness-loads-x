@@ -10,6 +10,10 @@ source $HOME/spack/environments/pismip6-catalina/loads-x
 
 export HARNESS="$HARNESS0"
 # $HARNESS is for pypismtools
-export PYTHONPATH=$PYTHONPATH:$HARNESS:$HARNESS/pygiss:$HARNESS/crios2pism/lib
-cd $HARNESS
+export PYTHONPATH=$PYTHONPATH:$HARNESS/uafgi:$HARNESS  #$HARNESS:$HARNESS/pygiss:$HARNESS/uafgi
+#cd $HARNESS
 
+# Allow Python ctypes to load dynamic libraries on Macintosh
+# (eg Python package GEOS)
+# https://bugs.python.org/issue9998
+export DYLD_FALLBACK_LIBRARY_PATH=$LD_LIBRARY_PATH
