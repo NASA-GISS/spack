@@ -1,0 +1,22 @@
+# Set up Spack and Modules
+# http://stackoverflow.com/questions/59895/can-a-bash-script-tell-which-directory-it-is-stored-in
+
+# macOS doesn't have readlink -f (but it can be obtained from GNU coreutils)
+# https://stackoverflow.com/questions/5756524/how-to-get-absolute-path-name-of-shell-script-on-macos
+pushd . >/dev/null
+SCRIPT_DIR=$(dirname "${BASH_SOURCE[0]}")
+export SPACK_ENV=$(cd "$SCRIPT_DIR" >/dev/null; pwd -P )
+popd >/dev/null
+
+# Stuff common to all environments on catalina
+source $SPACK_ENV/../machines/catalina.sh
+
+# Above the line is standard for any project on catalina
+# ---------------------------------------------------
+# Below the line: specific to the twoway project
+
+# Add cmake to the command-line environment (after the fact)
+# module load cmake-3.13.3-intel-18.0.4-dxop5rh
+
+EHOME=/Users/eafischer2
+export PATH=$EHOME/opt/ffmpeg-20200417-889ad93-macos64-static/bin:$EHOME/opt/Qt/5.14.2/clang_64/bin:$PATH:$EHOME/opt/clang+llvm-10.0.0-x86_64-apple-darwin/bin
