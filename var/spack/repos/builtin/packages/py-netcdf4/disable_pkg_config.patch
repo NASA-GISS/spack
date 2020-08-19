@@ -1,0 +1,10 @@
+--- spack-src/setup.py.org
++++ spack-src/setup.py
+@@ -282,6 +282,8 @@ try:
+ except OSError:
+     HAS_PKG_CONFIG = False
+ 
++HAS_PKG_CONFIG = False
++
+ def _populate_hdf5_info(dirstosearch, inc_dirs, libs, lib_dirs):
+     global HDF5_incdir, HDF5_dir, HDF5_libdir
