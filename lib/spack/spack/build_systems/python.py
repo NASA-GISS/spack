@@ -459,4 +459,14 @@ class PythonPackage(PackageBase):
             if global_view or not path_contains_subdirectory(src, bin_dir):
                 view.remove_file(src, dst)
             else:
-                os.remove(dst)
+                try:
+                    os.remove(dst)
+                except FileNotFoundError:
+                    pass
+# Solves problem:
+#  File "/Users/eafischer2/spack/lib/spack/spack/filesystem_view.py", line 348, in unmerge
+#    pkg.remove_files_from_view(self, merge_map)
+#  File "/Users/eafischer2/spack/lib/spack/spack/build_systems/python.py", line 462, in remove_files_from_view
+#    os.remove(dst)
+#FileNotFoundError: [Errno 2] No such file or directory: '/Users/eafischer2/spack/var/spack/environments/pismip6-catalina/.spack-env/view/bin/jupyter-run'
+

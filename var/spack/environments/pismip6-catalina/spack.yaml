@@ -26,7 +26,7 @@ spack:
       providers: {}
       paths: {}
     gdal:
-      variants: [+python+netcdf+hdf5]
+      variants: [+python+netcdf+hdf5+libkml]
       version: []
       target: []
       compiler: []
@@ -130,10 +130,10 @@ spack:
       buildable: true
       modules: {}
       paths: {}
-  specs: [py-dill, py-cartopy, py-fiona, py-geojson, py-shapely, py-findiff, rclone,
-    py-cdo, nco, gdal+python+netcdf+hdf5, ncview, git, py-black, py-numpy, py-qtpy,
-    py-pytest, py-nose, py-simplegeneric, py-sphinx, py-sphinx-rtd-theme, py-jupyter,
-    py-pip, py-autopep8, py-pyproj, py-scipy, py-cython, py-netcdf4, py-matplotlib,
-    py-basemap, py-seaborn, py-statsmodels, py-pandas, py-fiona, py-unidecode, py-scikit-learn,
+  specs: [py-python-levenshtein, py-dill, py-cartopy, py-fiona, py-geojson, py-shapely,
+    py-findiff, rclone, py-cdo, nco, ncview, git, py-black, py-numpy, py-qtpy, py-pytest,
+    py-nose, py-simplegeneric, py-sphinx, py-sphinx-rtd-theme, py-jupyter, py-pip,
+    py-autopep8, py-pyproj, py-scipy, py-cython, py-netcdf4, py-matplotlib, py-basemap,
+    py-seaborn, py-statsmodels, py-pandas, py-fiona, py-unidecode, py-scikit-learn,
     py-xarray, py-sympy, py-palettable, py-cf-units, imagemagick, pism, wget]
   view: true

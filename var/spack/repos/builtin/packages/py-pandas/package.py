@@ -11,6 +11,7 @@ class PyPandas(PythonPackage):
 
     homepage = "https://pandas.pydata.org/"
     pypi = "pandas/pandas-1.2.0.tar.gz"
+    url = "https://pypi.io/packages/source/p/pandas/pandas-1.1.4.tar.gz"
 
     maintainers = ['adamjstewart']
     import_modules = [
