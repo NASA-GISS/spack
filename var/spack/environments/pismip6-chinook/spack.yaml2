@@ -1,0 +1,115 @@
+# This is a Spack Environment file.
+#
+# It describes a set of packages to be installed, along with
+# configuration settings.
+spack:
+  # add package specs to the `specs` list
+
+#  concretization: together
+  packages:
+
+    # ================================== BEGIN Specific for Chinook
+    intel-mkl:
+        paths:
+            intel-mkl@2018.4.274: /usr/local/pkg/compiler/icc/2018.5.274-GCC-5.4.0-2.26/compilers_and_libraries_2018.5.274/linux/mkl/lib
+        version: [2018.4.274]
+        buildable: False
+
+    # Intel 18 doesn't support features needed by Freetype 2.9
+    # https://github.com/spack/spack/issues/13984
+    freetype:
+        version: [2.7.1]
+
+    # ================================== END Specific for Chinook
+
+    python:
+        variants: [+shared]   # PISM needs this
+    ffmpeg:
+        variants: [+nonfree]
+    gdal:
+        variants: [+python+netcdf+hdf5+libkml]
+    py-pyqt5:
+        variants: [+qsci_api]
+
+    # Get around concretizer bug
+    hdf5:
+        variants: [+hl+threadsafe]
+
+    # This did not work in boost, so we downgraderclone
+    # Fix boost@1.70: for Intel compiler
+    # https://github.com/spack/spack/issues/16328
+    # patch('boost_intel_toolset_cxx11.patch', when='@1.70:%intel')
+    boost:
+        version: [1.69.0]
+
+#    # openblas@0.3.9 caused a compiler bug with Apple clang version 11.0.3 (clang-1103.0.32.29) from Catalina
+#    # Try a different version of openblas
+#    # openblas@02.20 is from July 2017, which is still after the 2015 vintage of tok
+#    openblas:
+#        version: [0.2.20]
+#    # If this doesn't work, try 0.2.12
+#    # https://gist.github.com/zachmayer/e591cf868b3a381a01d6
+
+    # mpfr patch has sha256 failure for version 4.0.2
+    mpfr:
+        version: [4.0.1]
+
+    # The release 7.8 just doesn't compile on MacOS Catalina.
+    grass:
+        version: [develop]
+
+    # Apple has Blas and LAPACK built-in as the Accelerate Framework
+    # Maybe just use those, fake it out as openblas, etc.
+    # ls /System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A
+    # ls -l /usr/lib/libblas.dylib
+    # https://developer.apple.com/documentation/accelerate
+
+    # Just use manually downloaded LLVM.  It's too much to build, and
+    # keeps hitting errors after 1 hour.
+    llvm:
+        paths:
+            llvm@10.0.0: /Users/eafischer2/opt/clang+llvm-10.0.0-x86_64-apple-darwin
+        buildable: False
+        version: [10.0.0]
+
+    ghostscript:
+        paths:
+            ghostscript@8.70: /usr
+        buildable: False
+        version: [8.70]
+
+    petsc:
+        variants: [~fortran]    # Don't need Fortran bindings for PISM
+    pism:
+        version: [develop]
+        variants: [+python]
+
+    all:
+#        variants: [+python3]
+#        compiler: [intel@18.5.274]
+        providers:
+            mpi: [mpich]
+            blas: [intel-mkl]
+            lapack: [intel-mkl]
+            scalapack: [intel-mkl]
+            mkl: [intel-mkl]
+            fftw-api: [intel-mkl]
+
+# Install these by hand; should try to sync Python version with QGIS
+# qgis ffmpeg
+
+#  specs: [python]
+
+# We just got this with pip
+# py-pandas-ods-reader, 
+  specs: [py-scikit-image, py-python-levenshtein, py-dill, py-cartopy, py-fiona, py-geojson, py-shapely, py-findiff, py-cdo, nco, ncview, py-black, py-numpy, py-pytest, py-nose, py-simplegeneric, py-sphinx, py-sphinx-rtd-theme, py-pip, py-autopep8, py-pyproj, py-scipy, py-cython, py-netcdf4, py-matplotlib, py-basemap, py-seaborn, py-statsmodels, py-pandas, py-fiona, py-unidecode, py-scikit-learn, py-xarray, py-sympy, py-palettable, py-cf-units, pism, wget]
+  view: false
+#  view: true
+
+# Already installed binaries, ~/opt/rclone
+# rclone
+
+# All of these require harfbuzz, which doesn't build on Intel compiler
+# , py-qtpy, py-jupyter, imagemagick
+# Just not needed
+# git, 

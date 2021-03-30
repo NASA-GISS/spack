@@ -226,6 +226,10 @@ class Boost(Package):
     patch('clang-linux_add_option.patch', when='@1.56.0:1.63.0')
     patch('clang-linux_add_option2.patch', when='@1.47.0:1.55.0')
 
+    # Fix boost@1.70: for Intel compiler
+    # https://github.com/spack/spack/issues/16328
+    patch('boost_intel_toolset_cxx11.patch', when='@1.70:%intel')
+
     def url_for_version(self, version):
         if version >= Version('1.63.0'):
             url = "https://dl.bintray.com/boostorg/release/{0}/source/boost_{1}.tar.bz2"

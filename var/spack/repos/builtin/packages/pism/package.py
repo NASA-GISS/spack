@@ -88,7 +88,7 @@ class Pism(CMakePackage):
     depends_on('py-petsc4py', type=('build', 'run'), when='+python')
 
     # The following Python packages are needed to do all the examples
-    # in the User’s Manual (which run Python scripts):
+    # in the Users Manual (which run Python scripts):
     # https://pism-docs.org/sphinx/installation/prerequisites.html
     depends_on('py-matplotlib', type=('run'), when='+python')
     depends_on('py-numpy', type=('run'), when='+python')

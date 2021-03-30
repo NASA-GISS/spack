@@ -11,9 +11,13 @@ class Uriparser(CMakePackage):
     library written in C89 ("ANSI C")."""
 
     homepage = "https://uriparser.github.io/"
-    url      = "https://github.com/uriparser/uriparser/releases/download/uriparser-0.9.3/uriparser-0.9.3.tar.gz"
+    url      = "https://github.com/uriparser/uriparser/releases/download/uriparser-0.9.5/uriparser-0.9.5.tar.gz"
 
-    version('0.9.3', sha256='6cef39d6eaf1a48504ee0264ce85f078758057dafb1edd0a898183b55ff76014')
+    # 0.9.5 needed to work with Intel compilers
+    # http://mail-archives.apache.org/mod_mbox/arrow-jira/202011.mbox/%3CJIRA.13339052.1604594438000.141377.1604597340132@Atlassian.JIRA%3E
+    # https://github.com/uriparser/uriparser/blob/uriparser-0.9.5/ChangeLog
+    version('0.9.5', sha256='1987466a798becb5441a491d29e762ab1a4817a525f82ef239e3d38f85605a77')
+#    version('0.9.3', sha256='6cef39d6eaf1a48504ee0264ce85f078758057dafb1edd0a898183b55ff76014')
 
     variant('docs', default=False, description='Build API documentation')
 
