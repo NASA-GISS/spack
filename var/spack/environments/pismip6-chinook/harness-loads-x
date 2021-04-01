@@ -6,7 +6,7 @@ export HARNESS0=$(cd "$SCRIPT_DIR" >/dev/null; pwd -P )
 popd >/dev/null
 
 
-source $HOME/spack-uaf/environments/pismip6-catalina/loads-x
+source $HOME/spack-uaf/environments/pismip6-chinook/loads-x
 
 export HARNESS="$HARNESS0"
 # $HARNESS is for pypismtools

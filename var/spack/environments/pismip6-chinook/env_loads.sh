@@ -4,7 +4,8 @@
 
 # ------------------------------- For Modules
 
-
+spack -e pismip6-chinook env loads -r
+cat loads | sort | grep '^module' | uniq >loads2
 
 
 ## ------------------------------- For Views

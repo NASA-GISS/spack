@@ -38,7 +38,7 @@ module load openmpi/intel/4.0.3
 # Load Spack-generated modules
 # For some reason, one module unsets the prompt env var PS1:
 #        intel-mkl-2018.4.274-intel-18.5.274-doboyrw
-source $SPACK_ENV/loads
+source $SPACK_ENV/loads2
 export PS1="$PS1_SAVE"
 
 # We will have to replace in it

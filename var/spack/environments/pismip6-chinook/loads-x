@@ -5,10 +5,10 @@
 # https://stackoverflow.com/questions/5756524/how-to-get-absolute-path-name-of-shell-script-on-macos
 export SPACK_ENV=$(readlink -f $(dirname "${BASH_SOURCE[0]}"))
 
-# Stuff common to all environments on catalina
+# Stuff common to all environments on chinook
 source $SPACK_ENV/../machines/chinook-om4.sh
 
-# Above the line is standard for any project on catalina
+# Above the line is standard for any project on chinook
 # ---------------------------------------------------
 # Below the line: specific to the twoway project
 

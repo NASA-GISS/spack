@@ -284,6 +284,7 @@ while [ $# -ne 0 ]; do
     rp=""
 
     if [ -z "$1" ]; then
+        shift
         continue
     fi
 
@@ -387,7 +388,7 @@ while [ $# -ne 0 ]; do
                 echo 'XXX REMOVE ' $1
 #                :  # We want to remove explicitly this flag
             else
-                edcho 'XXX PRESERVE ' $1
+                echo 'XXX PRESERVE ' $1
                 other_args+=("$1")
             fi
             ;;
