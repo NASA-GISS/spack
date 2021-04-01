@@ -95,3 +95,13 @@ class PyScipy(PythonPackage):
         #       source tree, and relaunch your python interpreter from there.
         with working_dir('spack-test', create=True):
             python('-c', 'import scipy; scipy.test("full", verbose=2)')
+
+
+
+    def setup_build_environment(self, env):
+        # Problem F90 not set...
+        # https://github.com/scipy/scipy/issues/9080
+        # https://github.com/spack/spack/issues/8897
+        env.set('F90', spack_fc)
+
+
