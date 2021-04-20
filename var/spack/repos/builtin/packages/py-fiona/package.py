@@ -15,6 +15,8 @@ class PyFiona(PythonPackage):
     maintainers = ['adamjstewart']
     import_modules = ['fiona', 'fiona.fio']
 
+    version('1.8.19', sha256='b9059e0b29c2e9e6b817e53f941e77e1aca7075f986005d38db307067b60458f')
+    version('1.8.18', sha256='b732ece0ff8886a29c439723a3e1fc382718804bb057519d537a81308854967a')
     version('1.8.6',  sha256='fa31dfe8855b9cd0b128b47a4df558f1b8eda90d2181bff1dd9854e5556efb3e')
     version('1.7.12', sha256='8b54eb8422d7c502bb7776b184018186bede1a489cf438a7a47f992ade6a0e51')
 
