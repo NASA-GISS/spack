@@ -9,6 +9,7 @@ spack:
   packages:
     python:
         variants: [+shared]   # PISM needs this
+        version: [3.8.10]
     ffmpeg:
         variants: [+nonfree]
 #   grass7 just isn't building, maybe we don't need it.
