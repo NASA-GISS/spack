@@ -9,131 +9,131 @@ spack:
   packages:
     python:
       variants: [+shared]     # PISM needs this
-      version: []
-      target: []
-      compiler: []
+      version: [3.8.10]
       buildable: true
-      modules: {}
+      target: []
       providers: {}
       paths: {}
+      modules: {}
+      compiler: []
     ffmpeg:
       variants: [+nonfree]
+      buildable: true
       version: []
       target: []
-      compiler: []
-      buildable: true
-      modules: {}
       providers: {}
       paths: {}
+      modules: {}
+      compiler: []
     gdal:
       variants: [+python+netcdf+hdf5+libkml+geos]
+      buildable: true
       version: []
       target: []
-      compiler: []
-      buildable: true
-      modules: {}
       providers: {}
       paths: {}
+      modules: {}
+      compiler: []
     py-pyqt5:
       variants: [+qsci_api]
+      buildable: true
       version: []
       target: []
-      compiler: []
-      buildable: true
-      modules: {}
       providers: {}
       paths: {}
+      modules: {}
+      compiler: []
     hdf5:
       variants: [+hl+threadsafe]
+      buildable: true
       version: []
       target: []
-      compiler: []
-      buildable: true
-      modules: {}
       providers: {}
       paths: {}
+      modules: {}
+      compiler: []
     openblas:
       version: [0.2.20]
-      target: []
-      compiler: []
       buildable: true
-      modules: {}
+      target: []
       providers: {}
       paths: {}
+      modules: {}
+      compiler: []
     mpfr:
       version: [4.0.1]
-      target: []
-      compiler: []
       buildable: true
-      modules: {}
+      target: []
       providers: {}
       paths: {}
+      modules: {}
+      compiler: []
     grass:
       version: [develop]
-      target: []
-      compiler: []
       buildable: true
-      modules: {}
+      target: []
       providers: {}
       paths: {}
+      modules: {}
+      compiler: []
     llvm:
       paths:
         llvm@10.0.0: /Users/eafischer2/opt/clang+llvm-10.0.0-x86_64-apple-darwin
       buildable: false
       version: [10.0.0]
       target: []
-      compiler: []
-      modules: {}
       providers: {}
+      modules: {}
+      compiler: []
     qt:
       paths:
         qt@5.14.2+opengl+dbus: /Users/eafischer2/opt/Qt/5.14.2/clang_64
       buildable: false
       version: [5.14.2]
       target: []
-      compiler: []
-      modules: {}
       providers: {}
+      modules: {}
+      compiler: []
     ghostscript:
       paths:
         ghostscript@9.27: /usr/local
       buildable: false
       version: [9.27]
       target: []
-      compiler: []
-      modules: {}
       providers: {}
+      modules: {}
+      compiler: []
     petsc:
       variants: [~fortran]      # Don't need Fortran bindings for PISM
+      buildable: true
       version: []
       target: []
-      compiler: []
-      buildable: true
-      modules: {}
       providers: {}
       paths: {}
+      modules: {}
+      compiler: []
     pism:
       version: [develop]
       variants: [+python]
-      target: []
-      compiler: []
       buildable: true
-      modules: {}
+      target: []
       providers: {}
       paths: {}
+      modules: {}
+      compiler: []
     all:
       providers:
         mpi: [mpich]
+      buildable: true
       version: []
       target: []
-      compiler: []
-      buildable: true
-      modules: {}
       paths: {}
+      modules: {}
+      compiler: []
   specs: [py-scikit-image, py-python-levenshtein, py-dill, py-cartopy, py-fiona, py-geojson,
     py-shapely, py-findiff, rclone, py-cdo, nco, ncview, git, py-black, py-numpy,
     py-qtpy, py-pytest, py-nose, py-simplegeneric, py-sphinx, py-sphinx-rtd-theme,
     py-jupyter, py-pip, py-autopep8, py-pyproj, py-scipy, py-cython, py-netcdf4, py-matplotlib,
     py-basemap, py-seaborn, py-statsmodels, py-pandas, py-unidecode, py-scikit-learn,
-    py-xarray, py-sympy, py-palettable, py-cf-units, imagemagick, pism, wget]
+    py-xarray, py-sympy, py-palettable, py-cf-units, imagemagick, pism, wget, gettext]
   view: true

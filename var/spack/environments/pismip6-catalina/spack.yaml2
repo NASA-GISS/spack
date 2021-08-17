@@ -102,7 +102,7 @@ spack:
 # qgis ffmpeg
 
 # We just got this with pip
-# py-pandas-ods-reader, 
+# py-pandas-ods-reader, py-rtree
   specs: [py-scikit-image, py-python-levenshtein, py-dill, py-cartopy, py-fiona, py-geojson, py-shapely, py-findiff, rclone, py-cdo, nco, ncview, git, py-black, py-numpy, py-qtpy, py-pytest, py-nose, py-simplegeneric, py-sphinx, py-sphinx-rtd-theme, py-jupyter, py-pip, py-autopep8, py-pyproj, py-scipy, py-cython, py-netcdf4, py-matplotlib, py-basemap, py-seaborn, py-statsmodels, py-pandas, py-unidecode, py-scikit-learn, py-xarray, py-sympy, py-palettable, py-cf-units, imagemagick, pism, wget]
 #  view: false
   view: true
