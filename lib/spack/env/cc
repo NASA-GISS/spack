@@ -279,7 +279,6 @@ isystem_includes=()
 
 #while [ -n "$1" ]; do
 while [ $# -ne 0 ]; do
-    echo 'XXX CONSIDER ' "$#" "$*"
     # an RPATH to be added after the case statement.
     rp=""
 
@@ -301,7 +300,7 @@ while [ $# -ne 0 ]; do
             ;;
         -I*)
             arg="${1#-I}"
-            if [ -z "$arg" ]; then shift; arg="$1"; echo "XXX REMAIN $# $*"; fi
+            if [ -z "$arg" ]; then shift; arg="$1"; fi
             if system_dir "$arg"; then
                 system_includes+=("$arg")
             else
@@ -385,15 +384,12 @@ while [ $# -ne 0 ]; do
             ;;
         *)
             if [[ "$1" = "$dtags_to_strip" ]] ; then
-                echo 'XXX REMOVE ' $1
-#                :  # We want to remove explicitly this flag
+                :  # We want to remove explicitly this flag
             else
-                echo 'XXX PRESERVE ' $1
                 other_args+=("$1")
             fi
             ;;
     esac
-    echo "XXX POST-CASE $# $*"
 
     # test rpaths against system directories in one place.
     if [ -n "$rp" ]; then
@@ -404,7 +400,6 @@ while [ $# -ne 0 ]; do
         fi
     fi
     shift
-    echo "XXX POST-SHIFT $# $*"
 done
 
 #
@@ -589,8 +584,6 @@ if [[ $SPACK_DEBUG == TRUE ]]; then
     echo "[$mode] ${full_command[*]}" >> "$output_log"
 fi
 
-echo "XX1: INPUT_COMMAND [$mode] $command $input_command"
-echo "XX2: FULL_COMMAND [$mode] ${full_command[*]}"
 
 exec "${full_command[@]}"
 
