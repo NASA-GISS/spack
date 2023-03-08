@@ -1,0 +1,4810 @@
+{
+ "concrete_specs": {
+  "4yhwxlthrkasrawhxus6dscgotmymkou": {
+   "pkgconf": {
+    "version": "1.5.4",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles12",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.166"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "cflags": [
+      "-gcc-name=/usr/local/other/gcc/9.2.0/bin/gcc"
+     ],
+     "cppflags": [],
+     "cxxflags": [
+      "-gxx-name=/usr/local/other/gcc/9.2.0/bin/g++"
+     ],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    }
+   }
+  },
+  "z7s5nifphophlvatx5j5pfzerwknnpz5": {
+   "udunits2": {
+    "version": "2.2.24",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles12",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.166"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "cflags": [
+      "-gcc-name=/usr/local/other/gcc/9.2.0/bin/gcc"
+     ],
+     "cppflags": [],
+     "cxxflags": [
+      "-gxx-name=/usr/local/other/gcc/9.2.0/bin/g++"
+     ],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "expat": {
+      "hash": "w4rkrjgf2fwhvgaexdvbywpxnloagkrp",
+      "type": [
+       "build",
+       "link"
+      ]
+     }
+    }
+   }
+  },
+  "ui3mvo27anfoiarwu2pihcckfeohopqc": {
+   "netcdf": {
+    "version": "4.4.0",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles12",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.166"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "dap": false,
+     "hdf4": false,
+     "maxdims": "1024",
+     "maxvars": "8192",
+     "mpi": true,
+     "parallel-netcdf": false,
+     "pic": true,
+     "shared": true,
+     "cflags": [
+      "-gcc-name=/usr/local/other/gcc/9.2.0/bin/gcc"
+     ],
+     "cppflags": [],
+     "cxxflags": [
+      "-gxx-name=/usr/local/other/gcc/9.2.0/bin/g++"
+     ],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "hdf5": {
+      "hash": "yjka5yecgunbuemwihom7uxhz4txxjip",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "intel-mpi": {
+      "hash": "kszyw4b53vbes7rkyzbqf4trabzn637h",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "m4": {
+      "hash": "gq6cq22dt57es45r5oeog4czhs37ao65",
+      "type": [
+       "build"
+      ]
+     },
+     "zlib": {
+      "hash": "lk267u47ez67rkzl7z5gnrdqvhca2n46",
+      "type": [
+       "build",
+       "link"
+      ]
+     }
+    }
+   }
+  },
+  "vgdioaz2sdqe6m5v7zxi2uxia2z3sqv7": {
+   "libsigsegv": {
+    "version": "2.11",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles12",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.166"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "cflags": [
+      "-gcc-name=/usr/local/other/gcc/9.2.0/bin/gcc"
+     ],
+     "cppflags": [],
+     "cxxflags": [
+      "-gxx-name=/usr/local/other/gcc/9.2.0/bin/g++"
+     ],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    }
+   }
+  },
+  "aogcxi3ajiaiaogneekxfy2augpsz2tc": {
+   "libtool": {
+    "version": "2.4.6",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles12",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.166"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "cflags": [
+      "-gcc-name=/usr/local/other/gcc/9.2.0/bin/gcc"
+     ],
+     "cppflags": [],
+     "cxxflags": [
+      "-gxx-name=/usr/local/other/gcc/9.2.0/bin/g++"
+     ],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "m4": {
+      "hash": "gq6cq22dt57es45r5oeog4czhs37ao65",
+      "type": [
+       "build"
+      ]
+     }
+    }
+   }
+  },
+  "3ylkvyxe2j4dgj73ykmqe2fpyww6w4zt": {
+   "py-giss": {
+    "version": "develop",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles12",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.166"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "copy": "standard",
+     "plot": false,
+     "cflags": [
+      "-gcc-name=/usr/local/other/gcc/9.2.0/bin/gcc"
+     ],
+     "cppflags": [],
+     "cxxflags": [
+      "-gxx-name=/usr/local/other/gcc/9.2.0/bin/g++"
+     ],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "py-netcdf4": {
+      "hash": "ehxbmrka4me4uv7o2xoxpok6g4iynp3v",
+      "type": [
+       "build",
+       "run"
+      ]
+     },
+     "py-numpy": {
+      "hash": "igacrg7lcsu5wl4arbebboqrplckog3e",
+      "type": [
+       "build",
+       "run"
+      ]
+     },
+     "py-scipy": {
+      "hash": "7nfeqdiqmqxwsaq3g3e6j3xos5og6af5",
+      "type": [
+       "build",
+       "run"
+      ]
+     },
+     "py-six": {
+      "hash": "ka7os37p2ptaafoay47gu4uj7zo6mkeg",
+      "type": [
+       "build",
+       "run"
+      ]
+     },
+     "python": {
+      "hash": "higa35ahkuo33epxayyry2bx63d4blsb",
+      "type": [
+       "build",
+       "link",
+       "run"
+      ]
+     }
+    }
+   }
+  },
+  "hyvn6mh5bf3bcu6o4fngwmhf3o3orrz5": {
+   "hypre": {
+    "version": "2.13.0",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles12",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.166"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "debug": false,
+     "int64": false,
+     "internal-superlu": false,
+     "mpi": true,
+     "shared": true,
+     "cflags": [
+      "-gcc-name=/usr/local/other/gcc/9.2.0/bin/gcc"
+     ],
+     "cppflags": [],
+     "cxxflags": [
+      "-gxx-name=/usr/local/other/gcc/9.2.0/bin/g++"
+     ],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "intel-mkl": {
+      "hash": "3q7r4midokuhitbv367ydbsqurz74zuf",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "intel-mpi": {
+      "hash": "kszyw4b53vbes7rkyzbqf4trabzn637h",
+      "type": [
+       "build",
+       "link"
+      ]
+     }
+    }
+   }
+  },
+  "slvf4pa2biji4jpcgmhf3fcn3n3xdsah": {
+   "libpthread-stubs": {
+    "version": "0.4",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles12",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.166"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "cflags": [
+      "-gcc-name=/usr/local/other/gcc/9.2.0/bin/gcc"
+     ],
+     "cppflags": [],
+     "cxxflags": [
+      "-gxx-name=/usr/local/other/gcc/9.2.0/bin/g++"
+     ],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    }
+   }
+  },
+  "agqhhkxtxx4l7ayv5ecnitchtzrodxqy": {
+   "help2man": {
+    "version": "1.47.4",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles12",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.166"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "cflags": [
+      "-gcc-name=/usr/local/other/gcc/9.2.0/bin/gcc"
+     ],
+     "cppflags": [],
+     "cxxflags": [
+      "-gxx-name=/usr/local/other/gcc/9.2.0/bin/g++"
+     ],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "gettext": {
+      "hash": "wqsmop7gcht6quocka3afblx2tvnojgc",
+      "type": [
+       "build"
+      ]
+     },
+     "perl": {
+      "hash": "ook2jpjvnh54ds3qg5h2v5h5xas55dsc",
+      "type": [
+       "build"
+      ]
+     }
+    }
+   }
+  },
+  "atrlxkdt3lo654d3ciedb4vpqezuk4ho": {
+   "blitz": {
+    "version": "1.0.2",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles12",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.166"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "build_type": "RelWithDebInfo",
+     "cflags": [
+      "-gcc-name=/usr/local/other/gcc/9.2.0/bin/gcc"
+     ],
+     "cppflags": [],
+     "cxxflags": [
+      "-gxx-name=/usr/local/other/gcc/9.2.0/bin/g++"
+     ],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "cmake": {
+      "hash": "n5xilna5qgyp5km7kesdht4yaak3nbby",
+      "type": [
+       "build"
+      ]
+     }
+    }
+   }
+  },
+  "fit7r3mholsq3jl4c74bb42wloegfwgu": {
+   "eigen": {
+    "version": "3.2.10",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles12",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.166"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "build_type": "RelWithDebInfo",
+     "fftw": true,
+     "metis": true,
+     "mpfr": true,
+     "scotch": true,
+     "suitesparse": false,
+     "cflags": [
+      "-gcc-name=/usr/local/other/gcc/9.2.0/bin/gcc"
+     ],
+     "cppflags": [],
+     "cxxflags": [
+      "-gxx-name=/usr/local/other/gcc/9.2.0/bin/g++"
+     ],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "cmake": {
+      "hash": "n5xilna5qgyp5km7kesdht4yaak3nbby",
+      "type": [
+       "build"
+      ]
+     },
+     "fftw": {
+      "hash": "zql3f24uwigvrnfvugvrhzshqk5nw5xe",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "gmp": {
+      "hash": "mni4j32qi3yol42oph7mfcovmrj47pff",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "metis": {
+      "hash": "j5grj6zl53aivr62g5ulsbcabxdlevoc",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "mpfr": {
+      "hash": "z2xvnamvwcxfidxddmaemxnh2iinlbpv",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "scotch": {
+      "hash": "w7qncafue2q6usz7lz6nuceqfml5f7yx",
+      "type": [
+       "build",
+       "link"
+      ]
+     }
+    }
+   }
+  },
+  "ea6oo7vxkswqvlpz5linydfb6ov5wqcz": {
+   "petsc": {
+    "version": "3.5.3",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles12",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.166"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "X": false,
+     "clanguage": "C",
+     "complex": false,
+     "debug": false,
+     "double": true,
+     "fortran": false,
+     "hdf5": true,
+     "hypre": true,
+     "int64": false,
+     "metis": false,
+     "mpi": true,
+     "mumps": false,
+     "shared": true,
+     "suite-sparse": false,
+     "superlu-dist": false,
+     "trilinos": false,
+     "cflags": [
+      "-gcc-name=/usr/local/other/gcc/9.2.0/bin/gcc"
+     ],
+     "cppflags": [],
+     "cxxflags": [
+      "-gxx-name=/usr/local/other/gcc/9.2.0/bin/g++"
+     ],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "hdf5": {
+      "hash": "yjka5yecgunbuemwihom7uxhz4txxjip",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "hypre": {
+      "hash": "hyvn6mh5bf3bcu6o4fngwmhf3o3orrz5",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "intel-mkl": {
+      "hash": "3q7r4midokuhitbv367ydbsqurz74zuf",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "intel-mpi": {
+      "hash": "kszyw4b53vbes7rkyzbqf4trabzn637h",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "zlib": {
+      "hash": "lk267u47ez67rkzl7z5gnrdqvhca2n46",
+      "type": [
+       "build",
+       "link"
+      ]
+     }
+    }
+   }
+  },
+  "ehxbmrka4me4uv7o2xoxpok6g4iynp3v": {
+   "py-netcdf4": {
+    "version": "1.2.7",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles12",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.166"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "cflags": [
+      "-gcc-name=/usr/local/other/gcc/9.2.0/bin/gcc"
+     ],
+     "cppflags": [],
+     "cxxflags": [
+      "-gxx-name=/usr/local/other/gcc/9.2.0/bin/g++"
+     ],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "hdf5": {
+      "hash": "yjka5yecgunbuemwihom7uxhz4txxjip",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "netcdf": {
+      "hash": "ui3mvo27anfoiarwu2pihcckfeohopqc",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "py-cython": {
+      "hash": "ekdxfli7j7lxame7gw75vexmnmb76mzj",
+      "type": [
+       "build"
+      ]
+     },
+     "py-numpy": {
+      "hash": "igacrg7lcsu5wl4arbebboqrplckog3e",
+      "type": [
+       "build",
+       "run"
+      ]
+     },
+     "py-setuptools": {
+      "hash": "5egqytacrkuchyl7xfadkcy4ljp5rwbu",
+      "type": [
+       "build"
+      ]
+     },
+     "python": {
+      "hash": "higa35ahkuo33epxayyry2bx63d4blsb",
+      "type": [
+       "build",
+       "link",
+       "run"
+      ]
+     }
+    }
+   }
+  },
+  "ekerdabpdxlhbgomflrzdic6t3e3phfu": {
+   "libxml2": {
+    "version": "2.9.8",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles12",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.166"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "python": false,
+     "cflags": [
+      "-gcc-name=/usr/local/other/gcc/9.2.0/bin/gcc"
+     ],
+     "cppflags": [],
+     "cxxflags": [
+      "-gxx-name=/usr/local/other/gcc/9.2.0/bin/g++"
+     ],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "libiconv": {
+      "hash": "nmo5ncz7twmbe4bkub6rwylcf2rlp774",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "pkgconf": {
+      "hash": "4yhwxlthrkasrawhxus6dscgotmymkou",
+      "type": [
+       "build"
+      ]
+     },
+     "xz": {
+      "hash": "cjhxr3ijt7aztulowoifhsqzkseovinx",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "zlib": {
+      "hash": "lk267u47ez67rkzl7z5gnrdqvhca2n46",
+      "type": [
+       "build",
+       "link"
+      ]
+     }
+    }
+   }
+  },
+  "n5xilna5qgyp5km7kesdht4yaak3nbby": {
+   "cmake": {
+    "version": "3.12.4",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles12",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.166"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "doc": false,
+     "ncurses": true,
+     "openssl": true,
+     "ownlibs": true,
+     "patches": [
+      "dd3a40d4d92f6b2158b87d6fb354c277947c776424aa03f6dc8096cf3135f5d0"
+     ],
+     "qt": false,
+     "cflags": [
+      "-gcc-name=/usr/local/other/gcc/9.2.0/bin/gcc"
+     ],
+     "cppflags": [],
+     "cxxflags": [
+      "-gxx-name=/usr/local/other/gcc/9.2.0/bin/g++"
+     ],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "patches": [
+     "dd3a40d4d92f6b2158b87d6fb354c277947c776424aa03f6dc8096cf3135f5d0"
+    ],
+    "dependencies": {
+     "ncurses": {
+      "hash": "7yza2x7d2vg2iolcfno7gxe6vf6bhwhb",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "openssl": {
+      "hash": "zz5sng5yaoi5mztbska4kdb524afg532",
+      "type": [
+       "build",
+       "link"
+      ]
+     }
+    }
+   }
+  },
+  "gq6cq22dt57es45r5oeog4czhs37ao65": {
+   "m4": {
+    "version": "1.4.18",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles12",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.166"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "patches": [
+      "3877ab548f88597ab2327a2230ee048d2d07ace1062efe81fc92e91b7f39cd00",
+      "c0a408fbffb7255fcc75e26bd8edab116fc81d216bfd18b473668b7739a4158e",
+      "fc9b61654a3ba1a8d6cd78ce087e7c96366c290bc8d2c299f09828d793b853c8"
+     ],
+     "sigsegv": true,
+     "cflags": [
+      "-gcc-name=/usr/local/other/gcc/9.2.0/bin/gcc"
+     ],
+     "cppflags": [],
+     "cxxflags": [
+      "-gxx-name=/usr/local/other/gcc/9.2.0/bin/g++"
+     ],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "patches": [
+     "c0a408fbffb7255fcc75e26bd8edab116fc81d216bfd18b473668b7739a4158e",
+     "3877ab548f88597ab2327a2230ee048d2d07ace1062efe81fc92e91b7f39cd00",
+     "fc9b61654a3ba1a8d6cd78ce087e7c96366c290bc8d2c299f09828d793b853c8"
+    ],
+    "dependencies": {
+     "libsigsegv": {
+      "hash": "vgdioaz2sdqe6m5v7zxi2uxia2z3sqv7",
+      "type": [
+       "build",
+       "link"
+      ]
+     }
+    }
+   }
+  },
+  "s4aggyk7fcpattvfxu4ycyxfqnlvn3xy": {
+   "libx11": {
+    "version": "1.6.5",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles12",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.166"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "cflags": [
+      "-gcc-name=/usr/local/other/gcc/9.2.0/bin/gcc"
+     ],
+     "cppflags": [],
+     "cxxflags": [
+      "-gxx-name=/usr/local/other/gcc/9.2.0/bin/g++"
+     ],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "inputproto": {
+      "hash": "azc4ozn3pu2nvycizxf7thppneoncy7r",
+      "type": [
+       "build"
+      ]
+     },
+     "kbproto": {
+      "hash": "7b2cj6a7xnbrp3lfbo47nf45oysx6oxw",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "libxcb": {
+      "hash": "5teezfpjvocknl2gaiplgqymgwucw2az",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "perl": {
+      "hash": "ook2jpjvnh54ds3qg5h2v5h5xas55dsc",
+      "type": [
+       "build"
+      ]
+     },
+     "pkgconf": {
+      "hash": "4yhwxlthrkasrawhxus6dscgotmymkou",
+      "type": [
+       "build"
+      ]
+     },
+     "util-macros": {
+      "hash": "uzt6andesv2shium7euwtozitp6f4erp",
+      "type": [
+       "build"
+      ]
+     },
+     "xextproto": {
+      "hash": "4qc5j5nf2d37zxmmyvoi7qojftgqb4wn",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "xproto": {
+      "hash": "o3enfsqwp3npeytpvimoay4jls2yxyee",
+      "type": [
+       "build"
+      ]
+     },
+     "xtrans": {
+      "hash": "gb6orldus7plv4havmxx2dvfbmta5ysc",
+      "type": [
+       "build"
+      ]
+     }
+    }
+   }
+  },
+  "kfghq5wi256dppjdhzugaxsnia47v7be": {
+   "antlr": {
+    "version": "2.7.7",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles12",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.166"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "cxx": true,
+     "java": false,
+     "patches": [
+      "33897ad12ad33878daa0aca55c9a234ec972407eb2b6c03808f6ed020c88b8db"
+     ],
+     "python": false,
+     "cflags": [
+      "-gcc-name=/usr/local/other/gcc/9.2.0/bin/gcc"
+     ],
+     "cppflags": [],
+     "cxxflags": [
+      "-gxx-name=/usr/local/other/gcc/9.2.0/bin/g++"
+     ],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "patches": [
+     "33897ad12ad33878daa0aca55c9a234ec972407eb2b6c03808f6ed020c88b8db"
+    ]
+   }
+  },
+  "5teezfpjvocknl2gaiplgqymgwucw2az": {
+   "libxcb": {
+    "version": "1.13",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles12",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.166"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "python3": true,
+     "cflags": [
+      "-gcc-name=/usr/local/other/gcc/9.2.0/bin/gcc"
+     ],
+     "cppflags": [],
+     "cxxflags": [
+      "-gxx-name=/usr/local/other/gcc/9.2.0/bin/g++"
+     ],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "libpthread-stubs": {
+      "hash": "slvf4pa2biji4jpcgmhf3fcn3n3xdsah",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "libxau": {
+      "hash": "gn4l765ttusvy4v4fw535fpanbjdaqan",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "libxdmcp": {
+      "hash": "nnyghe2xc2eg7uwekpp4uhegyilo2iff",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "pkgconf": {
+      "hash": "4yhwxlthrkasrawhxus6dscgotmymkou",
+      "type": [
+       "build"
+      ]
+     },
+     "util-macros": {
+      "hash": "uzt6andesv2shium7euwtozitp6f4erp",
+      "type": [
+       "build"
+      ]
+     },
+     "xcb-proto": {
+      "hash": "asi6o7xgonllyyq35gx53we27jpjdyvn",
+      "type": [
+       "build"
+      ]
+     }
+    }
+   }
+  },
+  "d2xmcgkxxpm4kxsfcwliiuiwit6f2fa7": {
+   "libxaw": {
+    "version": "1.0.13",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles12",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.166"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "cflags": [
+      "-gcc-name=/usr/local/other/gcc/9.2.0/bin/gcc"
+     ],
+     "cppflags": [],
+     "cxxflags": [
+      "-gxx-name=/usr/local/other/gcc/9.2.0/bin/g++"
+     ],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "libx11": {
+      "hash": "s4aggyk7fcpattvfxu4ycyxfqnlvn3xy",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "libxext": {
+      "hash": "yofnj7u62ie6z5le4mojjz3ufxwzwq6q",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "libxmu": {
+      "hash": "hsv4z4gotafkw2euyxg4db7ytgqb4enx",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "libxpm": {
+      "hash": "amrmpk3l7nneiznpjls5frlonno6nn66",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "libxt": {
+      "hash": "jj3p7mmtakwjzslrdopcsydthzqnhivm",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "pkgconf": {
+      "hash": "4yhwxlthrkasrawhxus6dscgotmymkou",
+      "type": [
+       "build"
+      ]
+     },
+     "util-macros": {
+      "hash": "uzt6andesv2shium7euwtozitp6f4erp",
+      "type": [
+       "build"
+      ]
+     },
+     "xextproto": {
+      "hash": "4qc5j5nf2d37zxmmyvoi7qojftgqb4wn",
+      "type": [
+       "build"
+      ]
+     },
+     "xproto": {
+      "hash": "o3enfsqwp3npeytpvimoay4jls2yxyee",
+      "type": [
+       "build"
+      ]
+     }
+    }
+   }
+  },
+  "cjhxr3ijt7aztulowoifhsqzkseovinx": {
+   "xz": {
+    "version": "5.2.4",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles12",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.166"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "cflags": [
+      "-gcc-name=/usr/local/other/gcc/9.2.0/bin/gcc"
+     ],
+     "cppflags": [],
+     "cxxflags": [
+      "-gxx-name=/usr/local/other/gcc/9.2.0/bin/g++"
+     ],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    }
+   }
+  },
+  "5iqqj73bvx6x6yotaen34iz3ze2bckjl": {
+   "tar": {
+    "version": "1.30",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles12",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.166"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "cflags": [
+      "-gcc-name=/usr/local/other/gcc/9.2.0/bin/gcc"
+     ],
+     "cppflags": [],
+     "cxxflags": [
+      "-gxx-name=/usr/local/other/gcc/9.2.0/bin/g++"
+     ],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    }
+   }
+  },
+  "uzt6andesv2shium7euwtozitp6f4erp": {
+   "util-macros": {
+    "version": "1.19.1",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles12",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.166"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "cflags": [
+      "-gcc-name=/usr/local/other/gcc/9.2.0/bin/gcc"
+     ],
+     "cppflags": [],
+     "cxxflags": [
+      "-gxx-name=/usr/local/other/gcc/9.2.0/bin/g++"
+     ],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    }
+   }
+  },
+  "3siwqsc4w5foqnhwoijolkvgccgvzysa": {
+   "netcdf-cxx4": {
+    "version": "4.3.0",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles12",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.166"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "pic": true,
+     "cflags": [
+      "-gcc-name=/usr/local/other/gcc/9.2.0/bin/gcc"
+     ],
+     "cppflags": [],
+     "cxxflags": [
+      "-gxx-name=/usr/local/other/gcc/9.2.0/bin/g++"
+     ],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "autoconf": {
+      "hash": "bl5gzavob65baknms52zb2icup7t5qrm",
+      "type": [
+       "build"
+      ]
+     },
+     "automake": {
+      "hash": "5nhwot6igq4hftl3kjogzhrpwe7g4jnk",
+      "type": [
+       "build"
+      ]
+     },
+     "libtool": {
+      "hash": "aogcxi3ajiaiaogneekxfy2augpsz2tc",
+      "type": [
+       "build"
+      ]
+     },
+     "netcdf": {
+      "hash": "ui3mvo27anfoiarwu2pihcckfeohopqc",
+      "type": [
+       "build",
+       "link"
+      ]
+     }
+    }
+   }
+  },
+  "zl2a64w6szdnlerwndicmafwhdnfioat": {
+   "libbsd": {
+    "version": "0.9.1",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles12",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.166"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "cflags": [
+      "-gcc-name=/usr/local/other/gcc/9.2.0/bin/gcc"
+     ],
+     "cppflags": [],
+     "cxxflags": [
+      "-gxx-name=/usr/local/other/gcc/9.2.0/bin/g++"
+     ],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    }
+   }
+  },
+  "7b2cj6a7xnbrp3lfbo47nf45oysx6oxw": {
+   "kbproto": {
+    "version": "1.0.7",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles12",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.166"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "cflags": [
+      "-gcc-name=/usr/local/other/gcc/9.2.0/bin/gcc"
+     ],
+     "cppflags": [],
+     "cxxflags": [
+      "-gxx-name=/usr/local/other/gcc/9.2.0/bin/g++"
+     ],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "pkgconf": {
+      "hash": "4yhwxlthrkasrawhxus6dscgotmymkou",
+      "type": [
+       "build"
+      ]
+     },
+     "util-macros": {
+      "hash": "uzt6andesv2shium7euwtozitp6f4erp",
+      "type": [
+       "build"
+      ]
+     }
+    }
+   }
+  },
+  "v3wwr3caohwjp4as25rr6crwp732na4c": {
+   "libsm": {
+    "version": "1.2.2",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles12",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.166"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "cflags": [
+      "-gcc-name=/usr/local/other/gcc/9.2.0/bin/gcc"
+     ],
+     "cppflags": [],
+     "cxxflags": [
+      "-gxx-name=/usr/local/other/gcc/9.2.0/bin/g++"
+     ],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "libice": {
+      "hash": "6ox57mhfwd7owqb655vnneoix2fnairz",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "pkgconf": {
+      "hash": "4yhwxlthrkasrawhxus6dscgotmymkou",
+      "type": [
+       "build"
+      ]
+     },
+     "util-macros": {
+      "hash": "uzt6andesv2shium7euwtozitp6f4erp",
+      "type": [
+       "build"
+      ]
+     },
+     "xproto": {
+      "hash": "o3enfsqwp3npeytpvimoay4jls2yxyee",
+      "type": [
+       "build"
+      ]
+     },
+     "xtrans": {
+      "hash": "gb6orldus7plv4havmxx2dvfbmta5ysc",
+      "type": [
+       "build"
+      ]
+     }
+    }
+   }
+  },
+  "mni4j32qi3yol42oph7mfcovmrj47pff": {
+   "gmp": {
+    "version": "6.1.2",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles12",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.166"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "cflags": [
+      "-gcc-name=/usr/local/other/gcc/9.2.0/bin/gcc"
+     ],
+     "cppflags": [],
+     "cxxflags": [
+      "-gxx-name=/usr/local/other/gcc/9.2.0/bin/g++"
+     ],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "autoconf": {
+      "hash": "bl5gzavob65baknms52zb2icup7t5qrm",
+      "type": [
+       "build"
+      ]
+     },
+     "automake": {
+      "hash": "5nhwot6igq4hftl3kjogzhrpwe7g4jnk",
+      "type": [
+       "build"
+      ]
+     },
+     "libtool": {
+      "hash": "aogcxi3ajiaiaogneekxfy2augpsz2tc",
+      "type": [
+       "build"
+      ]
+     },
+     "m4": {
+      "hash": "gq6cq22dt57es45r5oeog4czhs37ao65",
+      "type": [
+       "build"
+      ]
+     }
+    }
+   }
+  },
+  "bl5gzavob65baknms52zb2icup7t5qrm": {
+   "autoconf": {
+    "version": "2.69",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles12",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.166"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "cflags": [
+      "-gcc-name=/usr/local/other/gcc/9.2.0/bin/gcc"
+     ],
+     "cppflags": [],
+     "cxxflags": [
+      "-gxx-name=/usr/local/other/gcc/9.2.0/bin/g++"
+     ],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "m4": {
+      "hash": "gq6cq22dt57es45r5oeog4czhs37ao65",
+      "type": [
+       "build",
+       "run"
+      ]
+     },
+     "perl": {
+      "hash": "ook2jpjvnh54ds3qg5h2v5h5xas55dsc",
+      "type": [
+       "build",
+       "run"
+      ]
+     }
+    }
+   }
+  },
+  "2ldvnvn5j3mocwytqklurovedammofkn": {
+   "nco": {
+    "version": "4.6.7",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles12",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.166"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "doc": false,
+     "patches": [
+      "512fe1dffb433c89eb2596e72f5109a308c761622a5d59782a1200f852f9fe2c"
+     ],
+     "cflags": [
+      "-gcc-name=/usr/local/other/gcc/9.2.0/bin/gcc"
+     ],
+     "cppflags": [],
+     "cxxflags": [
+      "-gxx-name=/usr/local/other/gcc/9.2.0/bin/g++"
+     ],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "patches": [
+     "512fe1dffb433c89eb2596e72f5109a308c761622a5d59782a1200f852f9fe2c"
+    ],
+    "dependencies": {
+     "antlr": {
+      "hash": "kfghq5wi256dppjdhzugaxsnia47v7be",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "bison": {
+      "hash": "m7ngodz2zoozfoltbhwtks4x76xul6wv",
+      "type": [
+       "build"
+      ]
+     },
+     "flex": {
+      "hash": "4qd4kskacuikiaevu5bfopxuaa7hdwtl",
+      "type": [
+       "build"
+      ]
+     },
+     "gsl": {
+      "hash": "w2jbr4yhteoakhc7pxw7cepehfobzd6c",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "netcdf": {
+      "hash": "ui3mvo27anfoiarwu2pihcckfeohopqc",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "udunits2": {
+      "hash": "z7s5nifphophlvatx5j5pfzerwknnpz5",
+      "type": [
+       "build",
+       "link"
+      ]
+     }
+    }
+   }
+  },
+  "lk267u47ez67rkzl7z5gnrdqvhca2n46": {
+   "zlib": {
+    "version": "1.2.11",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles12",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.166"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "optimize": true,
+     "pic": true,
+     "shared": true,
+     "cflags": [
+      "-gcc-name=/usr/local/other/gcc/9.2.0/bin/gcc"
+     ],
+     "cppflags": [],
+     "cxxflags": [
+      "-gxx-name=/usr/local/other/gcc/9.2.0/bin/g++"
+     ],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    }
+   }
+  },
+  "e77rsxn5ztcgc3laj4luitqmev2myhy4": {
+   "tclap": {
+    "version": "1.2.2",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles12",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.166"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "cflags": [
+      "-gcc-name=/usr/local/other/gcc/9.2.0/bin/gcc"
+     ],
+     "cppflags": [],
+     "cxxflags": [
+      "-gxx-name=/usr/local/other/gcc/9.2.0/bin/g++"
+     ],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    }
+   }
+  },
+  "ly367tf7mhagdo4jfgrmqxhkqslidon4": {
+   "pfunit": {
+    "version": "3.2.9",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles12",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.166"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "build_type": "RelWithDebInfo",
+     "docs": false,
+     "mpi": true,
+     "openmp": false,
+     "shared": true,
+     "use_comm_world": false,
+     "cflags": [
+      "-gcc-name=/usr/local/other/gcc/9.2.0/bin/gcc"
+     ],
+     "cppflags": [],
+     "cxxflags": [
+      "-gxx-name=/usr/local/other/gcc/9.2.0/bin/g++"
+     ],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "cmake": {
+      "hash": "n5xilna5qgyp5km7kesdht4yaak3nbby",
+      "type": [
+       "build"
+      ]
+     },
+     "intel-mpi": {
+      "hash": "kszyw4b53vbes7rkyzbqf4trabzn637h",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "python": {
+      "hash": "higa35ahkuo33epxayyry2bx63d4blsb",
+      "type": [
+       "build",
+       "run"
+      ]
+     }
+    }
+   }
+  },
+  "mo4lpfnvwuwfuuirtxkegq2ipg2mz3px": {
+   "cgal": {
+    "version": "4.12",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles12",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.166"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "build_type": "Release",
+     "core": false,
+     "demos": false,
+     "imageio": false,
+     "shared": true,
+     "cflags": [
+      "-gcc-name=/usr/local/other/gcc/9.2.0/bin/gcc"
+     ],
+     "cppflags": [],
+     "cxxflags": [
+      "-gxx-name=/usr/local/other/gcc/9.2.0/bin/g++"
+     ],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "boost": {
+      "hash": "wsjipurexbifnjddculazuuvkbkpo2yn",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "cmake": {
+      "hash": "n5xilna5qgyp5km7kesdht4yaak3nbby",
+      "type": [
+       "build"
+      ]
+     },
+     "gmp": {
+      "hash": "mni4j32qi3yol42oph7mfcovmrj47pff",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "mpfr": {
+      "hash": "z2xvnamvwcxfidxddmaemxnh2iinlbpv",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "zlib": {
+      "hash": "lk267u47ez67rkzl7z5gnrdqvhca2n46",
+      "type": [
+       "build",
+       "link"
+      ]
+     }
+    }
+   }
+  },
+  "w7qncafue2q6usz7lz6nuceqfml5f7yx": {
+   "scotch": {
+    "version": "6.0.6",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles12",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.166"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "compression": true,
+     "esmumps": false,
+     "int64": false,
+     "metis": true,
+     "mpi": true,
+     "shared": true,
+     "cflags": [
+      "-gcc-name=/usr/local/other/gcc/9.2.0/bin/gcc"
+     ],
+     "cppflags": [],
+     "cxxflags": [
+      "-gxx-name=/usr/local/other/gcc/9.2.0/bin/g++"
+     ],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "bison": {
+      "hash": "m7ngodz2zoozfoltbhwtks4x76xul6wv",
+      "type": [
+       "build"
+      ]
+     },
+     "flex": {
+      "hash": "4qd4kskacuikiaevu5bfopxuaa7hdwtl",
+      "type": [
+       "build"
+      ]
+     },
+     "intel-mpi": {
+      "hash": "kszyw4b53vbes7rkyzbqf4trabzn637h",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "zlib": {
+      "hash": "lk267u47ez67rkzl7z5gnrdqvhca2n46",
+      "type": [
+       "build",
+       "link"
+      ]
+     }
+    }
+   }
+  },
+  "fnc46srlkmio7wbifru6rallsyu2fc77": {
+   "libjpeg-turbo": {
+    "version": "1.5.90",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles12",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.166"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "cflags": [
+      "-gcc-name=/usr/local/other/gcc/9.2.0/bin/gcc"
+     ],
+     "cppflags": [],
+     "cxxflags": [
+      "-gxx-name=/usr/local/other/gcc/9.2.0/bin/g++"
+     ],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "cmake": {
+      "hash": "n5xilna5qgyp5km7kesdht4yaak3nbby",
+      "type": [
+       "build"
+      ]
+     },
+     "nasm": {
+      "hash": "j2vq6qvyquiwmahmzylv65f35enb6ay4",
+      "type": [
+       "build"
+      ]
+     }
+    }
+   }
+  },
+  "o3enfsqwp3npeytpvimoay4jls2yxyee": {
+   "xproto": {
+    "version": "7.0.31",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles12",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.166"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "cflags": [
+      "-gcc-name=/usr/local/other/gcc/9.2.0/bin/gcc"
+     ],
+     "cppflags": [],
+     "cxxflags": [
+      "-gxx-name=/usr/local/other/gcc/9.2.0/bin/g++"
+     ],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "pkgconf": {
+      "hash": "4yhwxlthrkasrawhxus6dscgotmymkou",
+      "type": [
+       "build"
+      ]
+     },
+     "util-macros": {
+      "hash": "uzt6andesv2shium7euwtozitp6f4erp",
+      "type": [
+       "build"
+      ]
+     }
+    }
+   }
+  },
+  "m7ngodz2zoozfoltbhwtks4x76xul6wv": {
+   "bison": {
+    "version": "3.0.5",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles12",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.166"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "cflags": [
+      "-gcc-name=/usr/local/other/gcc/9.2.0/bin/gcc"
+     ],
+     "cppflags": [],
+     "cxxflags": [
+      "-gxx-name=/usr/local/other/gcc/9.2.0/bin/g++"
+     ],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "diffutils": {
+      "hash": "kmveky2hsfgcjkmxu7qifjfjcxov4e7i",
+      "type": [
+       "build"
+      ]
+     },
+     "help2man": {
+      "hash": "agqhhkxtxx4l7ayv5ecnitchtzrodxqy",
+      "type": [
+       "build"
+      ]
+     },
+     "m4": {
+      "hash": "gq6cq22dt57es45r5oeog4czhs37ao65",
+      "type": [
+       "build",
+       "run"
+      ]
+     },
+     "perl": {
+      "hash": "ook2jpjvnh54ds3qg5h2v5h5xas55dsc",
+      "type": [
+       "build"
+      ]
+     }
+    }
+   }
+  },
+  "ook2jpjvnh54ds3qg5h2v5h5xas55dsc": {
+   "perl": {
+    "version": "5.26.2",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles12",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.166"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "cpanm": true,
+     "patches": [
+      "0eac10ed90aeb0459ad8851f88081d439a4e41978e586ec743069e8b059370ac"
+     ],
+     "shared": true,
+     "threads": true,
+     "cflags": [
+      "-gcc-name=/usr/local/other/gcc/9.2.0/bin/gcc"
+     ],
+     "cppflags": [],
+     "cxxflags": [
+      "-gxx-name=/usr/local/other/gcc/9.2.0/bin/g++"
+     ],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "patches": [
+     "0eac10ed90aeb0459ad8851f88081d439a4e41978e586ec743069e8b059370ac"
+    ],
+    "dependencies": {
+     "gdbm": {
+      "hash": "bx6wkpuo5jlaxutdjzo5ytbxyycdvdvo",
+      "type": [
+       "build",
+       "link"
+      ]
+     }
+    }
+   }
+  },
+  "w2jbr4yhteoakhc7pxw7cepehfobzd6c": {
+   "gsl": {
+    "version": "2.5",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles12",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.166"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "cflags": [
+      "-gcc-name=/usr/local/other/gcc/9.2.0/bin/gcc"
+     ],
+     "cppflags": [],
+     "cxxflags": [
+      "-gxx-name=/usr/local/other/gcc/9.2.0/bin/g++"
+     ],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    }
+   }
+  },
+  "5g7e22y6lsed7e4sryj4nf7tiv762iez": {
+   "py-pillow": {
+    "version": "5.1.0",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles12",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.166"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "freetype": false,
+     "jpeg": true,
+     "jpeg2000": false,
+     "lcms": false,
+     "tiff": false,
+     "zlib": true,
+     "cflags": [
+      "-gcc-name=/usr/local/other/gcc/9.2.0/bin/gcc"
+     ],
+     "cppflags": [],
+     "cxxflags": [
+      "-gxx-name=/usr/local/other/gcc/9.2.0/bin/g++"
+     ],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "binutils": {
+      "hash": "z4zkppy6de4ougvh7yqd5wqpudjplqzi",
+      "type": [
+       "build"
+      ]
+     },
+     "libjpeg-turbo": {
+      "hash": "fnc46srlkmio7wbifru6rallsyu2fc77",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "py-setuptools": {
+      "hash": "5egqytacrkuchyl7xfadkcy4ljp5rwbu",
+      "type": [
+       "build"
+      ]
+     },
+     "python": {
+      "hash": "higa35ahkuo33epxayyry2bx63d4blsb",
+      "type": [
+       "build",
+       "link",
+       "run"
+      ]
+     },
+     "zlib": {
+      "hash": "lk267u47ez67rkzl7z5gnrdqvhca2n46",
+      "type": [
+       "build",
+       "link"
+      ]
+     }
+    }
+   }
+  },
+  "vfnthj6o6zbyb5m5pb7cfucgebnk2dix": {
+   "libpng": {
+    "version": "1.6.34",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles12",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.166"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "cflags": [
+      "-gcc-name=/usr/local/other/gcc/9.2.0/bin/gcc"
+     ],
+     "cppflags": [],
+     "cxxflags": [
+      "-gxx-name=/usr/local/other/gcc/9.2.0/bin/g++"
+     ],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "zlib": {
+      "hash": "lk267u47ez67rkzl7z5gnrdqvhca2n46",
+      "type": [
+       "build",
+       "link"
+      ]
+     }
+    }
+   }
+  },
+  "ji2foobvuhtyjkvsjy5emjs6bex3cfhg": {
+   "numactl": {
+    "version": "2.0.12",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles12",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.166"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "cflags": [
+      "-gcc-name=/usr/local/other/gcc/9.2.0/bin/gcc"
+     ],
+     "cppflags": [],
+     "cxxflags": [
+      "-gxx-name=/usr/local/other/gcc/9.2.0/bin/g++"
+     ],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "autoconf": {
+      "hash": "bl5gzavob65baknms52zb2icup7t5qrm",
+      "type": [
+       "build"
+      ]
+     },
+     "automake": {
+      "hash": "5nhwot6igq4hftl3kjogzhrpwe7g4jnk",
+      "type": [
+       "build"
+      ]
+     },
+     "libtool": {
+      "hash": "aogcxi3ajiaiaogneekxfy2augpsz2tc",
+      "type": [
+       "build"
+      ]
+     },
+     "m4": {
+      "hash": "gq6cq22dt57es45r5oeog4czhs37ao65",
+      "type": [
+       "build"
+      ]
+     }
+    }
+   }
+  },
+  "4qc5j5nf2d37zxmmyvoi7qojftgqb4wn": {
+   "xextproto": {
+    "version": "7.3.0",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles12",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.166"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "cflags": [
+      "-gcc-name=/usr/local/other/gcc/9.2.0/bin/gcc"
+     ],
+     "cppflags": [],
+     "cxxflags": [
+      "-gxx-name=/usr/local/other/gcc/9.2.0/bin/g++"
+     ],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "pkgconf": {
+      "hash": "4yhwxlthrkasrawhxus6dscgotmymkou",
+      "type": [
+       "build"
+      ]
+     },
+     "util-macros": {
+      "hash": "uzt6andesv2shium7euwtozitp6f4erp",
+      "type": [
+       "build"
+      ]
+     }
+    }
+   }
+  },
+  "t5qw6ecvxg4734psztr56ojbuofuzgh6": {
+   "proj": {
+    "version": "5.0.1",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles12",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.166"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "cflags": [
+      "-gcc-name=/usr/local/other/gcc/9.2.0/bin/gcc"
+     ],
+     "cppflags": [],
+     "cxxflags": [
+      "-gxx-name=/usr/local/other/gcc/9.2.0/bin/g++"
+     ],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    }
+   }
+  },
+  "z2xvnamvwcxfidxddmaemxnh2iinlbpv": {
+   "mpfr": {
+    "version": "4.0.1",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles12",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.166"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "cflags": [
+      "-gcc-name=/usr/local/other/gcc/9.2.0/bin/gcc"
+     ],
+     "cppflags": [],
+     "cxxflags": [
+      "-gxx-name=/usr/local/other/gcc/9.2.0/bin/g++"
+     ],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "gmp": {
+      "hash": "mni4j32qi3yol42oph7mfcovmrj47pff",
+      "type": [
+       "build",
+       "link"
+      ]
+     }
+    }
+   }
+  },
+  "zql3f24uwigvrnfvugvrhzshqk5nw5xe": {
+   "fftw": {
+    "version": "3.3.8",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles12",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.166"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "double": true,
+     "float": true,
+     "fma": false,
+     "long_double": true,
+     "mpi": true,
+     "openmp": false,
+     "pfft_patches": false,
+     "quad": false,
+     "simd": [
+      "avx",
+      "avx2",
+      "sse2"
+     ],
+     "cflags": [
+      "-gcc-name=/usr/local/other/gcc/9.2.0/bin/gcc"
+     ],
+     "cppflags": [],
+     "cxxflags": [
+      "-gxx-name=/usr/local/other/gcc/9.2.0/bin/g++"
+     ],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "intel-mpi": {
+      "hash": "kszyw4b53vbes7rkyzbqf4trabzn637h",
+      "type": [
+       "build",
+       "link"
+      ]
+     }
+    }
+   }
+  },
+  "mumevx4eq2rrda7zhyhid6amgllu7gdw": {
+   "modele-utils": {
+    "version": "develop",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles12",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.166"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "aux": false,
+     "build_type": "RelWithDebInfo",
+     "copy": "standard",
+     "diags": true,
+     "ic": false,
+     "cflags": [
+      "-gcc-name=/usr/local/other/gcc/9.2.0/bin/gcc"
+     ],
+     "cppflags": [],
+     "cxxflags": [
+      "-gxx-name=/usr/local/other/gcc/9.2.0/bin/g++"
+     ],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "cmake": {
+      "hash": "n5xilna5qgyp5km7kesdht4yaak3nbby",
+      "type": [
+       "build"
+      ]
+     },
+     "m4": {
+      "hash": "gq6cq22dt57es45r5oeog4czhs37ao65",
+      "type": [
+       "build"
+      ]
+     },
+     "netcdf-fortran": {
+      "hash": "4us5ywhbhar74zzblxsqatfol52w47b4",
+      "type": [
+       "build",
+       "link"
+      ]
+     }
+    }
+   }
+  },
+  "x624s732zvoldob5ug54qwxiq7wyxggx": {
+   "bzip2": {
+    "version": "1.0.6",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles12",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.166"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "shared": true,
+     "cflags": [
+      "-gcc-name=/usr/local/other/gcc/9.2.0/bin/gcc"
+     ],
+     "cppflags": [],
+     "cxxflags": [
+      "-gxx-name=/usr/local/other/gcc/9.2.0/bin/g++"
+     ],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "diffutils": {
+      "hash": "kmveky2hsfgcjkmxu7qifjfjcxov4e7i",
+      "type": [
+       "build"
+      ]
+     }
+    }
+   }
+  },
+  "wqsmop7gcht6quocka3afblx2tvnojgc": {
+   "gettext": {
+    "version": "0.19.8.1",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles12",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.166"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "bzip2": true,
+     "curses": true,
+     "git": true,
+     "libunistring": false,
+     "libxml2": true,
+     "patches": [
+      "9acdb4e73f67c241b5ef32505c9ddf7cf6884ca8ea661692f21dca28483b04b8"
+     ],
+     "tar": true,
+     "xz": true,
+     "cflags": [
+      "-gcc-name=/usr/local/other/gcc/9.2.0/bin/gcc"
+     ],
+     "cppflags": [],
+     "cxxflags": [
+      "-gxx-name=/usr/local/other/gcc/9.2.0/bin/g++"
+     ],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "patches": [
+     "9acdb4e73f67c241b5ef32505c9ddf7cf6884ca8ea661692f21dca28483b04b8"
+    ],
+    "dependencies": {
+     "bzip2": {
+      "hash": "x624s732zvoldob5ug54qwxiq7wyxggx",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "libxml2": {
+      "hash": "ekerdabpdxlhbgomflrzdic6t3e3phfu",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "ncurses": {
+      "hash": "7yza2x7d2vg2iolcfno7gxe6vf6bhwhb",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "tar": {
+      "hash": "5iqqj73bvx6x6yotaen34iz3ze2bckjl",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "xz": {
+      "hash": "cjhxr3ijt7aztulowoifhsqzkseovinx",
+      "type": [
+       "build",
+       "link"
+      ]
+     }
+    }
+   }
+  },
+  "6ox57mhfwd7owqb655vnneoix2fnairz": {
+   "libice": {
+    "version": "1.0.9",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles12",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.166"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "cflags": [
+      "-gcc-name=/usr/local/other/gcc/9.2.0/bin/gcc"
+     ],
+     "cppflags": [],
+     "cxxflags": [
+      "-gxx-name=/usr/local/other/gcc/9.2.0/bin/g++"
+     ],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "pkgconf": {
+      "hash": "4yhwxlthrkasrawhxus6dscgotmymkou",
+      "type": [
+       "build"
+      ]
+     },
+     "util-macros": {
+      "hash": "uzt6andesv2shium7euwtozitp6f4erp",
+      "type": [
+       "build"
+      ]
+     },
+     "xproto": {
+      "hash": "o3enfsqwp3npeytpvimoay4jls2yxyee",
+      "type": [
+       "build"
+      ]
+     },
+     "xtrans": {
+      "hash": "gb6orldus7plv4havmxx2dvfbmta5ysc",
+      "type": [
+       "build"
+      ]
+     }
+    }
+   }
+  },
+  "bqfi2irclthrbyriaoepngel7odyl2k4": {
+   "pism": {
+    "version": "icebin",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles12",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.166"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "build_type": "RelWithDebInfo",
+     "copy": "standard",
+     "doc": false,
+     "everytrace": true,
+     "examples": true,
+     "extra": false,
+     "icebin": true,
+     "parallel-hdf5": false,
+     "parallel-netcdf3": false,
+     "parallel-netcdf4": false,
+     "proj": true,
+     "python": false,
+     "shared": true,
+     "cflags": [
+      "-gcc-name=/usr/local/other/gcc/9.2.0/bin/gcc"
+     ],
+     "cppflags": [],
+     "cxxflags": [
+      "-gxx-name=/usr/local/other/gcc/9.2.0/bin/g++"
+     ],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "cmake": {
+      "hash": "n5xilna5qgyp5km7kesdht4yaak3nbby",
+      "type": [
+       "build"
+      ]
+     },
+     "everytrace": {
+      "hash": "ofiqth5l7k274eihg2mwknznleluq53u",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "fftw": {
+      "hash": "zql3f24uwigvrnfvugvrhzshqk5nw5xe",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "gsl": {
+      "hash": "w2jbr4yhteoakhc7pxw7cepehfobzd6c",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "intel-mpi": {
+      "hash": "kszyw4b53vbes7rkyzbqf4trabzn637h",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "netcdf": {
+      "hash": "ui3mvo27anfoiarwu2pihcckfeohopqc",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "petsc": {
+      "hash": "ea6oo7vxkswqvlpz5linydfb6ov5wqcz",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "proj": {
+      "hash": "t5qw6ecvxg4734psztr56ojbuofuzgh6",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "udunits2": {
+      "hash": "z7s5nifphophlvatx5j5pfzerwknnpz5",
+      "type": [
+       "build",
+       "link"
+      ]
+     }
+    }
+   }
+  },
+  "pzt2ppoua2gjmecq2aih5ffdzjt4oawv": {
+   "ncview": {
+    "version": "2.1.7",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles12",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.166"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "cflags": [
+      "-gcc-name=/usr/local/other/gcc/9.2.0/bin/gcc"
+     ],
+     "cppflags": [],
+     "cxxflags": [
+      "-gxx-name=/usr/local/other/gcc/9.2.0/bin/g++"
+     ],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "libpng": {
+      "hash": "vfnthj6o6zbyb5m5pb7cfucgebnk2dix",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "libxaw": {
+      "hash": "d2xmcgkxxpm4kxsfcwliiuiwit6f2fa7",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "netcdf": {
+      "hash": "ui3mvo27anfoiarwu2pihcckfeohopqc",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "udunits2": {
+      "hash": "z7s5nifphophlvatx5j5pfzerwknnpz5",
+      "type": [
+       "build",
+       "link"
+      ]
+     }
+    }
+   }
+  },
+  "3q7r4midokuhitbv367ydbsqurz74zuf": {
+   "intel-mkl": {
+    "version": "2020.0.166",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles12",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.166"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "ilp64": false,
+     "shared": true,
+     "threads": "none",
+     "cflags": [
+      "-gcc-name=/usr/local/other/gcc/9.2.0/bin/gcc"
+     ],
+     "cppflags": [],
+     "cxxflags": [
+      "-gxx-name=/usr/local/other/gcc/9.2.0/bin/g++"
+     ],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "external": {
+     "path": "/usr/local/intel/2020/compilers_and_libraries_2020.0.166/linux/mkl",
+     "module": null
+    }
+   }
+  },
+  "7yza2x7d2vg2iolcfno7gxe6vf6bhwhb": {
+   "ncurses": {
+    "version": "6.2",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles12",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.166"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "symlinks": false,
+     "termlib": false,
+     "cflags": [
+      "-gcc-name=/usr/local/other/gcc/9.2.0/bin/gcc"
+     ],
+     "cppflags": [],
+     "cxxflags": [
+      "-gxx-name=/usr/local/other/gcc/9.2.0/bin/g++"
+     ],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "pkgconf": {
+      "hash": "4yhwxlthrkasrawhxus6dscgotmymkou",
+      "type": [
+       "build"
+      ]
+     }
+    }
+   }
+  },
+  "azc4ozn3pu2nvycizxf7thppneoncy7r": {
+   "inputproto": {
+    "version": "2.3.2",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles12",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.166"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "cflags": [
+      "-gcc-name=/usr/local/other/gcc/9.2.0/bin/gcc"
+     ],
+     "cppflags": [],
+     "cxxflags": [
+      "-gxx-name=/usr/local/other/gcc/9.2.0/bin/g++"
+     ],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "pkgconf": {
+      "hash": "4yhwxlthrkasrawhxus6dscgotmymkou",
+      "type": [
+       "build"
+      ]
+     },
+     "util-macros": {
+      "hash": "uzt6andesv2shium7euwtozitp6f4erp",
+      "type": [
+       "build"
+      ]
+     }
+    }
+   }
+  },
+  "rujvsvxfxkwzfhogm5kdvtihquydk22e": {
+   "ibmisc": {
+    "version": "0.1.3",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles12",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.166"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "blitz": true,
+     "boost": true,
+     "build_type": "RelWithDebInfo",
+     "copy": "standard",
+     "doc": false,
+     "everytrace": true,
+     "googletest": true,
+     "netcdf": true,
+     "proj": true,
+     "python": true,
+     "udunits2": true,
+     "cflags": [
+      "-gcc-name=/usr/local/other/gcc/9.2.0/bin/gcc"
+     ],
+     "cppflags": [],
+     "cxxflags": [
+      "-gxx-name=/usr/local/other/gcc/9.2.0/bin/g++"
+     ],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "blitz": {
+      "hash": "atrlxkdt3lo654d3ciedb4vpqezuk4ho",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "boost": {
+      "hash": "wsjipurexbifnjddculazuuvkbkpo2yn",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "cmake": {
+      "hash": "n5xilna5qgyp5km7kesdht4yaak3nbby",
+      "type": [
+       "build"
+      ]
+     },
+     "eigen": {
+      "hash": "fit7r3mholsq3jl4c74bb42wloegfwgu",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "everytrace": {
+      "hash": "ofiqth5l7k274eihg2mwknznleluq53u",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "googletest": {
+      "hash": "5qcpllknke2iqlofp3eaokeykf4rz22i",
+      "type": [
+       "build"
+      ]
+     },
+     "netcdf": {
+      "hash": "ui3mvo27anfoiarwu2pihcckfeohopqc",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "netcdf-cxx4": {
+      "hash": "3siwqsc4w5foqnhwoijolkvgccgvzysa",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "proj": {
+      "hash": "t5qw6ecvxg4734psztr56ojbuofuzgh6",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "py-cython": {
+      "hash": "ekdxfli7j7lxame7gw75vexmnmb76mzj",
+      "type": [
+       "build",
+       "run"
+      ]
+     },
+     "py-numpy": {
+      "hash": "igacrg7lcsu5wl4arbebboqrplckog3e",
+      "type": [
+       "build",
+       "run"
+      ]
+     },
+     "python": {
+      "hash": "higa35ahkuo33epxayyry2bx63d4blsb",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "udunits2": {
+      "hash": "z7s5nifphophlvatx5j5pfzerwknnpz5",
+      "type": [
+       "build",
+       "link"
+      ]
+     }
+    }
+   }
+  },
+  "kmveky2hsfgcjkmxu7qifjfjcxov4e7i": {
+   "diffutils": {
+    "version": "3.6",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles12",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.166"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "cflags": [
+      "-gcc-name=/usr/local/other/gcc/9.2.0/bin/gcc"
+     ],
+     "cppflags": [],
+     "cxxflags": [
+      "-gxx-name=/usr/local/other/gcc/9.2.0/bin/g++"
+     ],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    }
+   }
+  },
+  "nnyghe2xc2eg7uwekpp4uhegyilo2iff": {
+   "libxdmcp": {
+    "version": "1.1.2",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles12",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.166"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "cflags": [
+      "-gcc-name=/usr/local/other/gcc/9.2.0/bin/gcc"
+     ],
+     "cppflags": [],
+     "cxxflags": [
+      "-gxx-name=/usr/local/other/gcc/9.2.0/bin/g++"
+     ],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "libbsd": {
+      "hash": "zl2a64w6szdnlerwndicmafwhdnfioat",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "pkgconf": {
+      "hash": "4yhwxlthrkasrawhxus6dscgotmymkou",
+      "type": [
+       "build"
+      ]
+     },
+     "util-macros": {
+      "hash": "uzt6andesv2shium7euwtozitp6f4erp",
+      "type": [
+       "build"
+      ]
+     },
+     "xproto": {
+      "hash": "o3enfsqwp3npeytpvimoay4jls2yxyee",
+      "type": [
+       "build"
+      ]
+     }
+    }
+   }
+  },
+  "zz5sng5yaoi5mztbska4kdb524afg532": {
+   "openssl": {
+    "version": "1.1.1",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles12",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.166"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "systemcerts": true,
+     "cflags": [
+      "-gcc-name=/usr/local/other/gcc/9.2.0/bin/gcc"
+     ],
+     "cppflags": [],
+     "cxxflags": [
+      "-gxx-name=/usr/local/other/gcc/9.2.0/bin/g++"
+     ],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "perl": {
+      "hash": "ook2jpjvnh54ds3qg5h2v5h5xas55dsc",
+      "type": [
+       "build",
+       "test"
+      ]
+     },
+     "zlib": {
+      "hash": "lk267u47ez67rkzl7z5gnrdqvhca2n46",
+      "type": [
+       "build",
+       "link"
+      ]
+     }
+    }
+   }
+  },
+  "ekdxfli7j7lxame7gw75vexmnmb76mzj": {
+   "py-cython": {
+    "version": "0.23.5",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles12",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.166"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "cflags": [
+      "-gcc-name=/usr/local/other/gcc/9.2.0/bin/gcc"
+     ],
+     "cppflags": [],
+     "cxxflags": [
+      "-gxx-name=/usr/local/other/gcc/9.2.0/bin/g++"
+     ],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "python": {
+      "hash": "higa35ahkuo33epxayyry2bx63d4blsb",
+      "type": [
+       "build",
+       "link",
+       "run"
+      ]
+     }
+    }
+   }
+  },
+  "jj3p7mmtakwjzslrdopcsydthzqnhivm": {
+   "libxt": {
+    "version": "1.1.5",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles12",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.166"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "cflags": [
+      "-gcc-name=/usr/local/other/gcc/9.2.0/bin/gcc"
+     ],
+     "cppflags": [],
+     "cxxflags": [
+      "-gxx-name=/usr/local/other/gcc/9.2.0/bin/g++"
+     ],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "kbproto": {
+      "hash": "7b2cj6a7xnbrp3lfbo47nf45oysx6oxw",
+      "type": [
+       "build"
+      ]
+     },
+     "libice": {
+      "hash": "6ox57mhfwd7owqb655vnneoix2fnairz",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "libsm": {
+      "hash": "v3wwr3caohwjp4as25rr6crwp732na4c",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "libx11": {
+      "hash": "s4aggyk7fcpattvfxu4ycyxfqnlvn3xy",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "pkgconf": {
+      "hash": "4yhwxlthrkasrawhxus6dscgotmymkou",
+      "type": [
+       "build"
+      ]
+     },
+     "util-macros": {
+      "hash": "uzt6andesv2shium7euwtozitp6f4erp",
+      "type": [
+       "build"
+      ]
+     },
+     "xproto": {
+      "hash": "o3enfsqwp3npeytpvimoay4jls2yxyee",
+      "type": [
+       "build"
+      ]
+     }
+    }
+   }
+  },
+  "pf2lerkxgw5jf2f7ln4zeybkuejpraxp": {
+   "sqlite": {
+    "version": "3.26.0",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles12",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.166"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "functions": false,
+     "cflags": [
+      "-gcc-name=/usr/local/other/gcc/9.2.0/bin/gcc"
+     ],
+     "cppflags": [],
+     "cxxflags": [
+      "-gxx-name=/usr/local/other/gcc/9.2.0/bin/g++"
+     ],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "readline": {
+      "hash": "uc4x4auo5wwwb4qytdorc2bxjhobweby",
+      "type": [
+       "build",
+       "link"
+      ]
+     }
+    }
+   }
+  },
+  "kszyw4b53vbes7rkyzbqf4trabzn637h": {
+   "intel-mpi": {
+    "version": "2020.0.166",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles12",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.166"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "cflags": [
+      "-gcc-name=/usr/local/other/gcc/9.2.0/bin/gcc"
+     ],
+     "cppflags": [],
+     "cxxflags": [
+      "-gxx-name=/usr/local/other/gcc/9.2.0/bin/g++"
+     ],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "external": {
+     "path": "/usr/local/intel/2020/compilers_and_libraries_2020.0.166/linux/mpi/intel64",
+     "module": null
+    }
+   }
+  },
+  "yofnj7u62ie6z5le4mojjz3ufxwzwq6q": {
+   "libxext": {
+    "version": "1.3.3",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles12",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.166"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "cflags": [
+      "-gcc-name=/usr/local/other/gcc/9.2.0/bin/gcc"
+     ],
+     "cppflags": [],
+     "cxxflags": [
+      "-gxx-name=/usr/local/other/gcc/9.2.0/bin/g++"
+     ],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "libx11": {
+      "hash": "s4aggyk7fcpattvfxu4ycyxfqnlvn3xy",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "pkgconf": {
+      "hash": "4yhwxlthrkasrawhxus6dscgotmymkou",
+      "type": [
+       "build"
+      ]
+     },
+     "util-macros": {
+      "hash": "uzt6andesv2shium7euwtozitp6f4erp",
+      "type": [
+       "build"
+      ]
+     },
+     "xextproto": {
+      "hash": "4qc5j5nf2d37zxmmyvoi7qojftgqb4wn",
+      "type": [
+       "build"
+      ]
+     },
+     "xproto": {
+      "hash": "o3enfsqwp3npeytpvimoay4jls2yxyee",
+      "type": [
+       "build"
+      ]
+     }
+    }
+   }
+  },
+  "asi6o7xgonllyyq35gx53we27jpjdyvn": {
+   "xcb-proto": {
+    "version": "1.13",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles12",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.166"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "python3": true,
+     "cflags": [
+      "-gcc-name=/usr/local/other/gcc/9.2.0/bin/gcc"
+     ],
+     "cppflags": [],
+     "cxxflags": [
+      "-gxx-name=/usr/local/other/gcc/9.2.0/bin/g++"
+     ],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    }
+   }
+  },
+  "uc4x4auo5wwwb4qytdorc2bxjhobweby": {
+   "readline": {
+    "version": "7.0",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles12",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.166"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "cflags": [
+      "-gcc-name=/usr/local/other/gcc/9.2.0/bin/gcc"
+     ],
+     "cppflags": [],
+     "cxxflags": [
+      "-gxx-name=/usr/local/other/gcc/9.2.0/bin/g++"
+     ],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "ncurses": {
+      "hash": "7yza2x7d2vg2iolcfno7gxe6vf6bhwhb",
+      "type": [
+       "build",
+       "link"
+      ]
+     }
+    }
+   }
+  },
+  "npf5juf335g6alf32zoqacv5a2ekhj5l": {
+   "modele": {
+    "version": "master",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles12",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.166"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "aux": false,
+     "build_type": "RelWithDebInfo",
+     "copy": "standard",
+     "diags": false,
+     "everytrace": true,
+     "fexception": false,
+     "ic": false,
+     "icebin": true,
+     "model": true,
+     "mods": false,
+     "mpi": true,
+     "pnetcdf": true,
+     "tests": true,
+     "cflags": [
+      "-gcc-name=/usr/local/other/gcc/9.2.0/bin/gcc"
+     ],
+     "cppflags": [],
+     "cxxflags": [
+      "-gxx-name=/usr/local/other/gcc/9.2.0/bin/g++"
+     ],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "cmake": {
+      "hash": "n5xilna5qgyp5km7kesdht4yaak3nbby",
+      "type": [
+       "build"
+      ]
+     },
+     "everytrace": {
+      "hash": "ofiqth5l7k274eihg2mwknznleluq53u",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "icebin": {
+      "hash": "b7cwlbzipgnuxcdkiy63omqod5g4hiw5",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "intel-mpi": {
+      "hash": "kszyw4b53vbes7rkyzbqf4trabzn637h",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "m4": {
+      "hash": "gq6cq22dt57es45r5oeog4czhs37ao65",
+      "type": [
+       "build"
+      ]
+     },
+     "netcdf-fortran": {
+      "hash": "4us5ywhbhar74zzblxsqatfol52w47b4",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "parallel-netcdf": {
+      "hash": "xpx3br6lwkgatwxveqzmqlp3rwpsyzci",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "pfunit": {
+      "hash": "ly367tf7mhagdo4jfgrmqxhkqslidon4",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "python": {
+      "hash": "higa35ahkuo33epxayyry2bx63d4blsb",
+      "type": [
+       "build"
+      ]
+     }
+    }
+   }
+  },
+  "bx6wkpuo5jlaxutdjzo5ytbxyycdvdvo": {
+   "gdbm": {
+    "version": "1.18.1",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles12",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.166"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "cflags": [
+      "-gcc-name=/usr/local/other/gcc/9.2.0/bin/gcc"
+     ],
+     "cppflags": [],
+     "cxxflags": [
+      "-gxx-name=/usr/local/other/gcc/9.2.0/bin/g++"
+     ],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "readline": {
+      "hash": "uc4x4auo5wwwb4qytdorc2bxjhobweby",
+      "type": [
+       "build",
+       "link"
+      ]
+     }
+    }
+   }
+  },
+  "j2vq6qvyquiwmahmzylv65f35enb6ay4": {
+   "nasm": {
+    "version": "2.13.03",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles12",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.166"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "cflags": [
+      "-gcc-name=/usr/local/other/gcc/9.2.0/bin/gcc"
+     ],
+     "cppflags": [],
+     "cxxflags": [
+      "-gxx-name=/usr/local/other/gcc/9.2.0/bin/g++"
+     ],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    }
+   }
+  },
+  "xpx3br6lwkgatwxveqzmqlp3rwpsyzci": {
+   "parallel-netcdf": {
+    "version": "1.11.0",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles12",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.166"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "cxx": false,
+     "fortran": true,
+     "pic": true,
+     "cflags": [
+      "-gcc-name=/usr/local/other/gcc/9.2.0/bin/gcc"
+     ],
+     "cppflags": [],
+     "cxxflags": [
+      "-gxx-name=/usr/local/other/gcc/9.2.0/bin/g++"
+     ],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "intel-mpi": {
+      "hash": "kszyw4b53vbes7rkyzbqf4trabzn637h",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "m4": {
+      "hash": "gq6cq22dt57es45r5oeog4czhs37ao65",
+      "type": [
+       "build"
+      ]
+     }
+    }
+   }
+  },
+  "igacrg7lcsu5wl4arbebboqrplckog3e": {
+   "py-numpy": {
+    "version": "1.15.2",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles12",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.166"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "blas": true,
+     "lapack": true,
+     "cflags": [
+      "-gcc-name=/usr/local/other/gcc/9.2.0/bin/gcc"
+     ],
+     "cppflags": [],
+     "cxxflags": [
+      "-gxx-name=/usr/local/other/gcc/9.2.0/bin/g++"
+     ],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "intel-mkl": {
+      "hash": "3q7r4midokuhitbv367ydbsqurz74zuf",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "py-setuptools": {
+      "hash": "5egqytacrkuchyl7xfadkcy4ljp5rwbu",
+      "type": [
+       "build"
+      ]
+     },
+     "python": {
+      "hash": "higa35ahkuo33epxayyry2bx63d4blsb",
+      "type": [
+       "build",
+       "link",
+       "run"
+      ]
+     }
+    }
+   }
+  },
+  "j5grj6zl53aivr62g5ulsbcabxdlevoc": {
+   "metis": {
+    "version": "5.1.0",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles12",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.166"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "build_type": "Release",
+     "gdb": false,
+     "int64": false,
+     "patches": [
+      "4991da938c1d3a1d3dea78e49bbebecba00273f98df2a656e38b83d55b281da1"
+     ],
+     "real64": true,
+     "shared": true,
+     "cflags": [
+      "-gcc-name=/usr/local/other/gcc/9.2.0/bin/gcc"
+     ],
+     "cppflags": [],
+     "cxxflags": [
+      "-gxx-name=/usr/local/other/gcc/9.2.0/bin/g++"
+     ],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "patches": [
+     "4991da938c1d3a1d3dea78e49bbebecba00273f98df2a656e38b83d55b281da1"
+    ],
+    "dependencies": {
+     "cmake": {
+      "hash": "n5xilna5qgyp5km7kesdht4yaak3nbby",
+      "type": [
+       "build"
+      ]
+     }
+    }
+   }
+  },
+  "amrmpk3l7nneiznpjls5frlonno6nn66": {
+   "libxpm": {
+    "version": "3.5.12",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles12",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.166"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "cflags": [
+      "-gcc-name=/usr/local/other/gcc/9.2.0/bin/gcc"
+     ],
+     "cppflags": [],
+     "cxxflags": [
+      "-gxx-name=/usr/local/other/gcc/9.2.0/bin/g++"
+     ],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "gettext": {
+      "hash": "wqsmop7gcht6quocka3afblx2tvnojgc",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "libx11": {
+      "hash": "s4aggyk7fcpattvfxu4ycyxfqnlvn3xy",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "pkgconf": {
+      "hash": "4yhwxlthrkasrawhxus6dscgotmymkou",
+      "type": [
+       "build"
+      ]
+     },
+     "util-macros": {
+      "hash": "uzt6andesv2shium7euwtozitp6f4erp",
+      "type": [
+       "build"
+      ]
+     },
+     "xproto": {
+      "hash": "o3enfsqwp3npeytpvimoay4jls2yxyee",
+      "type": [
+       "build"
+      ]
+     }
+    }
+   }
+  },
+  "z4zkppy6de4ougvh7yqd5wqpudjplqzi": {
+   "binutils": {
+    "version": "2.31.1",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles12",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.166"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "gold": true,
+     "libiberty": false,
+     "nls": true,
+     "plugins": false,
+     "cflags": [
+      "-gcc-name=/usr/local/other/gcc/9.2.0/bin/gcc"
+     ],
+     "cppflags": [],
+     "cxxflags": [
+      "-gxx-name=/usr/local/other/gcc/9.2.0/bin/g++"
+     ],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "gettext": {
+      "hash": "wqsmop7gcht6quocka3afblx2tvnojgc",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "zlib": {
+      "hash": "lk267u47ez67rkzl7z5gnrdqvhca2n46",
+      "type": [
+       "build",
+       "link"
+      ]
+     }
+    }
+   }
+  },
+  "4us5ywhbhar74zzblxsqatfol52w47b4": {
+   "netcdf-fortran": {
+    "version": "4.4.4",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles12",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.166"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "pic": true,
+     "cflags": [
+      "-gcc-name=/usr/local/other/gcc/9.2.0/bin/gcc"
+     ],
+     "cppflags": [],
+     "cxxflags": [
+      "-gxx-name=/usr/local/other/gcc/9.2.0/bin/g++"
+     ],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "netcdf": {
+      "hash": "ui3mvo27anfoiarwu2pihcckfeohopqc",
+      "type": [
+       "build",
+       "link"
+      ]
+     }
+    }
+   }
+  },
+  "yjka5yecgunbuemwihom7uxhz4txxjip": {
+   "hdf5": {
+    "version": "1.8.18",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles12",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.166"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "cxx": false,
+     "debug": false,
+     "fortran": true,
+     "hl": true,
+     "mpi": true,
+     "pic": true,
+     "shared": true,
+     "szip": false,
+     "threadsafe": false,
+     "cflags": [
+      "-gcc-name=/usr/local/other/gcc/9.2.0/bin/gcc"
+     ],
+     "cppflags": [],
+     "cxxflags": [
+      "-gxx-name=/usr/local/other/gcc/9.2.0/bin/g++"
+     ],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "intel-mpi": {
+      "hash": "kszyw4b53vbes7rkyzbqf4trabzn637h",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "numactl": {
+      "hash": "ji2foobvuhtyjkvsjy5emjs6bex3cfhg",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "zlib": {
+      "hash": "lk267u47ez67rkzl7z5gnrdqvhca2n46",
+      "type": [
+       "build",
+       "link"
+      ]
+     }
+    }
+   }
+  },
+  "5nhwot6igq4hftl3kjogzhrpwe7g4jnk": {
+   "automake": {
+    "version": "1.16.1",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles12",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.166"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "cflags": [
+      "-gcc-name=/usr/local/other/gcc/9.2.0/bin/gcc"
+     ],
+     "cppflags": [],
+     "cxxflags": [
+      "-gxx-name=/usr/local/other/gcc/9.2.0/bin/g++"
+     ],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "autoconf": {
+      "hash": "bl5gzavob65baknms52zb2icup7t5qrm",
+      "type": [
+       "build"
+      ]
+     },
+     "perl": {
+      "hash": "ook2jpjvnh54ds3qg5h2v5h5xas55dsc",
+      "type": [
+       "build",
+       "run"
+      ]
+     }
+    }
+   }
+  },
+  "xurqohqg4wnqrxmwwiynh7ekl6c6qprr": {
+   "modele-control": {
+    "version": "develop",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles12",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.166"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "copy": "standard",
+     "cflags": [
+      "-gcc-name=/usr/local/other/gcc/9.2.0/bin/gcc"
+     ],
+     "cppflags": [],
+     "cxxflags": [
+      "-gxx-name=/usr/local/other/gcc/9.2.0/bin/g++"
+     ],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "netcdf": {
+      "hash": "ui3mvo27anfoiarwu2pihcckfeohopqc",
+      "type": [
+       "run"
+      ]
+     },
+     "py-giss": {
+      "hash": "3ylkvyxe2j4dgj73ykmqe2fpyww6w4zt",
+      "type": [
+       "build",
+       "run"
+      ]
+     },
+     "py-six": {
+      "hash": "ka7os37p2ptaafoay47gu4uj7zo6mkeg",
+      "type": [
+       "build",
+       "run"
+      ]
+     },
+     "python": {
+      "hash": "higa35ahkuo33epxayyry2bx63d4blsb",
+      "type": [
+       "build",
+       "link",
+       "run"
+      ]
+     }
+    }
+   }
+  },
+  "w4rkrjgf2fwhvgaexdvbywpxnloagkrp": {
+   "expat": {
+    "version": "2.2.5",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles12",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.166"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "libbsd": true,
+     "cflags": [
+      "-gcc-name=/usr/local/other/gcc/9.2.0/bin/gcc"
+     ],
+     "cppflags": [],
+     "cxxflags": [
+      "-gxx-name=/usr/local/other/gcc/9.2.0/bin/g++"
+     ],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "libbsd": {
+      "hash": "zl2a64w6szdnlerwndicmafwhdnfioat",
+      "type": [
+       "build",
+       "link"
+      ]
+     }
+    }
+   }
+  },
+  "higa35ahkuo33epxayyry2bx63d4blsb": {
+   "python": {
+    "version": "3.5.2",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles12",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.166"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "dbm": true,
+     "optimizations": false,
+     "patches": [
+      "123082ab3483ded78e86d7c809e98a804b3465b4683c96bd79a2fd799f572244"
+     ],
+     "pic": true,
+     "pythoncmd": false,
+     "shared": true,
+     "tk": false,
+     "ucs4": false,
+     "cflags": [
+      "-gcc-name=/usr/local/other/gcc/9.2.0/bin/gcc"
+     ],
+     "cppflags": [],
+     "cxxflags": [
+      "-gxx-name=/usr/local/other/gcc/9.2.0/bin/g++"
+     ],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "patches": [
+     "123082ab3483ded78e86d7c809e98a804b3465b4683c96bd79a2fd799f572244"
+    ],
+    "dependencies": {
+     "bzip2": {
+      "hash": "x624s732zvoldob5ug54qwxiq7wyxggx",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "gdbm": {
+      "hash": "bx6wkpuo5jlaxutdjzo5ytbxyycdvdvo",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "ncurses": {
+      "hash": "7yza2x7d2vg2iolcfno7gxe6vf6bhwhb",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "openssl": {
+      "hash": "zz5sng5yaoi5mztbska4kdb524afg532",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "pkgconf": {
+      "hash": "4yhwxlthrkasrawhxus6dscgotmymkou",
+      "type": [
+       "build"
+      ]
+     },
+     "readline": {
+      "hash": "uc4x4auo5wwwb4qytdorc2bxjhobweby",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "sqlite": {
+      "hash": "pf2lerkxgw5jf2f7ln4zeybkuejpraxp",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "zlib": {
+      "hash": "lk267u47ez67rkzl7z5gnrdqvhca2n46",
+      "type": [
+       "build",
+       "link"
+      ]
+     }
+    }
+   }
+  },
+  "5qcpllknke2iqlofp3eaokeykf4rz22i": {
+   "googletest": {
+    "version": "1.8.1",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles12",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.166"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "build_type": "RelWithDebInfo",
+     "gmock": false,
+     "pthreads": true,
+     "shared": true,
+     "cflags": [
+      "-gcc-name=/usr/local/other/gcc/9.2.0/bin/gcc"
+     ],
+     "cppflags": [],
+     "cxxflags": [
+      "-gxx-name=/usr/local/other/gcc/9.2.0/bin/g++"
+     ],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "cmake": {
+      "hash": "n5xilna5qgyp5km7kesdht4yaak3nbby",
+      "type": [
+       "build"
+      ]
+     }
+    }
+   }
+  },
+  "5egqytacrkuchyl7xfadkcy4ljp5rwbu": {
+   "py-setuptools": {
+    "version": "40.4.3",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles12",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.166"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "cflags": [
+      "-gcc-name=/usr/local/other/gcc/9.2.0/bin/gcc"
+     ],
+     "cppflags": [],
+     "cxxflags": [
+      "-gxx-name=/usr/local/other/gcc/9.2.0/bin/g++"
+     ],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "python": {
+      "hash": "higa35ahkuo33epxayyry2bx63d4blsb",
+      "type": [
+       "build",
+       "link",
+       "run"
+      ]
+     }
+    }
+   }
+  },
+  "nmo5ncz7twmbe4bkub6rwylcf2rlp774": {
+   "libiconv": {
+    "version": "1.15",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles12",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.166"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "cflags": [
+      "-gcc-name=/usr/local/other/gcc/9.2.0/bin/gcc"
+     ],
+     "cppflags": [],
+     "cxxflags": [
+      "-gxx-name=/usr/local/other/gcc/9.2.0/bin/g++"
+     ],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    }
+   }
+  },
+  "gb6orldus7plv4havmxx2dvfbmta5ysc": {
+   "xtrans": {
+    "version": "1.3.5",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles12",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.166"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "cflags": [
+      "-gcc-name=/usr/local/other/gcc/9.2.0/bin/gcc"
+     ],
+     "cppflags": [],
+     "cxxflags": [
+      "-gxx-name=/usr/local/other/gcc/9.2.0/bin/g++"
+     ],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "pkgconf": {
+      "hash": "4yhwxlthrkasrawhxus6dscgotmymkou",
+      "type": [
+       "build"
+      ]
+     },
+     "util-macros": {
+      "hash": "uzt6andesv2shium7euwtozitp6f4erp",
+      "type": [
+       "build"
+      ]
+     }
+    }
+   }
+  },
+  "wsjipurexbifnjddculazuuvkbkpo2yn": {
+   "boost": {
+    "version": "1.69.0",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles12",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.166"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "atomic": true,
+     "chrono": true,
+     "clanglibcpp": false,
+     "cxxstd": "default",
+     "date_time": true,
+     "debug": false,
+     "exception": true,
+     "filesystem": true,
+     "graph": true,
+     "icu": false,
+     "iostreams": true,
+     "locale": true,
+     "log": true,
+     "math": true,
+     "mpi": true,
+     "multithreaded": true,
+     "numpy": false,
+     "patches": [
+      "2ab6c72d03dec6a4ae20220a9dfd5c8c572c5294252155b85c6874d97c323199"
+     ],
+     "pic": false,
+     "program_options": true,
+     "python": false,
+     "random": true,
+     "regex": true,
+     "serialization": true,
+     "shared": true,
+     "signals": true,
+     "singlethreaded": false,
+     "system": true,
+     "taggedlayout": false,
+     "test": true,
+     "thread": true,
+     "timer": true,
+     "versionedlayout": false,
+     "wave": true,
+     "cflags": [
+      "-gcc-name=/usr/local/other/gcc/9.2.0/bin/gcc"
+     ],
+     "cppflags": [],
+     "cxxflags": [
+      "-gxx-name=/usr/local/other/gcc/9.2.0/bin/g++"
+     ],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "patches": [
+     "2ab6c72d03dec6a4ae20220a9dfd5c8c572c5294252155b85c6874d97c323199"
+    ],
+    "dependencies": {
+     "bzip2": {
+      "hash": "x624s732zvoldob5ug54qwxiq7wyxggx",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "intel-mpi": {
+      "hash": "kszyw4b53vbes7rkyzbqf4trabzn637h",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "zlib": {
+      "hash": "lk267u47ez67rkzl7z5gnrdqvhca2n46",
+      "type": [
+       "build",
+       "link"
+      ]
+     }
+    }
+   }
+  },
+  "ka7os37p2ptaafoay47gu4uj7zo6mkeg": {
+   "py-six": {
+    "version": "1.11.0",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles12",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.166"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "cflags": [
+      "-gcc-name=/usr/local/other/gcc/9.2.0/bin/gcc"
+     ],
+     "cppflags": [],
+     "cxxflags": [
+      "-gxx-name=/usr/local/other/gcc/9.2.0/bin/g++"
+     ],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "python": {
+      "hash": "higa35ahkuo33epxayyry2bx63d4blsb",
+      "type": [
+       "build",
+       "link",
+       "run"
+      ]
+     }
+    }
+   }
+  },
+  "gn4l765ttusvy4v4fw535fpanbjdaqan": {
+   "libxau": {
+    "version": "1.0.8",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles12",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.166"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "cflags": [
+      "-gcc-name=/usr/local/other/gcc/9.2.0/bin/gcc"
+     ],
+     "cppflags": [],
+     "cxxflags": [
+      "-gxx-name=/usr/local/other/gcc/9.2.0/bin/g++"
+     ],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "pkgconf": {
+      "hash": "4yhwxlthrkasrawhxus6dscgotmymkou",
+      "type": [
+       "build"
+      ]
+     },
+     "util-macros": {
+      "hash": "uzt6andesv2shium7euwtozitp6f4erp",
+      "type": [
+       "build"
+      ]
+     },
+     "xproto": {
+      "hash": "o3enfsqwp3npeytpvimoay4jls2yxyee",
+      "type": [
+       "build",
+       "link"
+      ]
+     }
+    }
+   }
+  },
+  "4qd4kskacuikiaevu5bfopxuaa7hdwtl": {
+   "flex": {
+    "version": "2.6.1",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles12",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.166"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "lex": true,
+     "cflags": [
+      "-gcc-name=/usr/local/other/gcc/9.2.0/bin/gcc"
+     ],
+     "cppflags": [],
+     "cxxflags": [
+      "-gxx-name=/usr/local/other/gcc/9.2.0/bin/g++"
+     ],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "bison": {
+      "hash": "m7ngodz2zoozfoltbhwtks4x76xul6wv",
+      "type": [
+       "build"
+      ]
+     },
+     "gettext": {
+      "hash": "wqsmop7gcht6quocka3afblx2tvnojgc",
+      "type": [
+       "build"
+      ]
+     },
+     "help2man": {
+      "hash": "agqhhkxtxx4l7ayv5ecnitchtzrodxqy",
+      "type": [
+       "build"
+      ]
+     },
+     "m4": {
+      "hash": "gq6cq22dt57es45r5oeog4czhs37ao65",
+      "type": [
+       "build"
+      ]
+     }
+    }
+   }
+  },
+  "7nfeqdiqmqxwsaq3g3e6j3xos5og6af5": {
+   "py-scipy": {
+    "version": "1.1.0",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles12",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.166"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "cflags": [
+      "-gcc-name=/usr/local/other/gcc/9.2.0/bin/gcc"
+     ],
+     "cppflags": [],
+     "cxxflags": [
+      "-gxx-name=/usr/local/other/gcc/9.2.0/bin/g++"
+     ],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "intel-mkl": {
+      "hash": "3q7r4midokuhitbv367ydbsqurz74zuf",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "py-numpy": {
+      "hash": "igacrg7lcsu5wl4arbebboqrplckog3e",
+      "type": [
+       "build",
+       "run"
+      ]
+     },
+     "py-setuptools": {
+      "hash": "5egqytacrkuchyl7xfadkcy4ljp5rwbu",
+      "type": [
+       "build"
+      ]
+     },
+     "python": {
+      "hash": "higa35ahkuo33epxayyry2bx63d4blsb",
+      "type": [
+       "build",
+       "link",
+       "run"
+      ]
+     }
+    }
+   }
+  },
+  "b7cwlbzipgnuxcdkiy63omqod5g4hiw5": {
+   "icebin": {
+    "version": "0.1.5",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles12",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.166"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "build_type": "RelWithDebInfo",
+     "copy": "standard",
+     "coupler": true,
+     "doc": false,
+     "googletest": true,
+     "gridgen": true,
+     "modele": true,
+     "pism": true,
+     "python": true,
+     "cflags": [
+      "-gcc-name=/usr/local/other/gcc/9.2.0/bin/gcc"
+     ],
+     "cppflags": [],
+     "cxxflags": [
+      "-gxx-name=/usr/local/other/gcc/9.2.0/bin/g++"
+     ],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "blitz": {
+      "hash": "atrlxkdt3lo654d3ciedb4vpqezuk4ho",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "boost": {
+      "hash": "wsjipurexbifnjddculazuuvkbkpo2yn",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "cgal": {
+      "hash": "mo4lpfnvwuwfuuirtxkegq2ipg2mz3px",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "cmake": {
+      "hash": "n5xilna5qgyp5km7kesdht4yaak3nbby",
+      "type": [
+       "build"
+      ]
+     },
+     "eigen": {
+      "hash": "fit7r3mholsq3jl4c74bb42wloegfwgu",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "everytrace": {
+      "hash": "ofiqth5l7k274eihg2mwknznleluq53u",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "gmp": {
+      "hash": "mni4j32qi3yol42oph7mfcovmrj47pff",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "googletest": {
+      "hash": "5qcpllknke2iqlofp3eaokeykf4rz22i",
+      "type": [
+       "build"
+      ]
+     },
+     "ibmisc": {
+      "hash": "rujvsvxfxkwzfhogm5kdvtihquydk22e",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "intel-mpi": {
+      "hash": "kszyw4b53vbes7rkyzbqf4trabzn637h",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "mpfr": {
+      "hash": "z2xvnamvwcxfidxddmaemxnh2iinlbpv",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "netcdf-cxx4": {
+      "hash": "3siwqsc4w5foqnhwoijolkvgccgvzysa",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "petsc": {
+      "hash": "ea6oo7vxkswqvlpz5linydfb6ov5wqcz",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "pism": {
+      "hash": "bqfi2irclthrbyriaoepngel7odyl2k4",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "proj": {
+      "hash": "t5qw6ecvxg4734psztr56ojbuofuzgh6",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "py-cython": {
+      "hash": "ekdxfli7j7lxame7gw75vexmnmb76mzj",
+      "type": [
+       "build",
+       "run"
+      ]
+     },
+     "py-numpy": {
+      "hash": "igacrg7lcsu5wl4arbebboqrplckog3e",
+      "type": [
+       "build",
+       "run"
+      ]
+     },
+     "python": {
+      "hash": "higa35ahkuo33epxayyry2bx63d4blsb",
+      "type": [
+       "build",
+       "link",
+       "run"
+      ]
+     },
+     "tclap": {
+      "hash": "e77rsxn5ztcgc3laj4luitqmev2myhy4",
+      "type": [
+       "build",
+       "link"
+      ]
+     }
+    }
+   }
+  },
+  "ofiqth5l7k274eihg2mwknznleluq53u": {
+   "everytrace": {
+    "version": "0.2.2",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles12",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.166"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "build_type": "RelWithDebInfo",
+     "copy": "standard",
+     "cxx": true,
+     "fortran": true,
+     "mpi": true,
+     "cflags": [
+      "-gcc-name=/usr/local/other/gcc/9.2.0/bin/gcc"
+     ],
+     "cppflags": [],
+     "cxxflags": [
+      "-gxx-name=/usr/local/other/gcc/9.2.0/bin/g++"
+     ],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "cmake": {
+      "hash": "n5xilna5qgyp5km7kesdht4yaak3nbby",
+      "type": [
+       "build"
+      ]
+     },
+     "intel-mpi": {
+      "hash": "kszyw4b53vbes7rkyzbqf4trabzn637h",
+      "type": [
+       "build",
+       "link"
+      ]
+     }
+    }
+   }
+  },
+  "hsv4z4gotafkw2euyxg4db7ytgqb4enx": {
+   "libxmu": {
+    "version": "1.1.2",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles12",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.166"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "cflags": [
+      "-gcc-name=/usr/local/other/gcc/9.2.0/bin/gcc"
+     ],
+     "cppflags": [],
+     "cxxflags": [
+      "-gxx-name=/usr/local/other/gcc/9.2.0/bin/g++"
+     ],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "libx11": {
+      "hash": "s4aggyk7fcpattvfxu4ycyxfqnlvn3xy",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "libxext": {
+      "hash": "yofnj7u62ie6z5le4mojjz3ufxwzwq6q",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "libxt": {
+      "hash": "jj3p7mmtakwjzslrdopcsydthzqnhivm",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "pkgconf": {
+      "hash": "4yhwxlthrkasrawhxus6dscgotmymkou",
+      "type": [
+       "build"
+      ]
+     },
+     "util-macros": {
+      "hash": "uzt6andesv2shium7euwtozitp6f4erp",
+      "type": [
+       "build"
+      ]
+     },
+     "xextproto": {
+      "hash": "4qc5j5nf2d37zxmmyvoi7qojftgqb4wn",
+      "type": [
+       "build"
+      ]
+     }
+    }
+   }
+  }
+ },
+ "_meta": {
+  "lockfile-version": 1,
+  "file-type": "spack-lockfile"
+ },
+ "roots": [
+  {
+   "hash": "npf5juf335g6alf32zoqacv5a2ekhj5l",
+   "spec": "modele"
+  },
+  {
+   "hash": "xurqohqg4wnqrxmwwiynh7ekl6c6qprr",
+   "spec": "modele-control"
+  },
+  {
+   "hash": "5g7e22y6lsed7e4sryj4nf7tiv762iez",
+   "spec": "py-pillow"
+  },
+  {
+   "hash": "mumevx4eq2rrda7zhyhid6amgllu7gdw",
+   "spec": "modele-utils"
+  },
+  {
+   "hash": "pzt2ppoua2gjmecq2aih5ffdzjt4oawv",
+   "spec": "ncview"
+  },
+  {
+   "hash": "2ldvnvn5j3mocwytqklurovedammofkn",
+   "spec": "nco"
+  }
+ ]
+}
