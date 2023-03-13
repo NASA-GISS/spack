@@ -8,7 +8,8 @@ function join() {
 # Set up Spack and Modules
 # http://stackoverflow.com/questions/59895/can-a-bash-script-tell-which-directory-it-is-stored-in
 export SPACK_ENV=$(readlink -f $(dirname "${BASH_SOURCE[0]}"))
-export HARNESS=$SPACK_ENV
+export HARNESS=${HARNESS:=${SPACK_ENV}}
+echo "Using HARNESS: ${HARNESS}"
 
 export SPACK_ENV_NAME=$(basename $SPACK_ENV)
 export SPACK_ROOT=$(dirname $(dirname $(dirname $(dirname $SPACK_ENV))))

@@ -7,7 +7,8 @@ function join() {
     echo "$*"
 }
 
-export HARNESS=$SPACK_ENV
+export HARNESS=${HARNESS:=$SPACK_ENV}
+echo "Using HARNESS: ${HARNESS}"
 
 export SPACK_ENV_NAME=$(basename $SPACK_ENV)
 export SPACK_ROOT=$(dirname $(dirname $(dirname $(dirname $SPACK_ENV))))
