@@ -21,7 +21,7 @@ spack:
       compiler: []
     petsc:
 #        version: [3.4.4]
-      version: [3.5]
+      version: [3.7.7]
     # 2. parmetis.c requires a real_t type that's defined nowhere.
     #   Maybe I'm using the wrong version of parmetis or metis, or mabye something
     #   funky about it isn't working with Intel compiler.
