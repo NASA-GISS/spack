@@ -45,16 +45,6 @@ spack:
     - pism
     - icebin
     spec: modele
-  - setup: []
-    spec: modele-control
-  - setup: []
-    spec: py-pillow
-  - setup: []
-    spec: modele-utils
-  - setup: []
-    spec: ncview
-  - setup: []
-    spec: nco
   mirrors: {}
   modules:
     enable: []
