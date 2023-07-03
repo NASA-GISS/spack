@@ -42,3 +42,33 @@ packages:
       version: [0.2.2]
       paths:
         everytrace@0.2.2: /discover/nobackup/kmankoff/LIME_intel/opt
+
+    automake:
+      buildable: false
+      paths:
+        automake: /usr
+
+    autoconf:
+      buildable: false
+      paths:
+        autoconf: /usr
+        
+    bison:
+      buildable: false
+      paths:
+        bison: /usr
+        
+    flex:
+      buildable: false
+      paths:
+        flex: /usr
+
+    bzip2:
+      buildable: false
+      paths:
+        bzip2: /usr
+        
+    perl:
+      buildable: false
+      paths:
+        perl: /usr
