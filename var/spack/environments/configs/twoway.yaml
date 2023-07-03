@@ -41,7 +41,7 @@ packages:
       buildable: false
       version: [0.2.2]
       paths:
-        everytrace@0.2.2: /discover/nobackup/kmankoff/LIME_intel/opt
+        everytrace@0.2.2: /discover/nobackup/kmankoff/LIME_spackless/opt
 
     automake:
       buildable: false
