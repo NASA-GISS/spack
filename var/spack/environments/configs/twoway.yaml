@@ -36,3 +36,9 @@ packages:
 #    # This is the same as was used in spack6/twoway-dev-gibbs
 #    petsc:
 #        version: [3.9.0]
+
+    everytrace:
+      buildable: false
+      version: [0.2.2]
+      paths:
+        everytrace@0.2.2: /discover/nobackup/kmankoff/LIME_intel/opt
