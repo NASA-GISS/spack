@@ -20,7 +20,7 @@ packages:
     # https://github.com/spack/spack/issues/10530
     cmake:
         paths:
-            cmake@3.23.1: /usr/local/other/cmake/3.23.1/bin/cmake
+            cmake@3.23.1: /usr/local/other/cmake/3.23.1
         version: [3.23.1]
         buildable: false
 
