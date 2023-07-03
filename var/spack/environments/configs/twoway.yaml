@@ -19,7 +19,10 @@ packages:
     # netlib-scalapack needs this specific version.
     # https://github.com/spack/spack/issues/10530
     cmake:
-        version: [3.12.4]
+        paths:
+            cmake@3.23.1: /usr/local/other/cmake/3.23.1/bin/cmake
+        version: [3.23.1]
+        buildable: false
 
     # Concretizer bug related to PETSc mess
     # https://github.com/spack/spack/issues/12938
