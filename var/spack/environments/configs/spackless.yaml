@@ -42,4 +42,26 @@ packages:
       paths:
         perl: /gpfsm/dnb33/kmankoff/local/mambaforge/envs/spackless
 
+    py-cython:
+      buildable: false
+      version: [0.28.5]
+      paths:
+        py-cython: /gpfsm/dnb33/kmankoff/local/mambaforge/envs/spackless
+        
+    python:
+      buildable: false
+      version: [3.7.12]
+      paths:
+        python: /gpfsm/dnb33/kmankoff/local/mambaforge/envs/spackless
 
+    py-numpy:
+      buildable: false
+      version: [1.15.2]
+      paths:
+        py-numpy: /gpfsm/dnb33/kmankoff/local/mambaforge/envs/spackless
+        
+    udunits2:
+      buildable: false
+      version: [2.2.17]
+      paths:
+        udunits2: /gpfsm/dnb33/kmankoff/local/mambaforge/envs/spackless
