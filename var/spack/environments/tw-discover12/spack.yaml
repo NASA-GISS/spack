@@ -4,6 +4,7 @@
 # configuration settings.
 spack:
   include:
+  - ../configs/spackless.yaml        # Highest precedence
   - ../configs/twoway.yaml        # Highest precedence
   - ../configs/gissversions.yaml
   - ../configs/discover12.yaml

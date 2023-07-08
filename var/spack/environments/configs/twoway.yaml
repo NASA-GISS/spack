@@ -18,11 +18,6 @@ packages:
         variants: [+fortran]
     # netlib-scalapack needs this specific version.
     # https://github.com/spack/spack/issues/10530
-    cmake:
-        paths:
-            cmake@3.23.1: /usr/local/other/cmake/3.23.1
-        version: [3.23.1]
-        buildable: false
 
     # Concretizer bug related to PETSc mess
     # https://github.com/spack/spack/issues/12938
@@ -37,38 +32,3 @@ packages:
 #    petsc:
 #        version: [3.9.0]
 
-    everytrace:
-      buildable: false
-      version: [0.2.2]
-      paths:
-        everytrace@0.2.2: /discover/nobackup/kmankoff/LIME_spackless/opt
-
-    automake:
-      buildable: false
-      paths:
-        automake: /usr
-
-    autoconf:
-      buildable: false
-      paths:
-        autoconf: /usr
-        
-    bison:
-      buildable: false
-      paths:
-        bison: /usr
-        
-    flex:
-      buildable: false
-      paths:
-        flex: /usr
-
-    bzip2:
-      buildable: false
-      paths:
-        bzip2: /usr
-        
-    perl:
-      buildable: false
-      paths:
-        perl: /usr

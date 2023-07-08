@@ -1,0 +1,45 @@
+packages:
+
+    cmake:
+        paths:
+            cmake@3.23.1: /usr/local/other/cmake/3.23.1
+        version: [3.23.1]
+        buildable: false
+
+    everytrace:
+      buildable: false
+      version: [0.2.2]
+      paths:
+        everytrace@0.2.2: /discover/nobackup/kmankoff/LIME_spackless/opt
+
+    automake:
+      buildable: false
+      paths:
+        automake: /gpfsm/dnb33/kmankoff/local/mambaforge/envs/spackless
+
+    autoconf:
+      buildable: false
+      paths:
+        autoconf: /gpfsm/dnb33/kmankoff/local/mambaforge/envs/spackless
+        
+    bison:
+      buildable: false
+      paths:
+        bison: /gpfsm/dnb33/kmankoff/local/mambaforge/envs/spackless
+        
+    flex:
+      buildable: false
+      paths:
+        flex: /gpfsm/dnb33/kmankoff/local/mambaforge/envs/spackless
+
+    bzip2:
+      buildable: false
+      paths:
+        bzip2: /gpfsm/dnb33/kmankoff/local/mambaforge/envs/spackless
+        
+    perl:
+      buildable: false
+      paths:
+        perl: /gpfsm/dnb33/kmankoff/local/mambaforge/envs/spackless
+
+
