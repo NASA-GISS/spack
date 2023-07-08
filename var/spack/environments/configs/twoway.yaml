@@ -18,8 +18,6 @@ packages:
         variants: [+fortran]
     # netlib-scalapack needs this specific version.
     # https://github.com/spack/spack/issues/10530
-    cmake:
-        version: [3.12.4]
 
     # Concretizer bug related to PETSc mess
     # https://github.com/spack/spack/issues/12938
@@ -33,3 +31,4 @@ packages:
 #    # This is the same as was used in spack6/twoway-dev-gibbs
 #    petsc:
 #        version: [3.9.0]
+

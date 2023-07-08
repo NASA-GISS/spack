@@ -4,6 +4,7 @@
 # configuration settings.
 spack:
   include:
+  - ../configs/spackless.yaml        # Highest precedence
   - ../configs/twoway.yaml        # Highest precedence
   - ../configs/gissversions.yaml
   - ../configs/discover12.yaml
@@ -45,16 +46,6 @@ spack:
     - pism
     - icebin
     spec: modele
-  - setup: []
-    spec: modele-control
-  - setup: []
-    spec: py-pillow
-  - setup: []
-    spec: modele-utils
-  - setup: []
-    spec: ncview
-  - setup: []
-    spec: nco
   mirrors: {}
   modules:
     enable: []

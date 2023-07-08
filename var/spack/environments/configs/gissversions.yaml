@@ -29,8 +29,6 @@ packages:
         version: [3.1.0]
 
     # --------- Our Stuff
-    modele-utils:
-        version: [cmake]
     ibmisc:
         variants: [+everytrace]
     icebin:
